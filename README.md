@@ -8,11 +8,6 @@
 [![Documentation Status](https://readthedocs.org/projects/wonka/badge/?version=latest)](http://wonka.readthedocs.io/?badge=latest)
 
 
-<p align="center">
-<img src="https://media3.giphy.com/media/Bp5dwyOW9BwbK/giphy.gif?cid=ecf05e47fc69a9e2fe4b535c1c0a0d2641496a30302482d2&rid=giphy.gif&ct=g" height="300"/>
-</p>
-
-
 *“No other factory in the world mixes its chocolate by waterfall… But it’s the only way if you want it just right.”* - Willy Wonka
 
 `wonka` provides a lightweight, extensible, accessible framework for implementing class and object constructers in Python. Out-of-the-box, this package offers three general styles of its base `Factory` class:
@@ -30,7 +25,7 @@ As another optional feature, `wonka` supports post-construction modification of 
 # Why use `wonka`?
 
 <p align="center">
-<img src="https://media4.giphy.com/media/Tt9jctxaVjRny/giphy.gif?cid=ecf05e47c18de94d59170ec6b6352617b17b841ee0bfe8a2&rid=giphy.gif&ct=g" height="300"/>
+<img src="https://media3.giphy.com/media/Bp5dwyOW9BwbK/giphy.gif?cid=ecf05e47fc69a9e2fe4b535c1c0a0d2641496a30302482d2&rid=giphy.gif&ct=g" height="300"/>
 </p>
 
 Factories and other constructors are essential components of any project that requires dynamic, runtime implementation. The goal of `wonka` is to meet that common need with a flexible system that has almost no learning curve. Significantly, `wonka` is very lightweight and efficient. It does not include any extra dependencies (its only dependency is another small utlity package of mine) or code that, with large-scale project management packages, can syphon off needed resources.
@@ -40,6 +35,10 @@ Factories and other constructors are essential components of any project that re
 Also, `wonka` is 100% compatible with my other project framework packages, of which it was originally a part. I have decided to make it available as a separate package for those that just want to use its implementation without the other components of my project framework ecosystem. So, for example, any of the many registry types of [ashford](https://github.com/WithPrecedent/ashford) can be used with a `Registrar` in `wonka`. Further, for project workflow pipelining, where dynamic factories are essential, the `wonka` classes are interwoven and can be extended in the [chrisjen](https://github.com/WithPrecedent/chrisjen) and [amos](https://github.com/WithPrecedent/amos) packages. Also, for those using configuration option files, `wonka` is supported by the [bobbie](https://github.com/WithPrecedent/bobbie) project settings package.
 
 # Using `wonka`
+
+<p align="center">
+<img src="https://media4.giphy.com/media/Tt9jctxaVjRny/giphy.gif?cid=ecf05e47c18de94d59170ec6b6352617b17b841ee0bfe8a2&rid=giphy.gif&ct=g" height="300"/>
+</p>
 
 ## Installation
 
