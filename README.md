@@ -8,10 +8,10 @@
 [![Documentation Status](https://readthedocs.org/projects/wonka/badge/?version=latest)](http://wonka.readthedocs.io/?badge=latest)
 
 
-</p>
 <p align="center">
 <img src="https://media3.giphy.com/media/Bp5dwyOW9BwbK/giphy.gif?cid=ecf05e47fc69a9e2fe4b535c1c0a0d2641496a30302482d2&rid=giphy.gif&ct=g" height="300"/>
 </p>
+
 
 *“No other factory in the world mixes its chocolate by waterfall… But it’s the only way if you want it just right.”* - Willy Wonka
 
