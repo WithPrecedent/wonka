@@ -1,0 +1,32 @@
+[tool.poetry]
+name = "wonka"
+version = "0.1.0"
+description = "flexible, accessible, and extensible Python factories"
+authors = ["Corey Rayburn Yung <coreyrayburnyung@gmail.com>"]
+license = "Apache-2.0"
+readme = "README.md"
+homepage = "https://github.com/WithPrecedent/wonka"
+repository = "https://github.com/WithPrecedent/wonka"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+camina = "^0.1.16"
+miller = "^0.1.8"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^5.2"
+yapf = "^0.32.0"
+darglint = "^1.8.1"
+isort = {extras = ["colors"], version = "^5.10.1"}
+
+[tool.poetry.group.docs]
+optional = true
+
+[tool.poetry.group.docs.dependencies]
+mkdocs = "^1.4.2" 
+mkdocs-material = "^9.1.5"
+mkdocstrings = "^0.21.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
