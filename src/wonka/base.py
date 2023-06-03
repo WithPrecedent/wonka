@@ -1,38 +1,28 @@
-"""
-base: base classes for wonka factories
-Corey Rayburn Yung <coreyrayburnyung@gmail.com>
-Copyright 2023, Corey Rayburn Yung
-License: Apache-2.0
 
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
+# base: base classes for wonka factories
+# Corey Rayburn Yung <coreyrayburnyung@gmail.com>
+# Copyright 2023, Corey Rayburn Yung
+# License: Apache-2.0
 
-        http://www.apache.org/licenses/LICENSE-2.0
+# Contents:
+#     Factory (abc.ABC): interface for basic wonka creation classes. A 'create' 
+#         class method is required for subclasses.
+#     Manager (Iterable, abc.ABC): iterable interface for complex construction 
+#         managers. A 'manage' instance method is required for subclasses. For
+#         compatibility as a wonka constructor, a 'create' property is included
+#         which automatically calls the 'manage' method with all args and kwargs.
+#     Producer (abc.ABC): mixin interface for classes that alter created items 
+#         before returning them. A 'produce' class method is required for 
+#         subclasses.
+#     Constructor (TypeAlias): type alias for a wonka.compatible constructor type.
+#         By default, it includes a Factory subclass, a Factory subclass instance,
+#         and a Manager subclass instance.
 
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
+# To Do:
 
-Contents:
-    Factory (abc.ABC): interface for basic wonka creation classes. A 'create' 
-        class method is required for subclasses.
-    Manager (Iterable, abc.ABC): iterable interface for complex construction 
-        managers. A 'manage' instance method is required for subclasses. For
-        compatibility as a wonka constructor, a 'create' property is included
-        which automatically calls the 'manage' method with all args and kwargs.
-    Producer (abc.ABC): mixin interface for classes that alter created items 
-        before returning them. A 'produce' class method is required for 
-        subclasses.
-    Constructor (TypeAlias): type alias for a wonka.compatible constructor type.
-        By default, it includes a Factory subclass, a Factory subclass instance,
-        and a Manager subclass instance.
+""" 
+The module containing the core base classes for `wonka`. 
 
-To Do:
-
-        
 """
 from __future__ import annotations
 import abc
@@ -51,7 +41,7 @@ class Factory(abc.ABC):
     those that fit the classical "factory" design pattern). So, for example, the
     wonka package itself includes Factory subclasses that fit the prototype
     (Scribe), registry (Registar and Subclasser), and traditional (Delegate and
-    Sourcerer) design patterns. Further, the Manager class may act as the
+    Sourcerer) design patterns. Further, a Manager class instance may act as the
     director in a builder design pattern.
     
     One of the goals of wonka, though, is not be be wedded to or worried about
@@ -60,12 +50,8 @@ class Factory(abc.ABC):
     
     If you want to add code that modifies output of a Factory's 'create' class
     method, you can either include that in the subclass 'create' method or by
-    mixing in a Producer class. Details on how to use Producers are included in
-    its documentation. Out-of-the-box, wonka includes three basic Producer
-    subclasses which force the 'create' method to either always return a class
-    (Classer), always return an instance (Instancer), or return a class or
-    instance based on whether an argument is passed for 'parameters' to the 
-    'create' method (Flexer).
+    mixing in a Producer class. Details on how to use Producer subclasses are 
+    included in its documentation. 
     
     """
 

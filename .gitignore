@@ -129,10 +129,19 @@ dmypy.json
 .pyre/
 
 # VS Code settings
-.vscode/settings.json
-.vscode/*.*
 .vscode/
 
 # VS Code counter
-.VSCodeCounter/*.*
-.VSCodeCounter/**
+.VSCodeCounter/
+
+# mkdocs documentation
+site/
+
+# PDM dependency management
+.copier-answers.yml
+.idea/
+pdm.lock
+pdm.toml
+.pdm-plugins/
+.pdm-python
+__pypackages__/

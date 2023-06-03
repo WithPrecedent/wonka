@@ -152,7 +152,7 @@ def _get_creation_method_name(
     """Returns the creation method name for factories that call other methods.
 
     Args:
-        source_type (str): the str name of the source type.
+        source (Any): source data for creating a method name.
         method_namer (Optional[Callable[[object | Type[Any]], str]], optional): 
             callable to create the creation method name. Defaults to None. If it 
             is None, the global namer stored in configuration._METHOD_NAMER will 
