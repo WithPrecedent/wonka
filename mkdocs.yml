@@ -119,7 +119,7 @@ plugins:
     repository: WithPrecedent/wonka
 - literate-nav:
     nav_file: SUMMARY.md
-- markdown-exec
+- markdown-exec:
 - minify:
     minify_html: !ENV [DEPLOY, false]
 - mkdocstrings:
@@ -136,7 +136,7 @@ plugins:
           separate_signature: false
           show_signature_annotations: false
           show_submodules: true              
-- search
+- search:
 
 extra:
   social:

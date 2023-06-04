@@ -1,5 +1,3 @@
-<!-- --8<-- "README.md" -->
-
 # wonka: Python factories made easy
 
 <figure markdown>
@@ -10,8 +8,8 @@
 [![PyPI Latest Release](https://img.shields.io/pypi/v/wonka.svg)](https://pypi.org/project/wonka/)
 [![Documentation](https://img.shields.io/badge/docs-mkdocs%20material-blue.svg?style=flat)](https://WithPrecedent.github.io/wonka)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![Build](https://github.com/WithPrecedent/wonka/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/WithPrecedent/wonka/actions/workflows/build.yml)
-[![Testing](https://github.com/WithPrecedent/wonka/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/WithPrecedent/wonkaactions/workflows/test.yml)
+<!-- [![Build](https://github.com/WithPrecedent/wonka/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/WithPrecedent/wonka/actions/workflows/build.yml)
+[![Testing](https://github.com/WithPrecedent/wonka/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/WithPrecedent/wonkaactions/workflows/test.yml) -->
 [![CI](https://github.com/WithPrecedent/wonka/workflows/ci/badge.svg)](https://github.com/WithPrecedent/wonka/actions?query=workflow%3Aci)
 [![PDM Managed](https://img.shields.io/badge/pdm-managed-blueviolet)](https://pdm.fming.dev)
 

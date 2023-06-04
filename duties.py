@@ -8,7 +8,8 @@ from pathlib import Path
 from typing import TYPE_CHECKING, Any
 
 from duty import duty
-from duty.callables import black, blacken_docs, coverage, lazy, mkdocs, mypy, pytest, ruff, safety
+from duty.callables import (
+    black, blacken_docs, coverage, lazy, mkdocs, mypy, pytest, ruff, safety)
 
 if sys.version_info < (3, 8):
     from importlib_metadata import version as pkgversion
@@ -36,20 +37,15 @@ def pyprefix(title: str) -> str:  # noqa: D103
 
 
 def merge(d1: Any, d2: Any) -> Any:  # noqa: D103
-    basic_types = (int, float, str, bool, complex)
     if isinstance(d1, dict) and isinstance(d2, dict):
+        basic_types = (int, float, str, bool, complex)
         for key, value in d2.items():
-            if key in d1:
-                if isinstance(d1[key], basic_types):
-                    d1[key] = value
-                else:
-                    d1[key] = merge(d1[key], value)
-            else:
+            if key in d1 and isinstance(d1[key], basic_types) or key not in d1:
                 d1[key] = value
+            else:
+                d1[key] = merge(d1[key], value)
         return d1
-    if isinstance(d1, list) and isinstance(d2, list):
-        return d1 + d2
-    return d2
+    return d1 + d2 if isinstance(d1, list) and isinstance(d2, list) else d2
 
 
 def mkdocs_config() -> str:  # noqa: D103
@@ -89,7 +85,9 @@ def changelog(ctx: Context) -> None:
     )
 
 
-@duty(pre=["check_quality", "check_types", "check_docs", "check_dependencies", "check-api"])
+@duty(pre=[
+    "check_quality", "check_types", "check_docs", "check_dependencies", 
+    "check-api"])
 def check(ctx: Context) -> None:  # noqa: ARG001
     """Check it all!
 
@@ -137,7 +135,9 @@ def check_docs(ctx: Context) -> None:
     """
     Path("htmlcov").mkdir(parents=True, exist_ok=True)
     Path("htmlcov/index.html").touch(exist_ok=True)
-    ctx.run(mkdocs.build(strict=True, config_file=mkdocs_config()), title=pyprefix("Building documentation"))
+    ctx.run(
+        mkdocs.build(strict=True, config_file=mkdocs_config()), 
+        title=pyprefix("Building documentation"))
 
 
 @duty
@@ -177,7 +177,7 @@ def clean(ctx: Context) -> None:
     Parameters:
         ctx: The context instance (passed automatically).
     """
-    ctx.run("rm -rf .coverage*")
+    # ctx.run("rm -rf .coverage*")
     ctx.run("rm -rf .mypy_cache")
     ctx.run("rm -rf .pytest_cache")
     ctx.run("rm -rf tests/.pytest_cache")

@@ -14,7 +14,7 @@ BASIC_DUTIES = \
 	check-api \
 	check-dependencies \
 	clean \
-	coverage \
+	# coverage \
 	docs \
 	docs-deploy \
 	format \
