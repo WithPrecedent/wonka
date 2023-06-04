@@ -2,7 +2,7 @@
 # wonka: Python factories made easy
 
 <p align="center">
-<img src="../docs/assets/top_hat.png" alt="wonka top hat logo" height="250"/>
+<img src="./docs/assets/top_hat.png" alt="wonka top hat logo" height="250"/>
 </p>
 
 [![Made with Python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
