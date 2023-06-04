@@ -7,7 +7,7 @@
 
 [![Made with Python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
 [![PyPI Latest Release](https://img.shields.io/pypi/v/wonka.svg)](https://pypi.org/project/wonka/)
-[![Documentation](https://github.com/WithPrecedent/wonka/actions/workflows/pages.yml/badge.svg?branch=main)](https://github.com/WithPrecedent/wonka/actions/workflows/pages.yml)
+[![Documentation](https://img.shields.io/badge/docs-mkdocs%20material-blue.svg?style=flat)](https://WithPrecedent.github.io/wonka)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Build](https://github.com/WithPrecedent/wonka/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/WithPrecedent/wonka/actions/workflows/build.yml)
 [![Testing](https://github.com/WithPrecedent/wonka/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/WithPrecedent/wonkaactions/workflows/test.yml)

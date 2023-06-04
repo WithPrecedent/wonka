@@ -8,10 +8,10 @@
 site_name: wonka
 site_description: Extensible, lightweight, accessible constructors
 site_url: https://WithPrecedent.github.io/wonka
-site_dir: "site"
-repo_name: WithPrecedent/wonka
+# site_dir: "site"
+# repo_name: WithPrecedent/wonka
 repo_url: https://github.com/WithPrecedent/wonka
-edit_uri: blob/main/docs/
+# edit_uri: blob/main/docs/
 watch: [mkdocs.yml, README.md, CONTRIBUTING.md, CHANGELOG.md, src/wonka]
 copyright: Copyright &copy; 2023 Corey Rayburn Yung
 
@@ -27,7 +27,7 @@ nav:
 - Development:
   - Contributing: contributing.md
   - Code of Conduct: code_of_conduct.md
-  - Coverage Report: coverage.md
+  # - Coverage Report: coverage.md
 
 # Documentation Appearance
 
@@ -75,6 +75,7 @@ theme:
     toggle:
       icon: material/weather-night
       name: Switch to system preference
+  # use_directory_urls: false
 
 # Extras, Extensions, and Plugins
 
@@ -88,6 +89,7 @@ markdown_extensions:
 - callouts
 - codehilite
 - footnotes
+- md_in_html
 - pymdownx.emoji:
     emoji_index: !!python/name:materialx.emoji.twemoji
     emoji_generator: !!python/name:materialx.emoji.to_svg
@@ -108,7 +110,7 @@ markdown_extensions:
     permalink: true
 
 plugins:
-- coverage
+# - coverage
 - gen-files:
     scripts:
     - scripts/gen_ref_nav.py
@@ -116,7 +118,7 @@ plugins:
     enabled: !ENV [DEPLOY, false]
     repository: WithPrecedent/wonka
 - literate-nav:
-    nav_file: SUMMARY.txt
+    nav_file: SUMMARY.md
 - markdown-exec
 - minify:
     minify_html: !ENV [DEPLOY, false]
@@ -126,7 +128,6 @@ plugins:
         import:
         - https://docs.python.org/3/objects.inv
         options:
-          # docstring_options:
           docstring_section_style: table
           filters:
             - "!^__"
