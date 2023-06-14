@@ -1,6 +1,5 @@
-<!-- --8<-- "README.md" -->
+# wonka
 
-<!-- 
 <figure markdown>
   ![wonka top hat logo](assets/top_hat.png){width="300"}
 </figure>
@@ -37,9 +36,9 @@ Factories are essential components of coding projects that require dynamic, runt
 
 ## Getting started
 
-<p align="center">
-<img src="https://media4.giphy.com/media/Tt9jctxaVjRny/giphy.gif" alt="Please, tell us more" height="300"/>
-</p>
+<figure markdown>
+  ![Please, tell us more](https://media4.giphy.com/media/Tt9jctxaVjRny/giphy.gif){width="400"}
+</figure>
 
 ### Installation
 
@@ -160,9 +159,9 @@ There are three categories of base classes in `wonka`: factories, managers, and 
 
 ### Factories
 
-<p align="center">
-<img src="https://media2.giphy.com/media/o4aGs2I3rVKjC/giphy.gif" alt="Come with me and you'll be in a world of pure imagination" height="300"/>
-</p>
+<figure markdown>
+  ![Come with me and you'll be in a world of pure imagination](https://media2.giphy.com/media/o4aGs2I3rVKjC/giphy.gif){width="420"}
+</figure>
 
 Out-of-the-box, this package offers three general styles of its base `Factory` class. These are not subclasses, but rather describe the type of functionality in the included `Factory` subclasses.
 
@@ -190,9 +189,9 @@ Regardless of whether your new factory design fits one of the above categories, 
 
 ### Managers
 
-<p align="center">
-<img src="https://media.giphy.com/media/NsBAHgohHByp2/giphy.gif" alt="Don't just stand there! Do something!" height="300"/>
-</p>
+<figure markdown>
+  ![Don't just stand there! Do something!](https://media.giphy.com/media/NsBAHgohHByp2/giphy.gif){width="350"}
+</figure>
 
 For more complex construction, you can use subclasses of `Manager`, which is an iterable constructor. Every `Manager` subclass can construct items in three ways:
 
@@ -204,9 +203,9 @@ So, you can have 'Manager' subclass instances in your iteratable constructors (i
 
 ### Producers
 
-<p align="center">
-<img src="https://media4.giphy.com/media/l0HlHSB8v5yRtBlHW/giphy.gif" alt="Willy Wonka completes a forward roll and pops up" height="300"/>
-</p>
+<figure markdown>
+  ![Willy Wonka completes a forward roll and pops up](https://media4.giphy.com/media/l0HlHSB8v5yRtBlHW/giphy.gif){width="400"}
+</figure>
 
 As another optional feature, `wonka` supports post-construction modification of built items through subclasses of `Producer`. This is particularly important for factories that use other resources (such as registries). `wonka` [separates concerns](https://dev.to/suspir0n/soc-separation-of-concerns-5ak7) so that the return value can be modified through a simple mixin system. This division of labor makes it incredibly easy to put together any `Factory` with any `Producer`.
 
@@ -241,9 +240,9 @@ Notably, `wonka` is 100% compatible with my other project framework libraries, o
 
 If `wonka` does not fit your needs, you might find one of these other packages helpful. None of them does the same things that `wonka` does (which is why I created this library), but they might fit your particular project needs better.
 
-<p align="center">
-<img src="https://media.giphy.com/media/Bu8ADbj7NuRry/giphy.gif" alt="Stop. Don't. Come back." height="300"/>
-</p>
+<figure markdown>
+  ![Stop. Don't. Come back.](https://media.giphy.com/media/Bu8ADbj7NuRry/giphy.gif){width="350"}
+</figure>
 
 * [dataclass_factory](https://github.com/reagento/dataclass-factory): factory for dataclass production from other common data types.
 * [factory_boy](https://github.com/FactoryBoy/factory_boy): tool for dynamically creating objects for unit testing in Python.
@@ -258,8 +257,8 @@ I would also like to thank the University of Kansas School of Law for tolerating
 
 Lastly, I want to extend a special thanks to the late, great Gene Wilder, whose work inspired the name of this project and made my childhood better.
 
-<p align="center">
-<img src="https://media.giphy.com/media/3o6ZtbOoOHu28ftYiI/giphy.gif" alt="RIP, Gene Wilder, 1933-2016" height="300"/>
-</p>
+<figure markdown>
+  ![RIP, Gene Wilder, 1933-2016](https://media.giphy.com/media/3o6ZtbOoOHu28ftYiI/giphy.gif){width="280"}
+</figure>
 
 [^1]: This project is not affiliated with Willy Wonka candy, either of the Willy Wonka films (especially the Johnny Depp one), or any other Willy Wonka product. It's just named "wonka" because all of the most obvious names for a Python package of factories and other constructors on [pypi.org](https://pypi.org) were taken and Willy Wonka's insane candy factory was the first relevant pop-culture touchstone I could think of. -->

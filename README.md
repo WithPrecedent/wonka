@@ -4,12 +4,17 @@
 <img src="./docs/assets/top_hat.png" alt="wonka top hat logo" height="250"/>
 </p>
 
-<!-- [![Made with Python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/) -->
-[![PyPI Latest Release](https://img.shields.io/pypi/v/wonka.svg)](https://pypi.org/project/wonka/)
-[![Documentation](https://img.shields.io/badge/docs-mkdocs%20material-blue.svg?style=flat)](https://WithPrecedent.github.io/wonka)
-[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![CI](https://github.com/WithPrecedent/wonka/workflows/ci/badge.svg)](https://github.com/WithPrecedent/wonka/actions?query=workflow%3Aci)
-[![PDM Managed](https://img.shields.io/badge/pdm-managed-blueviolet)](https://pdm.fming.dev)
+[![PyPI Latest Release](https://img.shields.io/pypi/v/wonka.svg?style=for-the-badge&logo=PyPI)](https://pypi.org/project/wonka/)
+[![Documentation](https://img.shields.io/badge/docs-mkdocs%20material-blue.svg?style=for-the-badge&logo=github)](https://WithPrecedent.github.io/wonka)
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg?style=for-the-badge&logo=law)](https://opensource.org/licenses/Apache-2.0)
+[![PDM Managed](https://img.shields.io/badge/pdm-managed-blueviolet?style=for-the-badge)](https://pdm.fming.dev)
+
+[![CI](https://github.com/WithPrecedent/wonka/workflows/ci/badge.svg?style=for-the-badge&logo=#2088FF)](https://github.com/WithPrecedent/wonka/actions?query=workflow%3Aci)
+
+[![Azure Static Web Apps CI/CD](https://github.com/elbruno/AzureApiBadge/actions/workflows/azure-static-web-apps-victorious-wave-00360790f.yml/badge.svg?style=for-the-badge&logo=#2088FF)](https://github.com/elbruno/AzureApiBadge/actions/workflows/azure-static-web-apps-victorious-wave-00360790f.yml)
+
+![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white)
+
 <!-- [![Build](https://github.com/WithPrecedent/wonka/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/WithPrecedent/wonka/actions/workflows/build.yml)
 [![Testing](https://github.com/WithPrecedent/wonka/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/WithPrecedent/wonkaactions/workflows/test.yml) -->
 
