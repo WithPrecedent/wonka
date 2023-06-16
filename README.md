@@ -35,7 +35,7 @@ Factories are essential components of coding projects that require dynamic, runt
 
 * **Intuitive**: factories use a common interface with a `create` class method for all construction operations.
 * **Extensible**: core classes can be adapted and extended through inheritance or composition.
-* **Lightweight**: the package has a miniscule memory footprint with few dependencies.
+* **Lightweight**: the library has a miniscule memory footprint with few dependencies.
 * **Robust**: "turn-key" factories handle edge cases and core scenarios without further tinkering.
 * **Accessible**: `wonka` is over-documented to make it accessible to beginnning coders and readily usable for all developers.
 
@@ -108,7 +108,7 @@ class Base(wonka.Instancer, wonka.Subclasser):
 
 Or, conversely, if you wanted to always return a class (and ignore any parameters), you could add the `Classer` mixin instead.
 
-Here is a real-world example using a different type of factory: the `Sourcerer`. It works by calling creation class methods based on the type of data passed to the `create` method. This example is adapted from the [bobbie](https://github.com/WithPrecedent/bobbie) package, which offers a flexible system for project configuration settings.
+Here is a real-world example using a different type of factory: the `Sourcerer`. It works by calling creation class methods based on the type of data passed to the `create` method. This example is adapted from the [bobbie](https://github.com/WithPrecedent/bobbie) library, which offers a flexible system for project configuration settings.
 
 ```python
 from __future__ import annotations
@@ -168,7 +168,7 @@ There are three categories of base classes in `wonka`: factories, managers, and 
 <img src="https://media2.giphy.com/media/o4aGs2I3rVKjC/giphy.gif" alt="Come with me and you'll be in a world of pure imagination" height="300"/>
 </p>
 
-Out-of-the-box, this package offers three general styles of its base `Factory` class. These are not subclasses, but rather describe the type of functionality in the included `Factory` subclasses.
+Out-of-the-box, this library offers three general styles of its base `Factory` class. These are not subclasses, but rather describe the type of functionality in the included `Factory` subclasses.
 
 * Registries - factories that build classes or objects from explicit or implicit registries.
 * Dispatchers - factories that call appropriate creation methods or functions based on the type or content of data passed.
@@ -239,7 +239,7 @@ The library includes `Manufacturer`, a dictionary of factories, if you want all 
 
 Contributors are always welcome and should find `wonka` easy to work with. The project is highly documented so that users and developers can make `wonka` work with their projects. It is designed for Python coders at all levels. Even beginners should be able to follow the readable code and internal documentation to understand how it works.
 
-Notably, `wonka` is 100% compatible with my other project framework libraries, of which it was originally a part. This is why you should feel confident in the continued development and maintenance of the package - it is essential part of my overall work. I have decided to make it available as a separate library for those that just want to use its implementation without the other components of my project framework ecosystem. So, for example, any of the many registry types of [ashford](https://github.com/WithPrecedent/ashford) can be used with a `Registrar` in `wonka`. Further, for project workflow pipelining, where dynamic factories are essential, the `wonka` classes are interwoven and can be extended in the [chrisjen](https://github.com/WithPrecedent/chrisjen) and [amos](https://github.com/WithPrecedent/amos) packages. Also, for those using configuration option files, `wonka` is supported by the [bobbie](https://github.com/WithPrecedent/bobbie) project settings package. So, I, and any other maintainers, will do my best to promptly integrate any contributions.
+Notably, `wonka` is 100% compatible with my other project framework libraries, of which it was originally a part. This is why you should feel confident in the continued development and maintenance of the library - it is essential part of my overall work. I have decided to make it available as a separate library for those that just want to use its implementation without the other components of my project framework ecosystem. So, for example, any of the many registry types of [ashford](https://github.com/WithPrecedent/ashford) can be used with a `Registrar` in `wonka`. Further, for project workflow pipelining, where dynamic factories are essential, the `wonka` classes are interwoven and can be extended in the [chrisjen](https://github.com/WithPrecedent/chrisjen) and [amos](https://github.com/WithPrecedent/amos) packages. Also, for those using configuration option files, `wonka` is supported by the [bobbie](https://github.com/WithPrecedent/bobbie) project settings library. So, I, and any other maintainers, will do my best to promptly integrate any contributions.
 
 ## Similar Projects
 
