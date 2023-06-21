@@ -6,22 +6,17 @@
 
 [![PyPI Latest Release](https://img.shields.io/pypi/v/wonka.svg?style=for-the-badge&logo=PyPI)](https://pypi.org/project/wonka/)
 [![Documentation](https://img.shields.io/badge/docs-mkdocs%20material-blue.svg?style=for-the-badge&logo=github)](https://WithPrecedent.github.io/wonka)
-[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg?style=for-the-badge&logo=law)](https://opensource.org/licenses/Apache-2.0)
+[![GitHub Actions](https://img.shields.io/github/actions/workflow/status/WithPrecedent/wonka/.github/workflows/ci.yml?style=for-the-badge&logo=githubactions&logoColor=white)](https://img.shields.io/github/actions/workflow/status/WithPrecedent/wonka/.github/workflows/ci.yml)
+![Code Coverage](https://img.shields.io/codecov/c/github/WithPrecedent/wonka?style=for-the-badge&logo=codecov&logoColor=white)
 [![PDM Managed](https://img.shields.io/badge/pdm-managed-blueviolet?style=for-the-badge)](https://pdm.fming.dev)
-
-[![CI](https://github.com/WithPrecedent/wonka/workflows/ci/badge.svg?style=for-the-badge&logo=#2088FF)](https://github.com/WithPrecedent/wonka/actions?query=workflow%3Aci)
-
-[![Azure Static Web Apps CI/CD](https://github.com/elbruno/AzureApiBadge/actions/workflows/azure-static-web-apps-victorious-wave-00360790f.yml/badge.svg?style=for-the-badge&logo=#2088FF)](https://github.com/elbruno/AzureApiBadge/actions/workflows/azure-static-web-apps-victorious-wave-00360790f.yml)
-
-![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white)
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg?style=for-the-badge&logo=apache)](https://opensource.org/licenses/Apache-2.0)
 
 <!-- [![Build](https://github.com/WithPrecedent/wonka/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/WithPrecedent/wonka/actions/workflows/build.yml)
 [![Testing](https://github.com/WithPrecedent/wonka/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/WithPrecedent/wonkaactions/workflows/test.yml) -->
 
-
 ## What is wonka?
 
-`wonka`[^1] makes implementing class and object constructors in Python simple using an intuitive, powerful, and extensible framework. Out-of-the-box, `wonka` includes a wide range of creational design structures, from registry factories to prototypers to composite builder workflows (although, for the sake of brevity, the documentation refers to all of `wonka`'s constructors as "factories," even though many do not fit the definition of the classic [factory design pattern](https://realpython.com/factory-method-python/)). It is also incredibly easy to add more, while using the included convenient mixin and function helpers.
+`wonka`[^1] is an extensible library that enables simple implementation of class and object constructors in Python. Out-of-the-box, `wonka` includes various creational design patterns, from registry factories to prototypers to composite builder workflows. It is also easy to add custom factories,[^2] while taking advantage of `wonka`'s convenient mixin classes and helper functions.
 
 ## Why use wonka?
 
@@ -31,13 +26,13 @@
 
 *“No other factory in the world mixes its chocolate by waterfall… But it’s the only way if you want it just right.”* - Willy Wonka
 
-Factories are essential components of coding projects that require dynamic, runtime implementation. Despite their commmon usage, factories are often poorly implemented in Python packages. `wonka` meets the coding need of convenient creation with a little `wonka` magic through a simple, adaptable system that has almost no learning curve. `wonka` is:
+Factories are essential components of coding projects that require dynamic, runtime implementation of different strategies or options. In Python packages, despite their commmon usage, factories are often poorly implemented, fragile, or inflexible. `wonka` addresses those common shortcomings by offering convenient creation through a simple, adaptable system that has almost no learning curve[^3]. `wonka` is:
 
 * **Intuitive**: factories use a common interface with a `create` class method for all construction operations.
 * **Extensible**: core classes can be adapted and extended through inheritance or composition.
 * **Lightweight**: the library has a miniscule memory footprint with few dependencies.
-* **Robust**: "turn-key" factories handle edge cases and core scenarios without further tinkering.
-* **Accessible**: `wonka` is over-documented to make it accessible to beginnning coders and readily usable for all developers.
+* **Robust**: "turn-key" factories handle edge cases and core scenarios without needing further tinkering.
+* **Accessible**: `wonka` is over-documented to make it accessible to beginnning coders and readily usable for developers at all levels.
 
 ## Getting started
 
@@ -63,7 +58,7 @@ import wonka
 
 
 # wonka uses dataclasses because they are easier to read at a glance, but you
-# may use regular old classes if you would prefer.
+# may use standard classes, if you would prefer.
 @dataclasses.dataclass
 class Base(wonka.Subclasser):
     
@@ -267,3 +262,8 @@ Lastly, I want to extend a special thanks to the late, great Gene Wilder, whose 
 </p>
 
 [^1]: This project is not affiliated with Willy Wonka candy, either of the Willy Wonka films (especially the Johnny Depp one), or any other Willy Wonka product. It's just named "wonka" because all of the most obvious names for a Python package of factories and other constructors on [pypi.org](https://pypi.org) were taken and Willy Wonka's insane candy factory was the first relevant pop-culture touchstone I could think of.
+
+[^2]: For the sake of brevity, the documentation refers to all of `wonka`'s constructors as "factories," even though many do not fit the definition of the classic [factory design pattern](https://realpython.com/factory-method-python/).
+
+[^3]: Chocolate waterfalls are, sadly, only virtually implemented in `wonka`.
+ 
