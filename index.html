@@ -17,7 +17,7 @@
         <link rel="next" href="changelog/">
       
       <link rel="icon" href="assets/top_hat.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.13">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.17">
     
     
       
@@ -25,10 +25,10 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.85bb2934.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.26e3688c.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.a6bdf11c.min.css">
+        <link rel="stylesheet" href="assets/stylesheets/palette.ecc896b0.min.css">
       
       
 
@@ -81,7 +81,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#what-is-wonka" class="md-skip">
+        <a href="#wonka" class="md-skip">
           Skip to content
         </a>
       
@@ -138,7 +138,7 @@
             
             
             
-            <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
+            <input class="md-option" data-md-color-media="(prefers-color-scheme: lighht)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
             
               <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
@@ -740,6 +740,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -881,15 +883,10 @@
   
 
 
-  <h1>Overview</h1>
-
-<!-- --8<-- "README.md" -->
-
-<!-- 
-<figure markdown>
-  ![wonka top hat logo](assets/top_hat.png){width="300"}
+<h1 id="wonka">wonka<a class="headerlink" href="#wonka" title="Permanent link">&para;</a></h1>
+<figure>
+<p><img alt="wonka top hat logo" src="assets/top_hat.png" width="300" /></p>
 </figure>
-
 <!-- [![Made with Python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/) -->
 <p><a href="https://pypi.org/project/wonka/"><img alt="PyPI Latest Release" src="https://img.shields.io/pypi/v/wonka.svg" /></a>
 <a href="https://WithPrecedent.github.io/wonka"><img alt="Documentation" src="https://img.shields.io/badge/docs-mkdocs%20material-blue.svg?style=flat" /></a>
@@ -915,10 +912,9 @@
 <li><strong>Accessible</strong>: <code>wonka</code> is over-documented to make it accessible to beginnning coders and readily usable for all developers.</li>
 </ul>
 <h2 id="getting-started">Getting started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
-<p align="center">
-<img src="https://media4.giphy.com/media/Tt9jctxaVjRny/giphy.gif" alt="Please, tell us more" height="300"/>
-</p>
-
+<figure>
+<p><img alt="Please, tell us more" src="https://media4.giphy.com/media/Tt9jctxaVjRny/giphy.gif" width="400" /></p>
+</figure>
 <h3 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h3>
 <p>To install <code>wonka</code>, use <code>pip</code>:</p>
 <div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>wonka
@@ -1017,10 +1013,9 @@
 <h2 id="structure">Structure<a class="headerlink" href="#structure" title="Permanent link">&para;</a></h2>
 <p>There are three categories of base classes in <code>wonka</code>: factories, managers, and producers. Each is described in greater detail below, followed by discussion of other convenience classes and functions included with <code>wonka</code>.</p>
 <h3 id="factories">Factories<a class="headerlink" href="#factories" title="Permanent link">&para;</a></h3>
-<p align="center">
-<img src="https://media2.giphy.com/media/o4aGs2I3rVKjC/giphy.gif" alt="Come with me and you'll be in a world of pure imagination" height="300"/>
-</p>
-
+<figure>
+<p><img alt="Come with me and you'll be in a world of pure imagination" src="https://media2.giphy.com/media/o4aGs2I3rVKjC/giphy.gif" width="420" /></p>
+</figure>
 <p>Out-of-the-box, this package offers three general styles of its base <code>Factory</code> class. These are not subclasses, but rather describe the type of functionality in the included <code>Factory</code> subclasses.</p>
 <ul>
 <li>Registries - factories that build classes or objects from explicit or implicit registries.</li>
@@ -1044,10 +1039,9 @@
 </ul>
 <p>Regardless of whether your new factory design fits one of the above categories, any new factories may be added by simply subclassing <code>Factory</code>.</p>
 <h3 id="managers">Managers<a class="headerlink" href="#managers" title="Permanent link">&para;</a></h3>
-<p align="center">
-<img src="https://media.giphy.com/media/NsBAHgohHByp2/giphy.gif" alt="Don't just stand there! Do something!" height="300"/>
-</p>
-
+<figure>
+<p><img alt="Don't just stand there! Do something!" src="https://media.giphy.com/media/NsBAHgohHByp2/giphy.gif" width="350" /></p>
+</figure>
 <p>For more complex construction, you can use subclasses of <code>Manager</code>, which is an iterable constructor. Every <code>Manager</code> subclass can construct items in three ways:</p>
 <ol>
 <li>Calling its <code>manage</code> method.</li>
@@ -1056,10 +1050,9 @@
 </ol>
 <p>So, you can have 'Manager' subclass instances in your iteratable constructors (instead of just <code>Factory</code> subclasses). Any type of Iterable can be used as long as it returns a Factory class or Manager instance at each iteration. Out-of-the-box, <code>wonka</code> includes a basic sequential <code>Manager</code> called <code>Assembler</code> which acts like a simple assembly line constructor.</p>
 <h3 id="producers">Producers<a class="headerlink" href="#producers" title="Permanent link">&para;</a></h3>
-<p align="center">
-<img src="https://media4.giphy.com/media/l0HlHSB8v5yRtBlHW/giphy.gif" alt="Willy Wonka completes a forward roll and pops up" height="300"/>
-</p>
-
+<figure>
+<p><img alt="Willy Wonka completes a forward roll and pops up" src="https://media4.giphy.com/media/l0HlHSB8v5yRtBlHW/giphy.gif" width="400" /></p>
+</figure>
 <p>As another optional feature, <code>wonka</code> supports post-construction modification of built items through subclasses of <code>Producer</code>. This is particularly important for factories that use other resources (such as registries). <code>wonka</code> <a href="https://dev.to/suspir0n/soc-separation-of-concerns-5ak7">separates concerns</a> so that the return value can be modified through a simple mixin system. This division of labor makes it incredibly easy to put together any <code>Factory</code> with any <code>Producer</code>.</p>
 <p>Producers are mix-ins for any <code>Factory</code> class that apply automatic, seamless changes before classes or objects are returned by the <code>wonka</code> factories Out-of-the-box, all <code>wonka</code> factories check to see if an Producer is mixed in before returning the completed project. <code>wonka</code> includes these producers:</p>
 <ul>
@@ -1083,10 +1076,9 @@
 <p>Notably, <code>wonka</code> is 100% compatible with my other project framework libraries, of which it was originally a part. This is why you should feel confident in the continued development and maintenance of the package - it is essential part of my overall work. I have decided to make it available as a separate library for those that just want to use its implementation without the other components of my project framework ecosystem. So, for example, any of the many registry types of <a href="https://github.com/WithPrecedent/ashford">ashford</a> can be used with a <code>Registrar</code> in <code>wonka</code>. Further, for project workflow pipelining, where dynamic factories are essential, the <code>wonka</code> classes are interwoven and can be extended in the <a href="https://github.com/WithPrecedent/chrisjen">chrisjen</a> and <a href="https://github.com/WithPrecedent/amos">amos</a> packages. Also, for those using configuration option files, <code>wonka</code> is supported by the <a href="https://github.com/WithPrecedent/bobbie">bobbie</a> project settings package. So, I, and any other maintainers, will do my best to promptly integrate any contributions.</p>
 <h2 id="similar-projects">Similar Projects<a class="headerlink" href="#similar-projects" title="Permanent link">&para;</a></h2>
 <p>If <code>wonka</code> does not fit your needs, you might find one of these other packages helpful. None of them does the same things that <code>wonka</code> does (which is why I created this library), but they might fit your particular project needs better.</p>
-<p align="center">
-<img src="https://media.giphy.com/media/Bu8ADbj7NuRry/giphy.gif" alt="Stop. Don't. Come back." height="300"/>
-</p>
-
+<figure>
+<p><img alt="Stop. Don't. Come back." src="https://media.giphy.com/media/Bu8ADbj7NuRry/giphy.gif" width="350" /></p>
+</figure>
 <ul>
 <li><a href="https://github.com/reagento/dataclass-factory">dataclass_factory</a>: factory for dataclass production from other common data types.</li>
 <li><a href="https://github.com/FactoryBoy/factory_boy">factory_boy</a>: tool for dynamically creating objects for unit testing in Python.</li>
@@ -1097,10 +1089,9 @@
 <p><a href="https://github.com/pdm-project/pdm">PDM</a> and <a href="https://github.com/mkdocs/mkdocs">MkDocs</a> made my <code>wonka</code> development workflow better and easier. I'd also like to extend a special thanks to <a href="https://github.com/pawamoy">pawamoy</a> whose excellent PDM and Mkdocs extensions and utlities are incorporated into <code>wonka</code>. The scripts, documentation, configuration files, and other CI code were all adapted (or simply copied) from pawamoy's repositories.</p>
 <p>I would also like to thank the University of Kansas School of Law for tolerating and supporting this law professor's coding efforts, an endeavor which is well outside the typical scholarly activities in the discipline.</p>
 <p>Lastly, I want to extend a special thanks to the late, great Gene Wilder, whose work inspired the name of this project and made my childhood better.</p>
-<p align="center">
-<img src="https://media.giphy.com/media/3o6ZtbOoOHu28ftYiI/giphy.gif" alt="RIP, Gene Wilder, 1933-2016" height="300"/>
-</p>
-
+<figure>
+<p><img alt="RIP, Gene Wilder, 1933-2016" src="https://media.giphy.com/media/3o6ZtbOoOHu28ftYiI/giphy.gif" width="280" /></p>
+</figure>
 <div class="footnote">
 <hr />
 <ol>
@@ -1189,17 +1180,6 @@
       
       
     
-    <a href="https://gitter.im/wonka/community" target="_blank" rel="noopener" title="gitter.im" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M66.4 322.5H16V0h50.4v322.5zM166.9 76.1h-50.4V512h50.4V76.1zm100.6 0h-50.4V512h50.4V76.1zM368 76h-50.4v247H368V76z"/></svg>
-    </a>
-  
-    
-    
-    
-    
-      
-      
-    
     <a href="https://pypi.org/project/wonka/" target="_blank" rel="noopener" title="pypi.org" class="md-social__link">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"/></svg>
     </a>
@@ -1218,7 +1198,7 @@
     <script id="__config" type="application/json">{"base": ".", "features": ["announce.dismiss", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tooltips", "navigation.footer", "navigation.indexes", "navigation.path", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "search.highlight", "search.suggest", "toc.follow"], "search": "assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="assets/javascripts/bundle.b4d07000.min.js"></script>
+      <script src="assets/javascripts/bundle.b425cdc4.min.js"></script>
       
     
   </body>
