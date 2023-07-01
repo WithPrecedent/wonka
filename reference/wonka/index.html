@@ -351,6 +351,8 @@
         
           
         
+          
+        
       
       
         
@@ -371,6 +373,20 @@
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user_guide/" class="md-nav__link">
+        User Guide
+      </a>
+    </li>
+  
+
             
           
             
@@ -1759,8 +1775,8 @@ Defaults to an empty list.</p></td>
 <code class="codehilite language-python"><span class="n">contents</span><span class="p">:</span> <span class="n">MutableSequence</span><span class="p">[</span><span class="n">base</span><span class="o">.</span><span class="n">Constructor</span><span class="p">]</span> <span class="o">=</span> <span class="n">dataclasses</span><span class="o">.</span><span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
   </span>
 
 <a href="#wonka.managers.Assembler.contents" class="headerlink" title="Permanent link">&para;</a></h3>
@@ -3167,8 +3183,8 @@ callable to use to create the default value.</p></td>
 <code class="codehilite language-python"><span class="n">default_factory</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
   </span>
 
 <a href="#wonka.storage.Manufacturer.default_factory" class="headerlink" title="Permanent link">&para;</a></h3>
@@ -5026,7 +5042,7 @@ str name of any item passed.</p></td>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">namer</span><span class="p">,</span> <span class="n">Callable</span><span class="p">):</span>
         <span class="nb">globals</span><span class="p">()</span><span class="o">.</span><span class="n">_METHOD_NAMER</span> <span class="o">=</span> <span class="n">namer</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;keyer argument must be a callable&#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;namerargument must be a callable&#39;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
       </details>
   </div>
@@ -6111,7 +6127,7 @@ str name of any item passed.</p></td>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">namer</span><span class="p">,</span> <span class="n">Callable</span><span class="p">):</span>
         <span class="nb">globals</span><span class="p">()</span><span class="o">.</span><span class="n">_METHOD_NAMER</span> <span class="o">=</span> <span class="n">namer</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;keyer argument must be a callable&#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;namerargument must be a callable&#39;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
       </details>
   </div>
@@ -7332,8 +7348,8 @@ Defaults to an empty list.</p></td>
 <code class="codehilite language-python"><span class="n">contents</span><span class="p">:</span> <span class="n">MutableSequence</span><span class="p">[</span><span class="n">base</span><span class="o">.</span><span class="n">Constructor</span><span class="p">]</span> <span class="o">=</span> <span class="n">dataclasses</span><span class="o">.</span><span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
   </span>
 
 <a href="#wonka.managers.Assembler.contents" class="headerlink" title="Permanent link">&para;</a></h4>
@@ -9681,8 +9697,8 @@ callable to use to create the default value.</p></td>
 <code class="codehilite language-python"><span class="n">default_factory</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
   </span>
 
 <a href="#wonka.storage.Manufacturer.default_factory" class="headerlink" title="Permanent link">&para;</a></h4>

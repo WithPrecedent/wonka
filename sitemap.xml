@@ -2,82 +2,87 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://WithPrecedent.github.io/wonka/</loc>
-         <lastmod>2023-06-30</lastmod>
+         <lastmod>2023-07-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://WithPrecedent.github.io/wonka/changelog/</loc>
-         <lastmod>2023-06-30</lastmod>
+         <lastmod>2023-07-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://WithPrecedent.github.io/wonka/code_of_conduct/</loc>
-         <lastmod>2023-06-30</lastmod>
+         <lastmod>2023-07-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://WithPrecedent.github.io/wonka/contributing/</loc>
-         <lastmod>2023-06-30</lastmod>
+         <lastmod>2023-07-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://WithPrecedent.github.io/wonka/credits/</loc>
-         <lastmod>2023-06-30</lastmod>
+         <lastmod>2023-07-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://WithPrecedent.github.io/wonka/license/</loc>
-         <lastmod>2023-06-30</lastmod>
+         <lastmod>2023-07-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://WithPrecedent.github.io/wonka/user_guide/</loc>
+         <lastmod>2023-07-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://WithPrecedent.github.io/wonka/reference/wonka/</loc>
-         <lastmod>2023-06-30</lastmod>
+         <lastmod>2023-07-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://WithPrecedent.github.io/wonka/reference/wonka/base/</loc>
-         <lastmod>2023-06-30</lastmod>
+         <lastmod>2023-07-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://WithPrecedent.github.io/wonka/reference/wonka/configuration/</loc>
-         <lastmod>2023-06-30</lastmod>
+         <lastmod>2023-07-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://WithPrecedent.github.io/wonka/reference/wonka/dispatchers/</loc>
-         <lastmod>2023-06-30</lastmod>
+         <lastmod>2023-07-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://WithPrecedent.github.io/wonka/reference/wonka/managers/</loc>
-         <lastmod>2023-06-30</lastmod>
+         <lastmod>2023-07-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://WithPrecedent.github.io/wonka/reference/wonka/producers/</loc>
-         <lastmod>2023-06-30</lastmod>
+         <lastmod>2023-07-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://WithPrecedent.github.io/wonka/reference/wonka/prototypers/</loc>
-         <lastmod>2023-06-30</lastmod>
+         <lastmod>2023-07-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://WithPrecedent.github.io/wonka/reference/wonka/registries/</loc>
-         <lastmod>2023-06-30</lastmod>
+         <lastmod>2023-07-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://WithPrecedent.github.io/wonka/reference/wonka/shared/</loc>
-         <lastmod>2023-06-30</lastmod>
+         <lastmod>2023-07-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://WithPrecedent.github.io/wonka/reference/wonka/storage/</loc>
-         <lastmod>2023-06-30</lastmod>
+         <lastmod>2023-07-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
