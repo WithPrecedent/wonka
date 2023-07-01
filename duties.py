@@ -1,4 +1,4 @@
-"""Development tasks."""
+""" Development Tasks """
 
 from __future__ import annotations
 
@@ -20,19 +20,19 @@ else:
 if TYPE_CHECKING:
     from duty.context import Context
 
-PY_SRC_PATHS = (Path(_) for _ in ("src", "tests", "duties.py", "scripts"))
+PY_SRC_PATHS = (Path(_) for _ in ('src', 'tests', 'duties.py', 'scripts'))
 PY_SRC_LIST = tuple(str(_) for _ in PY_SRC_PATHS)
-PY_SRC = " ".join(PY_SRC_LIST)
-CI = os.environ.get("CI", "0") in {"1", "true", "yes", ""}
-WINDOWS = os.name == "nt"
+PY_SRC = ' '.join(PY_SRC_LIST)
+CI = os.environ.get('CI', '0') in {'1', 'true', 'yes', ''}
+WINDOWS = os.name == 'nt'
 PTY = not WINDOWS and not CI
-MULTIRUN = os.environ.get("PDM_MULTIRUN", "0") == "1"
+MULTIRUN = os.environ.get('PDM_MULTIRUN', '0') == '1'
 
 
 def pyprefix(title: str) -> str:  # noqa: D103
     if MULTIRUN:
-        prefix = f"(python{sys.version_info.major}.{sys.version_info.minor})"
-        return f"{prefix:14}{title}"
+        prefix = f'(python{sys.version_info.major}.{sys.version_info.minor})'
+        return f'{prefix:14}{title}'
     return title
 
 
@@ -54,9 +54,9 @@ def mkdocs_config() -> str:  # noqa: D103
     # patch YAML loader to merge arrays
     utils.merge = merge
 
-    if "+insiders" in pkgversion("mkdocs-material"):
-        return "mkdocs.insiders.yml"
-    return "mkdocs.yml"
+    if '+insiders' in pkgversion('mkdocs-material'):
+        return 'mkdocs.insiders.yml'
+    return 'mkdocs.yml'
 
 
 @duty
@@ -65,29 +65,30 @@ def changelog(ctx: Context) -> None:
 
     Parameters:
         ctx: The context instance (passed automatically).
+        
     """
     from git_changelog.cli import build_and_render
 
-    git_changelog = lazy(build_and_render, name="git_changelog")
+    git_changelog = lazy(build_and_render, name='git_changelog')
     ctx.run(
         git_changelog(
-            repository=".",
-            output="CHANGELOG.md",
-            convention="angular",
-            template="keepachangelog",
+            repository='.',
+            output='CHANGELOG.md',
+            convention='angular',
+            template='keepachangelog',
             parse_trailers=True,
             parse_refs=False,
-            sections=["build", "deps", "feat", "fix", "refactor"],
+            sections=['build', 'deps', 'feat', 'fix', 'refactor'],
             bump_latest=True,
             in_place=True,
         ),
-        title="Updating changelog",
+        title='Updating changelog',
     )
 
 
 @duty(pre=[
-    "check_quality", "check_types", "check_docs", "check_dependencies", 
-    "check-api"])
+    'check_quality', 'check_types', 'check_docs', 'check_dependencies', 
+    'check-api'])
 def check(ctx: Context) -> None:  # noqa: ARG001
     """Check it all!
 
@@ -104,8 +105,8 @@ def check_quality(ctx: Context) -> None:
         ctx: The context instance (passed automatically).
     """
     ctx.run(
-        ruff.check(*PY_SRC_LIST, config="config/ruff.toml"),
-        title=pyprefix("Checking code quality"),
+        ruff.check(*PY_SRC_LIST, config='config/ruff.toml'),
+        title=pyprefix('Checking code quality'),
     )
 
 
@@ -118,12 +119,12 @@ def check_dependencies(ctx: Context) -> None:
     """
     # retrieve the list of dependencies
     requirements = ctx.run(
-        ["pdm", "export", "-f", "requirements", "--without-hashes"],
-        title="Exporting dependencies as requirements",
+        ['pdm', 'export', '-f', 'requirements', '--without-hashes'],
+        title='Exporting dependencies as requirements',
         allow_overrides=False,
     )
 
-    ctx.run(safety.check(requirements), title="Checking dependencies")
+    ctx.run(safety.check(requirements), title='Checking dependencies')
 
 
 @duty
@@ -133,11 +134,11 @@ def check_docs(ctx: Context) -> None:
     Parameters:
         ctx: The context instance (passed automatically).
     """
-    Path("htmlcov").mkdir(parents=True, exist_ok=True)
-    Path("htmlcov/index.html").touch(exist_ok=True)
+    Path('htmlcov').mkdir(parents=True, exist_ok=True)
+    Path('htmlcov/index.html').touch(exist_ok=True)
     ctx.run(
         mkdocs.build(strict=True, config_file=mkdocs_config()), 
-        title=pyprefix("Building documentation"))
+        title=pyprefix('Building documentation'))
 
 
 @duty
@@ -148,8 +149,8 @@ def check_types(ctx: Context) -> None:
         ctx: The context instance (passed automatically).
     """
     ctx.run(
-        mypy.run(*PY_SRC_LIST, config_file="config/mypy.ini"),
-        title=pyprefix("Type-checking"),
+        mypy.run(*PY_SRC_LIST, config_file='config/mypy.ini'),
+        title=pyprefix('Type-checking'),
     )
 
 
@@ -162,10 +163,10 @@ def check_api(ctx: Context) -> None:
     """
     from griffe.cli import check as g_check
 
-    griffe_check = lazy(g_check, name="griffe.check")
+    griffe_check = lazy(g_check, name='griffe.check')
     ctx.run(
-        griffe_check("wonka", search_paths=["src"]),
-        title="Checking for API breaking changes",
+        griffe_check('wonka', search_paths=['src']),
+        title='Checking for API breaking changes',
         nofail=True,
     )
 
@@ -177,21 +178,21 @@ def clean(ctx: Context) -> None:
     Parameters:
         ctx: The context instance (passed automatically).
     """
-    # ctx.run("rm -rf .coverage*")
-    ctx.run("rm -rf .mypy_cache")
-    ctx.run("rm -rf .pytest_cache")
-    ctx.run("rm -rf tests/.pytest_cache")
-    ctx.run("rm -rf build")
-    ctx.run("rm -rf dist")
-    ctx.run("rm -rf htmlcov")
-    ctx.run("rm -rf pip-wheel-metadata")
-    ctx.run("rm -rf site")
-    ctx.run("find . -type d -name __pycache__ | xargs rm -rf")
-    ctx.run("find . -name '*.rej' -delete")
+    # ctx.run('rm -rf .coverage*')
+    ctx.run('rm -rf .mypy_cache')
+    ctx.run('rm -rf .pytest_cache')
+    ctx.run('rm -rf tests/.pytest_cache')
+    ctx.run('rm -rf build')
+    ctx.run('rm -rf dist')
+    ctx.run('rm -rf htmlcov')
+    ctx.run('rm -rf pip-wheel-metadata')
+    ctx.run('rm -rf site')
+    ctx.run('find . -type d -name __pycache__ | xargs rm -rf')
+    ctx.run('find . -name '*.rej' -delete')
 
 
 @duty
-def docs(ctx: Context, host: str = "127.0.0.1", port: int = 8000) -> None:
+def docs(ctx: Context, host: str = '127.0.0.1', port: int = 8000) -> None:
     """Serve the documentation (localhost:8000).
 
     Parameters:
@@ -200,8 +201,8 @@ def docs(ctx: Context, host: str = "127.0.0.1", port: int = 8000) -> None:
         port: The port to serve the docs on.
     """
     ctx.run(
-        mkdocs.serve(dev_addr=f"{host}:{port}", config_file=mkdocs_config()),
-        title="Serving documentation",
+        mkdocs.serve(dev_addr=f'{host}:{port}', config_file=mkdocs_config()),
+        title='Serving documentation',
         capture=False,
     )
 
@@ -213,11 +214,11 @@ def docs_deploy(ctx: Context) -> None:
     Parameters:
         ctx: The context instance (passed automatically).
     """
-    os.environ["DEPLOY"] = "true"
+    os.environ['DEPLOY'] = 'true'
     config_file = mkdocs_config()
-    if config_file == "mkdocs.yml":
-        ctx.run(lambda: False, title="Not deploying docs without Material for MkDocs Insiders!")
-    ctx.run(mkdocs.gh_deploy(config_file=config_file), title="Deploying documentation")
+    if config_file == 'mkdocs.yml':
+        ctx.run(lambda: False, title='Not deploying docs without Material for MkDocs Insiders!')
+    ctx.run(mkdocs.gh_deploy(config_file=config_file), title='Deploying documentation')
 
 
 @duty
@@ -228,18 +229,18 @@ def format(ctx: Context) -> None:
         ctx: The context instance (passed automatically).
     """
     ctx.run(
-        ruff.check(*PY_SRC_LIST, config="config/ruff.toml", fix_only=True, exit_zero=True),
-        title="Auto-fixing code",
+        ruff.check(*PY_SRC_LIST, config='config/ruff.toml', fix_only=True, exit_zero=True),
+        title='Auto-fixing code',
     )
-    ctx.run(black.run(*PY_SRC_LIST, config="config/black.toml"), title="Formatting code")
+    ctx.run(black.run(*PY_SRC_LIST, config='config/black.toml'), title='Formatting code')
     ctx.run(
-        blacken_docs.run(*PY_SRC_LIST, "docs", exts=["py", "md"], line_length=120),
-        title="Formatting docs",
+        blacken_docs.run(*PY_SRC_LIST, 'docs', exts=['py', 'md'], line_length=120),
+        title='Formatting docs',
         nofail=True,
     )
 
 
-@duty(post=["docs-deploy"])
+@duty(post=['docs-deploy'])
 def release(ctx: Context, version: str) -> None:
     """Release a new Python package.
 
@@ -247,16 +248,16 @@ def release(ctx: Context, version: str) -> None:
         ctx: The context instance (passed automatically).
         version: The new version number to use.
     """
-    ctx.run("git add pyproject.toml CHANGELOG.md", title="Staging files", pty=PTY)
-    ctx.run(["git", "commit", "-m", f"chore: Prepare release {version}"], title="Committing changes", pty=PTY)
-    ctx.run(f"git tag {version}", title="Tagging commit", pty=PTY)
-    ctx.run("git push", title="Pushing commits", pty=False)
-    ctx.run("git push --tags", title="Pushing tags", pty=False)
-    ctx.run("pdm build", title="Building dist/wheel", pty=PTY)
-    ctx.run("twine upload --skip-existing dist/*", title="Publishing version", pty=PTY)
+    ctx.run('git add pyproject.toml CHANGELOG.md', title='Staging files', pty=PTY)
+    ctx.run(['git', 'commit', '-m', f'chore: Prepare release {version}'], title='Committing changes', pty=PTY)
+    ctx.run(f'git tag {version}', title='Tagging commit', pty=PTY)
+    ctx.run('git push', title='Pushing commits', pty=False)
+    ctx.run('git push --tags', title='Pushing tags', pty=False)
+    ctx.run('pdm build', title='Building dist/wheel', pty=PTY)
+    ctx.run('twine upload --skip-existing dist/*', title='Publishing version', pty=PTY)
 
 
-@duty(silent=True, aliases=["coverage"])
+@duty(silent=True, aliases=['coverage'])
 def cov(ctx: Context) -> None:
     """Report coverage as text and HTML.
 
@@ -264,21 +265,25 @@ def cov(ctx: Context) -> None:
         ctx: The context instance (passed automatically).
     """
     ctx.run(coverage.combine, nofail=True)
-    ctx.run(coverage.report(rcfile="config/coverage.ini"), capture=False)
-    ctx.run(coverage.html(rcfile="config/coverage.ini"))
+    ctx.run(coverage.report(rcfile='config/coverage.ini'), capture=False)
+    ctx.run(coverage.html(rcfile='config/coverage.ini'))
 
 
 @duty
-def test(ctx: Context, match: str = "") -> None:
+def test(ctx: Context, match: str = '') -> None:
     """Run the test suite.
 
     Parameters:
         ctx: The context instance (passed automatically).
         match: A pytest expression to filter selected tests.
     """
-    py_version = f"{sys.version_info.major}{sys.version_info.minor}"
-    os.environ["COVERAGE_FILE"] = f".coverage.{py_version}"
+    py_version = f'{sys.version_info.major}{sys.version_info.minor}'
+    os.environ['COVERAGE_FILE'] = f'.coverage.{py_version}'
     ctx.run(
-        pytest.run("-n", "auto", "tests", config_file="config/pytest.ini", select=match),
-        title=pyprefix("Running tests"),
-    )
+        pytest.run(
+            '-n', 
+            'auto', 
+            'tests', 
+            config_file = 'config/pytest.ini', 
+            select = match),
+        title=pyprefix('Running tests'),)

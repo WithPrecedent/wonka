@@ -88,7 +88,7 @@ def set_method_namer(namer: Callable[[object | Type[Any]], str]) -> None:
     if isinstance(namer, Callable):
         globals()._METHOD_NAMER = namer
     else:
-        raise TypeError('keyer argument must be a callable')
+        raise TypeError('namerargument must be a callable')
 
 def set_overwrite_rule(overwrite: bool) -> None:
     """Sets the global attribute overwrite rule.

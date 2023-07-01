@@ -8,7 +8,7 @@ name = "wonka"
 description = "Extensible, lightweight, accessible constructors"
 authors = [{name = "Corey Rayburn Yung", email = "coreyrayburnyung@gmail.com"}]
 license = {text = "Apache-2.0"}
-# readme = "README.md"
+readme = "README.md"
 requires-python = ">=3.9"
 dynamic = ["version"]
 classifiers = [
@@ -24,12 +24,13 @@ classifiers = [
     "Topic :: Utilities",
     "Typing :: Typed"]
 keywords = [
-  "factory",
-  "constructor",
-  "design pattern"]
+    "factory",
+    "construction",
+    "constructor",
+    "design pattern"]
 dependencies = [
-  "camina",
-  "miller"]
+    "camina",
+    "miller"]
 
 [project.urls]
 Documentation = "https://WithPrecedent.github.io/wonka"
