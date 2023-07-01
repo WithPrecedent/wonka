@@ -924,11 +924,8 @@
 <h2 id="what-is-wonka">What is wonka?<a class="headerlink" href="#what-is-wonka" title="Permanent link">&para;</a></h2>
 <p><code>wonka</code><sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> is an extensible library that enables simple implementation of class and object constructors in Python. Out-of-the-box, <code>wonka</code> includes various creational design patterns, from registry factories to prototypers to composite builder workflows. It is also easy to add custom factories,<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup> while taking advantage of <code>wonka</code>'s convenient mixin classes and helper functions.</p>
 <h2 id="why-use-wonka">Why use wonka?<a class="headerlink" href="#why-use-wonka" title="Permanent link">&para;</a></h2>
-<figure>
-<p><img alt="The suspense is terrible. I hope it'll last" src="https://media.giphy.com/media/y0SJVYxf90J1u/giphy.gif" width="350" /></p>
-</figure>
 <p align="center">
-<img src="https://media.giphy.com/media/y0SJVYxf90J1u/giphy.gif" alt="The suspense is terrible. I hope it'll last" height="300"/>
+<img src="https://media.giphy.com/media/y0SJVYxf90J1u/giphy.gif" alt="The suspense is terrible. I hope it'll last" style="width:300px;"/>
 </p>
 
 <p><em>“No other factory in the world mixes its chocolate by waterfall… But it’s the only way if you want it just right.”</em> - Willy Wonka</p>
@@ -942,7 +939,7 @@
 </ul>
 <h2 id="getting-started">Getting started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
 <p align="center">
-<img src="https://media4.giphy.com/media/Tt9jctxaVjRny/giphy.gif" alt="Please, tell us more" height="300"/>
+<img src="https://media4.giphy.com/media/Tt9jctxaVjRny/giphy.gif" alt="Please, tell us more" style="width:350px;"/>
 </p>
 
 <h3 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h3>
@@ -1045,7 +1042,7 @@
 <p>There are three categories of base classes in <code>wonka</code>: factories, managers, and producers. Each is described in greater detail below, followed by discussion of other convenience classes and functions included with <code>wonka</code>.</p>
 <h3 id="factories">Factories<a class="headerlink" href="#factories" title="Permanent link">&para;</a></h3>
 <p align="center">
-<img src="https://media2.giphy.com/media/o4aGs2I3rVKjC/giphy.gif" alt="Come with me and you'll be in a world of pure imagination" height="300"/>
+<img src="https://media2.giphy.com/media/o4aGs2I3rVKjC/giphy.gif" alt="Come with me and you'll be in a world of pure imagination" style="width:350px;"/>
 </p>
 
 <p>Out-of-the-box, this library offers three general styles of its base <code>Factory</code> class. These are not subclasses, but rather describe the type of functionality in the included <code>Factory</code> subclasses.</p>
@@ -1072,7 +1069,7 @@
 <p>Regardless of whether your new factory design fits one of the above categories, any new factories may be added by simply subclassing <code>Factory</code>.</p>
 <h3 id="managers">Managers<a class="headerlink" href="#managers" title="Permanent link">&para;</a></h3>
 <p align="center">
-<img src="https://media.giphy.com/media/NsBAHgohHByp2/giphy.gif" alt="Don't just stand there! Do something!" height="300"/>
+<img src="https://media.giphy.com/media/NsBAHgohHByp2/giphy.gif" alt="Don't just stand there! Do something!" style="width:300px;"/>
 </p>
 
 <p>For more complex construction, you can use subclasses of <code>Manager</code>, which is an iterable constructor. Every <code>Manager</code> subclass may construct items in three ways:</p>
@@ -1084,7 +1081,7 @@
 <p>So, you can have 'Manager' subclass instances in your iteratable constructors (instead of just <code>Factory</code> subclasses). Any type of Iterable can be used as long as it returns a consistent, compatiable datatype at each iteration. Out-of-the-box, <code>wonka</code> includes a basic sequential <code>Manager</code> called <code>Assembler</code> which acts like a simple assembly line constructor.</p>
 <h3 id="producers">Producers<a class="headerlink" href="#producers" title="Permanent link">&para;</a></h3>
 <p align="center">
-<img src="https://media4.giphy.com/media/l0HlHSB8v5yRtBlHW/giphy.gif" alt="Willy Wonka completes a forward roll and pops up" height="300"/>
+<img src="https://media4.giphy.com/media/l0HlHSB8v5yRtBlHW/giphy.gif" alt="Willy Wonka completes a forward roll and pops up" style="width:350px;"/>
 </p>
 
 <p>As another optional feature, <code>wonka</code> supports post-construction modification of built items through subclasses of <code>Producer</code>. This is particularly important for factories that use other resources (such as registries). <code>wonka</code> <a href="https://dev.to/suspir0n/soc-separation-of-concerns-5ak7">separates concerns</a> so that the return value can be modified through a simple mixin system. This division of labor makes it incredibly easy to put together any <code>Factory</code> with any <code>Producer</code>.</p>
@@ -1111,7 +1108,7 @@
 <h2 id="similar-projects">Similar Projects<a class="headerlink" href="#similar-projects" title="Permanent link">&para;</a></h2>
 <p>If <code>wonka</code> does not fit your needs, you might find one of these other packages helpful. None of them does the same things that <code>wonka</code> does (which is why I created this library), but they might fit your particular project needs better.</p>
 <p align="center">
-<img src="https://media.giphy.com/media/Bu8ADbj7NuRry/giphy.gif" alt="Stop. Don't. Come back." height="300"/>
+<img src="https://media.giphy.com/media/Bu8ADbj7NuRry/giphy.gif" alt="Stop. Don't. Come back." style="width:300px;"/>
 </p>
 
 <ul>
@@ -1125,7 +1122,7 @@
 <p>I would also like to thank the University of Kansas School of Law for tolerating and supporting this law professor's coding efforts, an endeavor which is well outside the typical scholarly activities in the discipline.</p>
 <p>Lastly, I want to extend a special thanks to the late, great Gene Wilder, whose work inspired the name of this project and made my childhood better.</p>
 <p align="center">
-<img src="https://media.giphy.com/media/3o6ZtbOoOHu28ftYiI/giphy.gif" alt="RIP, Gene Wilder, 1933-2016" height="300"/>
+<img src="https://media.giphy.com/media/3o6ZtbOoOHu28ftYiI/giphy.gif" alt="RIP, Gene Wilder, 1933-2016" style="width:200px;"/>
 </p>
 
 <div class="footnote">
