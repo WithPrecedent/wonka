@@ -29,7 +29,7 @@ nav:
 - Development:
   - Contributing: contributing.md
   - Code of Conduct: code_of_conduct.md
-  # - Coverage Report: coverage.md
+  - Coverage Report: coverage.md
 
 # Documentation Appearance
 
@@ -112,7 +112,9 @@ markdown_extensions:
     permalink: true
 
 plugins:
-# - coverage
+- coverage:
+    page_name: coverage
+    html_report_dir: htmlcov
 - gen-files:
     scripts:
     - scripts/gen_ref_nav.py

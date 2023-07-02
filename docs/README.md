@@ -6,14 +6,14 @@
 
 [![PyPI Latest Release](https://img.shields.io/pypi/v/wonka.svg?style=for-the-badge&logo=PyPI)](https://pypi.org/project/wonka/)
 [![Documentation](https://img.shields.io/badge/docs-mkdocs%20material-blue.svg?style=for-the-badge&logo=github)](https://WithPrecedent.github.io/wonka)
-[![GitHub Actions](https://img.shields.io/github/actions/workflow/status/WithPrecedent/wonka/.github/workflows/ci.yml?style=for-the-badge&logo=githubactions&logoColor=white)](https://img.shields.io/github/actions/workflow/status/WithPrecedent/wonka/.github/workflows/ci.yml)
+[![GitHub Actions](https://img.shields.io/github/actions/workflow/status/WithPrecedent/wonka/actions?style=for-the-badge&logo=githubactions&logoColor=white)](https://img.shields.io/github/actions/)
 ![Code Coverage](https://img.shields.io/codecov/c/github/WithPrecedent/wonka?style=for-the-badge&logo=codecov&logoColor=white)
 [![PDM Managed](https://img.shields.io/badge/pdm-managed-blueviolet?style=for-the-badge)](https://pdm.fming.dev)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg?style=for-the-badge&logo=apache)](https://opensource.org/licenses/Apache-2.0)
 
 ## What is wonka?
 
-`wonka`[^1] is an extensible library that enables simple implementation of class and object constructors in Python. Out-of-the-box, `wonka` includes various creational design patterns, from registry factories to prototypers to composite builder workflows. It is also easy to add custom factories,[^2] while taking advantage of `wonka`'s convenient mixin classes and helper functions.
+`wonka`[^1] is an extensible library that enables simple implementation of class and object constructors in Python. Out-of-the-box, `wonka` includes various creational design patterns, from registry factories to prototypers to composite builder workflows. It is also easy to add custom factories,[^2] while taking advantage of `wonka`'s convenient mixin classes and helper functions. This readme file offers a basic outline of how `wonka` works. If you would prefer to jump right into the full documentation, go [here](https://WithPrecedent.github.io/wonka).
 
 ## Why use wonka?
 

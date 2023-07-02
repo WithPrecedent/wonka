@@ -133,8 +133,9 @@ def check_docs(ctx: Context) -> None:
 
     Parameters:
         ctx: The context instance (passed automatically).
+        
     """
-    Path('htmlcov').mkdir(parents=True, exist_ok=True)
+    Path('htmlcov').mkdir(parents = True, exist_ok = True)
     Path('htmlcov/index.html').touch(exist_ok=True)
     ctx.run(
         mkdocs.build(strict=True, config_file=mkdocs_config()), 
@@ -177,8 +178,9 @@ def clean(ctx: Context) -> None:
 
     Parameters:
         ctx: The context instance (passed automatically).
+        
     """
-    # ctx.run('rm -rf .coverage*')
+    ctx.run('rm -rf .coverage*')
     ctx.run('rm -rf .mypy_cache')
     ctx.run('rm -rf .pytest_cache')
     ctx.run('rm -rf tests/.pytest_cache')
@@ -188,7 +190,7 @@ def clean(ctx: Context) -> None:
     ctx.run('rm -rf pip-wheel-metadata')
     ctx.run('rm -rf site')
     ctx.run('find . -type d -name __pycache__ | xargs rm -rf')
-    ctx.run('find . -name '*.rej' -delete')
+    ctx.run('find . -name "*.rej" -delete')
 
 
 @duty
