@@ -30,7 +30,7 @@ jobs:
     - name: Set up PDM
       uses: pdm-project/setup-pdm@v3
       with:
-        python-version: "3.8"
+        python-version: "3.9"
 
     - name: Resolving dependencies
       run: pdm lock -v --no-cross-platform -G ci-quality
