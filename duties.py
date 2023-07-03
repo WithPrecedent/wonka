@@ -284,8 +284,9 @@ def test(ctx: Context, match: str = '') -> None:
     ctx.run(
         pytest.run(
             '-n', 
+            '-v',
             'auto', 
             'tests', 
             config_file = 'config/pytest.ini', 
             select = match),
-        title=pyprefix('Running tests'),)
+        title = pyprefix('Running tests'))

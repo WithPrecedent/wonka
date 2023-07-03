@@ -27,6 +27,8 @@ import dataclasses
 import inspect
 from typing import Any, ClassVar, Optional, Type
 
+import pytest
+
 import wonka
 
 

@@ -24,6 +24,8 @@ from __future__ import annotations
 import dataclasses
 from typing import Any, ClassVar
 
+import pytest
+
 import wonka
 
 

@@ -25,9 +25,10 @@ from collections.abc import MutableMapping
 import dataclasses
 from typing import Any, ClassVar
 
-import wonka
-
 import camina
+import pytest
+
+import wonka
 
 
 @dataclasses.dataclass
