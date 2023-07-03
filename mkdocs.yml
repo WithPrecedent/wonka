@@ -9,10 +9,10 @@ site_name: wonka
 site_description: Extensible, lightweight, accessible constructors
 site_url: https://WithPrecedent.github.io/wonka
 # site_dir: "site"
-# repo_name: WithPrecedent/wonka
+repo_name: WithPrecedent/wonka
 repo_url: https://github.com/WithPrecedent/wonka
 # edit_uri: blob/main/docs/
-watch: [mkdocs.yml, docs/index.md, CONTRIBUTING.md, CHANGELOG.md, src/wonka]
+watch: [mkdocs.yml, README.md, CONTRIBUTING.md, CHANGELOG.md, src/wonka]
 copyright: Copyright &copy; 2023 Corey Rayburn Yung
 docs_dir: docs
 
@@ -118,9 +118,9 @@ plugins:
 - gen-files:
     scripts:
     - scripts/gen_ref_nav.py
-- git-committers:
-    enabled: !ENV [DEPLOY, false]
-    repository: WithPrecedent/wonka
+# - git-committers:
+#     enabled: !ENV [DEPLOY, false]
+#     repository: WithPrecedent/wonka
 - literate-nav:
     nav_file: SUMMARY.md
 - markdown-exec:
@@ -135,11 +135,12 @@ plugins:
           docstring_section_style: table
           filters:
             - "!^__"
-          members_order: alphabetical
+          heading_level: 1
+          # members_order: alphabetical
           merge_init_into_class: true
           separate_signature: false
           show_signature_annotations: false
-          show_submodules: true
+          # show_submodules: true
 # - render_swagger:
 #     title: API Reference        
 - search:

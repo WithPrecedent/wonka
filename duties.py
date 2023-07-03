@@ -37,16 +37,20 @@ def pyprefix(title: str) -> str:  # noqa: D103
 
 
 def merge(d1: Any, d2: Any) -> Any:  # noqa: D103
+    basic_types = (int, float, str, bool, complex)
     if isinstance(d1, dict) and isinstance(d2, dict):
-        basic_types = (int, float, str, bool, complex)
         for key, value in d2.items():
-            if key in d1 and isinstance(d1[key], basic_types) or key not in d1:
-                d1[key] = value
+            if key in d1:
+                if isinstance(d1[key], basic_types):
+                    d1[key] = value
+                else:
+                    d1[key] = merge(d1[key], value)
             else:
-                d1[key] = merge(d1[key], value)
+                d1[key] = value
         return d1
-    return d1 + d2 if isinstance(d1, list) and isinstance(d2, list) else d2
-
+    if isinstance(d1, list) and isinstance(d2, list):
+        return d1 + d2
+    return d2
 
 def mkdocs_config() -> str:  # noqa: D103
     from mkdocs import utils
@@ -69,24 +73,22 @@ def changelog(ctx: Context) -> None:
     """
     from git_changelog.cli import build_and_render
 
-    git_changelog = lazy(build_and_render, name='git_changelog')
+    git_changelog = lazy(build_and_render, name = 'git_changelog')
     ctx.run(
         git_changelog(
-            repository='.',
-            output='CHANGELOG.md',
-            convention='angular',
-            template='keepachangelog',
-            parse_trailers=True,
-            parse_refs=False,
-            sections=['build', 'deps', 'feat', 'fix', 'refactor'],
-            bump_latest=True,
-            in_place=True,
-        ),
-        title='Updating changelog',
-    )
+            repository = '.',
+            output = 'CHANGELOG.md',
+            convention = 'angular',
+            template = 'keepachangelog',
+            parse_trailers = True,
+            parse_refs = False,
+            sections = ['build', 'deps', 'feat', 'fix', 'refactor'],
+            bump_latest = True,
+            in_place = True,),
+        title='Updating changelog',)
 
 
-@duty(pre=[
+@duty(pre = [
     'check_quality', 'check_types', 'check_docs', 'check_dependencies', 
     'check-api'])
 def check(ctx: Context) -> None:  # noqa: ARG001
@@ -103,6 +105,7 @@ def check_quality(ctx: Context) -> None:
 
     Parameters:
         ctx: The context instance (passed automatically).
+        
     """
     ctx.run(
         ruff.check(*PY_SRC_LIST, config='config/ruff.toml'),
@@ -120,11 +123,9 @@ def check_dependencies(ctx: Context) -> None:
     # retrieve the list of dependencies
     requirements = ctx.run(
         ['pdm', 'export', '-f', 'requirements', '--without-hashes'],
-        title='Exporting dependencies as requirements',
-        allow_overrides=False,
-    )
-
-    ctx.run(safety.check(requirements), title='Checking dependencies')
+        title = 'Exporting dependencies as requirements',
+        allow_overrides=False,)
+    ctx.run(safety.check(requirements), title = 'Checking dependencies')
 
 
 @duty
@@ -136,10 +137,12 @@ def check_docs(ctx: Context) -> None:
         
     """
     Path('htmlcov').mkdir(parents = True, exist_ok = True)
-    Path('htmlcov/index.html').touch(exist_ok=True)
+    Path('htmlcov/index.html').touch(exist_ok = True)
     ctx.run(
-        mkdocs.build(strict=True, config_file=mkdocs_config()), 
-        title=pyprefix('Building documentation'))
+        mkdocs.build(
+            strict = True, 
+            config_file = mkdocs_config()), 
+        title = pyprefix('Building documentation'))
 
 
 @duty
@@ -150,9 +153,8 @@ def check_types(ctx: Context) -> None:
         ctx: The context instance (passed automatically).
     """
     ctx.run(
-        mypy.run(*PY_SRC_LIST, config_file='config/mypy.ini'),
-        title=pyprefix('Type-checking'),
-    )
+        mypy.run(*PY_SRC_LIST, config_file = 'config/mypy.ini'),
+        title=pyprefix('Type-checking'),)
 
 
 @duty
@@ -166,13 +168,12 @@ def check_api(ctx: Context) -> None:
 
     griffe_check = lazy(g_check, name='griffe.check')
     ctx.run(
-        griffe_check('wonka', search_paths=['src']),
-        title='Checking for API breaking changes',
-        nofail=True,
-    )
+        griffe_check('wonka', search_paths = ['src']),
+        title = 'Checking for API breaking changes',
+        nofail = True,)
 
 
-@duty(silent=True)
+@duty(silent = True)
 def clean(ctx: Context) -> None:
     """Delete temporary files.
 
@@ -285,7 +286,6 @@ def test(ctx: Context, match: str = '') -> None:
     ctx.run(
         pytest.run(
             '-n', 
-            '-v',
             'auto', 
             'tests', 
             config_file = 'config/pytest.ini', 

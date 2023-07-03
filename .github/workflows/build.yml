@@ -1,4 +1,4 @@
-name: build
+name: ci
 
 on:
   push:
@@ -66,7 +66,6 @@ jobs:
         - "3.9"
         - "3.10"
         - "3.11"
-
     runs-on: ${{ matrix.os }}
 
     steps:
