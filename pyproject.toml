@@ -47,7 +47,7 @@ build-backend = "pdm.backend"
 plugins = ["pdm-multirun"]
 
 [tool.pdm.build]
-package-dir = "src/wonka"
+package-dir = "src"
 editable-backend = "editables"
 
 [tool.pdm.dev-dependencies]
