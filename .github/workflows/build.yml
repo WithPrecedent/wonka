@@ -80,8 +80,5 @@ jobs:
     - name: Resolving dependencies
       run: pdm lock -v --no-cross-platform -G ci-tests
 
-    - name: Install dependencies
-      run: pdm install --no-editable -G ci-tests
-
     - name: Run the test suite
       run: pdm run duty test
