@@ -21,7 +21,7 @@
 # To Do:
 
 """ 
-The module containing the core base classes for `wonka`. 
+Base classes for `wonka`. 
 
 """
 from __future__ import annotations

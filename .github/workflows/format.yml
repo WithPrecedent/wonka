@@ -1,0 +1,20 @@
+name: YAPF format
+
+on: [push]
+
+jobs:
+  formatting-check:
+    name: Formatting Check
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: run YAPF to format the python code
+      uses: block42-blockchain-company/yapf-action
+      with:
+        args: --verbose --exclude 
+          ALIGN_CLOSING_BRACKET_WITH_VISUAL_INDENT = false
+          BLANK_LINE_BEFORE_CLASS_DOCSTRING = false
+          BLANK_LINE_BEFORE_MODULE_DOCSTRING = false
+          COALESCE_BRACKETS = true
+          SPACES_AROUND_DEFAULT_OR_NAMED_ASSIGN = false
+          
