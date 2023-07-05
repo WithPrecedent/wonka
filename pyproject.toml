@@ -48,6 +48,7 @@ plugins = ["pdm-multirun"]
 
 [tool.pdm.build]
 package-dir = "src/wonka"
+editable-backend = "editables"
 
 [tool.pdm.dev-dependencies]
 duty = ["duty >= 0.10"]
