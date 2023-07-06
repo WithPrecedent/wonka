@@ -5,7 +5,12 @@
     
 # ToDo:
 #     Increase test coverage
-    
+
+""" 
+An extensible library that enables simple implementation of class and object 
+constructors. 
+"""
+   
 from __future__ import annotations
 
 __version__ = '0.1.0'

@@ -101,13 +101,13 @@ class Sourcerer(base.Factory, abc.ABC):
     https://divinity.fandom.com/wiki/Sourcerer
     
     Attributes:
-        sources (ClassVar[MutableMapping[Type[Any], str]]): dict with keys that
+        sources (ClassVar[MutableMapping[type[Any], str]]): dict with keys that
             are types and values are substrings of the names of methods to call
             when the key type is passed to the 'create' method. Defaults to an
             empty dict.
     
     """
-    sources: ClassVar[MutableMapping[Type[Any], str]] = dict()
+    sources: ClassVar[MutableMapping[type[Any], str]] = dict()
     
     """ Class Methods """
 
@@ -148,12 +148,12 @@ class Sourcerer(base.Factory, abc.ABC):
 
 def _get_creation_method_name(
     source: Any,
-    method_namer: Optional[Callable[[object | Type[Any]], str]] = None) -> str:
+    method_namer: Optional[Callable[[object | type[Any]], str]] = None) -> str:
     """Returns the creation method name for factories that call other methods.
 
     Args:
         source (Any): source data for creating a method name.
-        method_namer (Optional[Callable[[object | Type[Any]], str]], optional): 
+        method_namer (Optional[Callable[[object | type[Any]], str]], optional): 
             callable to create the creation method name. Defaults to None. If it 
             is None, the global namer stored in configuration._METHOD_NAMER will 
             be used.
@@ -167,12 +167,12 @@ def _get_creation_method_name(
     namer = method_namer or configuration._METHOD_NAMER
     return namer(source)
 
-def _is_kind(item: Any, kind: Type[Any]) -> bool:
+def _is_kind(item: Any, kind: type[Any]) -> bool:
     """Returns if 'item' is an instance or subclass of 'kind'.
 
     Args:
         item (Any): item to evalute.
-        kind (Type[Any]): type to compare 'item' to.
+        kind (type[Any]): type to compare 'item' to.
 
     Returns:
         bool: whether 'item' is an instance or subclass of 'kind'.

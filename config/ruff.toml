@@ -69,6 +69,7 @@ ignore = [
     "PLR0912",  # Too many branches
     "PLR0913",  # Too many arguments to function call
     "PLR0915",  # Too many statements
+    "Q000",  # Single quotes found but double quotes preferred
     "SLF001", # Private member accessed
     "TRY003",  # Avoid specifying long messages outside the exception class
 ]

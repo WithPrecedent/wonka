@@ -147,14 +147,14 @@ def _get_from_registry(
     except KeyError as e:
         raise KeyError(f'{item} was not found in the registry') from e
 
-def _get_all_subclasses(item: Type[Any]) -> list[Type[Any]]:
+def _get_all_subclasses(item: type[Any]) -> list[type[Any]]:
     """Returns a list of all subclasses of 'items', including indirect ones.
 
     Args:
-        item (Type[Any]): class for which to find subclasses.
+        item (type[Any]): class for which to find subclasses.
 
     Returns:
-        list[Type[Any]]: list of all subclasses of 'item'
+        list[type[Any]]: list of all subclasses of 'item'
         
     """
     return list(set(item.__subclasses__()).union(

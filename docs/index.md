@@ -119,7 +119,7 @@ class Settings(wonka.Sourcerer):
     defaults: Optional[MutableMapping[Hashable, Any]] = dataclasses.field(
         default_factory = dict)
     infer_types: Optional[bool] = True
-    sources: ClassVar[MutableMapping[Type[Any], str]] = {
+    sources: ClassVar[MutableMapping[type[Any], str]] = {
         MutableMapping, 'dictionary',
         pathlib.Path, 'path',
         str, 'path'}

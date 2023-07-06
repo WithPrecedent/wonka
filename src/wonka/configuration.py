@@ -1,5 +1,6 @@
 """
-configuration: wonka settings and convenience functions for changing settings
+wonka settings and convenience functions for changing settings
+
 Corey Rayburn Yung <coreyrayburnyung@gmail.com>
 Copyright 2023, Corey Rayburn Yung
 License: Apache-2.0
@@ -35,8 +36,8 @@ from typing import Any, Type
 import camina
 
 
-_KEY_NAMER: Callable[[object | Type[Any]], str] = camina.namify
-_METHOD_NAMER: Callable[[object | Type[Any]], str] = (lambda x: f'from_{x}')
+_KEY_NAMER: Callable[[object | type[Any]], str] = camina.namify
+_METHOD_NAMER: Callable[[object | type[Any]], str] = (lambda x: f'from_{x}')
 _OVERWRITE: bool = True
 _STRICT_COMPATIBILITY: bool = True
 _VERBOSE: bool = False
@@ -58,11 +59,11 @@ def set_compatibility_rule(compatibility: bool) -> None:
     else:
         raise TypeError('compatibility argument must be boolean')   
 
-def set_keyer(keyer: Callable[[object | Type[Any]], str]) -> None:
+def set_keyer(keyer: Callable[[object | type[Any]], str]) -> None:
     """Sets the global default function used to name dict keys.
 
     Args:
-        keyer (Callable[[object | Type[Any]], str]): function that returns a 
+        keyer (Callable[[object | type[Any]], str]): function that returns a 
             str name of any item passed.
 
     Raises:
@@ -74,11 +75,11 @@ def set_keyer(keyer: Callable[[object | Type[Any]], str]) -> None:
     else:
         raise TypeError('keyer argument must be a callable')
 
-def set_method_namer(namer: Callable[[object | Type[Any]], str]) -> None:
+def set_method_namer(namer: Callable[[object | type[Any]], str]) -> None:
     """Sets the global default function used to name factory creation methods.
 
     Args:
-        namer (Callable[[object | Type[Any]], str]): function that returns a 
+        namer (Callable[[object | type[Any]], str]): function that returns a 
             str name of any item passed.
 
     Raises:

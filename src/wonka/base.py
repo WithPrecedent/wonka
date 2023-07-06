@@ -20,10 +20,8 @@
 
 # To Do:
 
-""" 
-Base classes for `wonka`. 
+""" Base classes for `wonka`. """
 
-"""
 from __future__ import annotations
 import abc
 from collections.abc import Hashable, Iterable, MutableMapping
@@ -69,7 +67,6 @@ class Factory(abc.ABC):
             Any: created or modified item.
                 
         """
-        pass
 
 
 @dataclasses.dataclass
@@ -156,17 +153,14 @@ class Producer(abc.ABC):
         """Modifies 'item' and possibly incorporates 'parameters'.
         
         Args:
-            item (Any): item to be modified. 
-            parameters: Optional[MutableMapping[Hashable, Any]]: keyword 
-                arguments to pass or add to a created instance. Defaults to 
-                None.       
+            item: item to be modified. 
+            parameters: keyword arguments to pass or add to a created instance. 
+                Defaults to None.       
                          
         Returns:
             Any: modified item.
                 
         """
-        pass
 
 
 Constructor: TypeAlias = Factory | Type[Factory] | Manager
-  
