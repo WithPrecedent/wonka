@@ -19,7 +19,7 @@
         <link rel="next" href="../code_of_conduct/">
       
       <link rel="icon" href="../assets/top_hat.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.17">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.18">
     
     
       
@@ -1060,16 +1060,8 @@ and we will squash them ourselves if needed, before merging.</p>
 Python Style Guide</a> with two
 notable exceptions:</p>
 <ol>
-<li>It always adds spaces around "=". This is because I find it more readable
-    and it is practically the norm with type annotations adding the spaces
-    to function and method signatures. I realize that this will seem alien
-    to many coders, but it is far easier on my eyes.</li>
-<li>I use some so-called "power features", primarily dunder methods, to make
-    my interfaces easier to access and use. This is disfavored in the Google
-    Python Style Guide because such code is often more difficult for others
-    to read. To address that concern, I try to document and comment as to
-    what the code is doing whenever I used any of the "power features" of
-    Python.</li>
+<li>It always adds spaces around "=". This not only violates the Google guide, it violates <a href="https://peps.python.org/pep-0008/">PEP8</a>, the foundational Python style guide from which all other resources are derived. I defy this strong, long-standign norm because I find it more readable. My brain and eyes have trouble seeing two separate objects when an equal sign is in the middle. I imagine that I am not alone in this accessibility issue. Further, as PEP8 itself notes, required spaces around equal signs are becoming increasing common with type annotations becoming part of best practices (and, as a result, signatures to classes, functions, and methods regularly include spaces around the equal signs). I realize that this will seem alien to many coders, but it is far easier on my eyes.</li>
+<li>I use some so-called "power features", primarily dunder methods, to make my interfaces easier to access and use. This is disfavored in the Google Python Style Guide because such code is often more difficult for others to read. To address that concern, I try to document and comment as to what the code is doing whenever I used any of the "power features" of Python.</li>
 </ol>
 
 
@@ -1181,10 +1173,10 @@ notable exceptions:</p>
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["announce.dismiss", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tooltips", "navigation.footer", "navigation.indexes", "navigation.path", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "search.highlight", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["announce.dismiss", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tooltips", "navigation.footer", "navigation.indexes", "navigation.path", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "search.highlight", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.b425cdc4.min.js"></script>
+      <script src="../assets/javascripts/bundle.220ee61c.min.js"></script>
       
     
   </body>
