@@ -18,7 +18,7 @@
       
         <link rel="next" href="../prototypers/">
       
-      <link rel="icon" href="../../../assets/top_hat.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.18">
     
     
@@ -101,7 +101,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../../.." title="wonka" class="md-header__button md-logo" aria-label="wonka" data-md-component="logo">
       
-  <img src="../../../assets/top_hat.png" alt="logo">
+  <img src="../../../img/top_hat.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -316,7 +316,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../../.." title="wonka" class="md-nav__button md-logo" aria-label="wonka" data-md-component="logo">
       
-  <img src="../../../assets/top_hat.png" alt="logo">
+  <img src="../../../img/top_hat.png" alt="logo">
 
     </a>
     wonka
@@ -835,24 +835,8 @@
 <a id="wonka.producers"></a>
   <div class="doc doc-contents first">
   
-      <p>producers: mixins for created objection modification
-Corey Rayburn Yung <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#99;&#111;&#114;&#101;&#121;&#114;&#97;&#121;&#98;&#117;&#114;&#110;&#121;&#117;&#110;&#103;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#99;&#111;&#114;&#101;&#121;&#114;&#97;&#121;&#98;&#117;&#114;&#110;&#121;&#117;&#110;&#103;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a>
-Copyright 2023, Corey Rayburn Yung</p>
+      <p>Mixins for created object modification.</p>
 
-<details class="license" open>
-  <summary>Apache-2.0</summary>
-  <p>Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at</p>
-<div class="codehilite"><pre><span></span><code>http://www.apache.org/licenses/LICENSE-2.0
-</code></pre></div>
-
-<p>Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.</p>
-</details>
 <details class="contents" open>
   <summary>Contents</summary>
   <p>Classer (base.Producer, abc.ABC): Producer with an 'produce' method that 
@@ -860,9 +844,8 @@ limitations under the License.</p>
 Flexer (base.Producer, abc.ABC): Producer that conditions return value of 
     the 'produce' method based on whether 'parameters' are passed.
 Instancer (base.Producer, abc.ABC): Producer with an 'produce' method that 
-    always returns an instance.   </p>
-</details>      <p>ToDo:</p>
-
+    always returns an instance.</p>
+</details>
   
 
   <div class="doc doc-children">
@@ -1000,29 +983,29 @@ Producer subclasses.      </p>
 
       <details class="quote">
         <summary>Source code in <code>src/wonka/producers.py</code></summary>
-        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">48</span>
+        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
 <span class="normal">49</span>
 <span class="normal">50</span>
-<span class="normal">51</span>
-<span class="normal">52</span>
-<span class="normal">53</span>
-<span class="normal">54</span>
-<span class="normal">55</span>
-<span class="normal">56</span>
-<span class="normal">57</span>
-<span class="normal">58</span>
-<span class="normal">59</span>
-<span class="normal">60</span>
-<span class="normal">61</span>
-<span class="normal">62</span>
-<span class="normal">63</span>
-<span class="normal">64</span>
-<span class="normal">65</span>
-<span class="normal">66</span>
-<span class="normal">67</span>
-<span class="normal">68</span>
-<span class="normal">69</span>
-<span class="normal">70</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="normal">51</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
 <span class="k">def</span> <span class="nf">produce</span><span class="p">(</span>
     <span class="bp">cls</span><span class="p">,</span>
     <span class="n">item</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
@@ -1186,32 +1169,32 @@ None.       </p>
 
       <details class="quote">
         <summary>Source code in <code>src/wonka/producers.py</code></summary>
-        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 85</span>
-<span class="normal"> 86</span>
-<span class="normal"> 87</span>
-<span class="normal"> 88</span>
-<span class="normal"> 89</span>
-<span class="normal"> 90</span>
-<span class="normal"> 91</span>
-<span class="normal"> 92</span>
-<span class="normal"> 93</span>
-<span class="normal"> 94</span>
-<span class="normal"> 95</span>
-<span class="normal"> 96</span>
-<span class="normal"> 97</span>
-<span class="normal"> 98</span>
-<span class="normal"> 99</span>
-<span class="normal">100</span>
-<span class="normal">101</span>
-<span class="normal">102</span>
-<span class="normal">103</span>
-<span class="normal">104</span>
-<span class="normal">105</span>
-<span class="normal">106</span>
-<span class="normal">107</span>
-<span class="normal">108</span>
-<span class="normal">109</span>
-<span class="normal">110</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
+        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span>
+<span class="normal">87</span>
+<span class="normal">88</span>
+<span class="normal">89</span>
+<span class="normal">90</span>
+<span class="normal">91</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
 <span class="k">def</span> <span class="nf">produce</span><span class="p">(</span>
     <span class="bp">cls</span><span class="p">,</span>
     <span class="n">item</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
@@ -1375,7 +1358,26 @@ None.       </p>
 
       <details class="quote">
         <summary>Source code in <code>src/wonka/producers.py</code></summary>
-        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">119</span>
+        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
 <span class="normal">120</span>
 <span class="normal">121</span>
 <span class="normal">122</span>
@@ -1383,26 +1385,7 @@ None.       </p>
 <span class="normal">124</span>
 <span class="normal">125</span>
 <span class="normal">126</span>
-<span class="normal">127</span>
-<span class="normal">128</span>
-<span class="normal">129</span>
-<span class="normal">130</span>
-<span class="normal">131</span>
-<span class="normal">132</span>
-<span class="normal">133</span>
-<span class="normal">134</span>
-<span class="normal">135</span>
-<span class="normal">136</span>
-<span class="normal">137</span>
-<span class="normal">138</span>
-<span class="normal">139</span>
-<span class="normal">140</span>
-<span class="normal">141</span>
-<span class="normal">142</span>
-<span class="normal">143</span>
-<span class="normal">144</span>
-<span class="normal">145</span>
-<span class="normal">146</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="normal">127</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
 <span class="k">def</span> <span class="nf">produce</span><span class="p">(</span>
     <span class="bp">cls</span><span class="p">,</span>
     <span class="n">item</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>

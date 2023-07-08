@@ -18,7 +18,7 @@
       
         <link rel="next" href="../../../contributing/">
       
-      <link rel="icon" href="../../../assets/top_hat.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.18">
     
     
@@ -101,7 +101,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../../.." title="wonka" class="md-header__button md-logo" aria-label="wonka" data-md-component="logo">
       
-  <img src="../../../assets/top_hat.png" alt="logo">
+  <img src="../../../img/top_hat.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -316,7 +316,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../../.." title="wonka" class="md-nav__button md-logo" aria-label="wonka" data-md-component="logo">
       
-  <img src="../../../assets/top_hat.png" alt="logo">
+  <img src="../../../img/top_hat.png" alt="logo">
 
     </a>
     wonka
@@ -835,31 +835,14 @@
 <a id="wonka.storage"></a>
   <div class="doc doc-contents first">
   
-      <p>storage: classes that store groups of wonka constructors
-Corey Rayburn Yung <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#99;&#111;&#114;&#101;&#121;&#114;&#97;&#121;&#98;&#117;&#114;&#110;&#121;&#117;&#110;&#103;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#99;&#111;&#114;&#101;&#121;&#114;&#97;&#121;&#98;&#117;&#114;&#110;&#121;&#117;&#110;&#103;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a>
-Copyright 2023, Corey Rayburn Yung</p>
+      <p>Stores groups of wonka constructors.</p>
 
-<details class="license" open>
-  <summary>Apache-2.0</summary>
-  <p>Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at</p>
-<div class="codehilite"><pre><span></span><code>http://www.apache.org/licenses/LICENSE-2.0
-</code></pre></div>
-
-<p>Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.</p>
-</details>
 <details class="contents" open>
   <summary>Contents</summary>
   <p>Manufacturer (camina.Dictionary): dict-like class that stores wonka 
     constructors. Has an 'add' method while validates any added values as 
     wonka compatible.</p>
-</details>      <p>ToDo:</p>
-
+</details>
   
 
   <div class="doc doc-children">
@@ -963,8 +946,8 @@ callable to use to create the default value.</p>
 <code class="codehilite language-python"><span class="n">default_factory</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
       <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
 <a href="#wonka.storage.Manufacturer.default_factory" class="headerlink" title="Permanent link">&para;</a></h2>
@@ -1048,7 +1031,26 @@ constructor.</p>
 
       <details class="quote">
         <summary>Source code in <code>src/wonka/storage.py</code></summary>
-        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">65</span>
+        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
 <span class="normal">66</span>
 <span class="normal">67</span>
 <span class="normal">68</span>
@@ -1058,26 +1060,7 @@ constructor.</p>
 <span class="normal">72</span>
 <span class="normal">73</span>
 <span class="normal">74</span>
-<span class="normal">75</span>
-<span class="normal">76</span>
-<span class="normal">77</span>
-<span class="normal">78</span>
-<span class="normal">79</span>
-<span class="normal">80</span>
-<span class="normal">81</span>
-<span class="normal">82</span>
-<span class="normal">83</span>
-<span class="normal">84</span>
-<span class="normal">85</span>
-<span class="normal">86</span>
-<span class="normal">87</span>
-<span class="normal">88</span>
-<span class="normal">89</span>
-<span class="normal">90</span>
-<span class="normal">91</span>
-<span class="normal">92</span>
-<span class="normal">93</span>
-<span class="normal">94</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">add</span><span class="p">(</span>
+<span class="normal">75</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">add</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span> 
     <span class="n">item</span><span class="p">:</span> <span class="n">MutableMapping</span><span class="p">[</span>
         <span class="n">Hashable</span><span class="p">,</span> <span class="n">base</span><span class="o">.</span><span class="n">Constructor</span><span class="p">]</span> <span class="o">|</span> <span class="n">base</span><span class="o">.</span><span class="n">Constructor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
