@@ -1,15 +1,15 @@
 # wonka
 
 <p align="center">
-<img src="./assets/top_hat.png" alt="wonka top hat logo" style="width:250px;"/>
+<img src="./img/top_hat.png" alt="wonka top hat logo" style="width:250px;"/>
 </p>
 
 [![PyPI Latest Release](https://img.shields.io/pypi/v/wonka.svg?style=for-the-badge&logo=PyPI)](https://pypi.org/project/wonka/)
 [![Documentation](https://img.shields.io/badge/docs-mkdocs%20material-blue.svg?style=for-the-badge&logo=github)](https://WithPrecedent.github.io/wonka)
-[![GitHub Actions](https://img.shields.io/github/actions/workflow/status/WithPrecedent/wonka/actions?style=for-the-badge&logo=githubactions&logoColor=white)](https://img.shields.io/github/actions/)
 ![Code Coverage](https://img.shields.io/codecov/c/github/WithPrecedent/wonka?style=for-the-badge&logo=codecov&logoColor=white)
 [![PDM Managed](https://img.shields.io/badge/pdm-managed-blueviolet?style=for-the-badge)](https://pdm.fming.dev)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg?style=for-the-badge&logo=apache)](https://opensource.org/licenses/Apache-2.0)
+<!-- ![GitHub Actions](https://img.shields.io/github/actions/workflow/status/WithPrecedent/wonka/actions?style=for-the-badge&logo=githubactions&logoColor=white) -->
 
 ## What is wonka?
 
@@ -169,12 +169,12 @@ Out-of-the-box, this library offers three general styles of its base `Factory` c
 
 All `wonka` factory classes have a `create` class method which is used to construct new items. The only required parameter for `create` is `item`, which contains the data for building products. Other parameters are optional, but may be used for greater functionality, particularly in regard to `Producer` mixins, discussed below.
 
-These are the registry factory classes:
+These are the registry factory classes. Keys for any registry-style factory follow the naming convention of the global setting `_KEY_NAMER` (defaults to snakecase) which may be changed with `set_keyer`. These are the registration-style classes:
 
 * `Registrar`: a factory that creates items from data stored in the `registry` class attribute (which may be any dict-like object).
-* `Subclasser`: mixin that acts like a `Registrar`, but without the `registry` attribute. Instead, the class creates a dictionary facade at runtime by drawing data from the `__subclasses__` attribute of every class. Keys for 'registry' follow the naming convenction of the global setting `_KEY_NAMER` (defaults to snakecase) which may be changed with `set_keyer`.
+* `Subclasser`: mixin that acts like a `Registrar`, but without the `registry` attribute. Instead, the class creates a dictionary facade at runtime by drawing data from the `__subclasses__` attribute of every class.
 
-The second type of factory is a dispatch type. These factories will call creation class methods of subclasses that follow the naming convention of `_METHOD_NAMER` (`f'from_{snakecase(substring))}'` by default) which may be changed with `set_method_namer`. These are the dispatcher factories:
+The second type of factory is dispatch. These factories will call creation class methods of subclasses that follow the naming convention of `_METHOD_NAMER` (`f'from_{snakecase(substring))}'` by default) which may be changed with `set_method_namer`. These are the dispatcher factories:
 
 * `Sourcerer`: calls the appropriate creation class method based on the type of the first passed argument. The keys of `sources` are types which the `item` argument may either be instances of subclasses of those types to trigger the dispatching to the appropriate creation method.
 * `Delegate`: similar to `Sourcerer`, but it does not have a `sources` attribute. Instead, it uses the string name of the type of the `item` argument. This is far less forgiving than the process used by `Sourcerer` and should only be used if you are absolutely sure that the string names of the `item` arguments will always correspond with a creation method in the `Delegate`.
@@ -223,14 +223,14 @@ The library includes `Manufacturer`, a dictionary of factories, if you want all 
 
 `wonka` also includes convenience functions for changing global settings that set naming conventions for registry keys and creation method names. Those methods and settings are:
 
-* 'set_compatibility_rule' sets whether `wonka` runs a validation check to see if a prospective factory is either a subclass of `Factory` or a subclass instance of `Manager`. If True, strict inheritance will be enforced. If False, no check will be performed and any incompatibility will only be discovered when the constructor's `create` method is called. The value for this setting is stored in `_STRICT_COMPATIBILITY` and defaults to True.
+* `set_compatibility_rule` sets whether `wonka` runs a validation check to see if a prospective factory is either a subclass of `Factory` or a subclass instance of `Manager`. If True, strict inheritance will be enforced. If False, no check will be performed and any incompatibility will only be discovered when the constructor's `create` method is called. The value for this setting is stored in `_STRICT_COMPATIBILITY` and defaults to True.
 * `set_keyer` may be used to change the global value of `_KEY_NAMER`, which controls the naming convention for registry dictionary keys in `wonka`. This is particularly important for `Subclasser`, which automatically creates keys based on a class' `__subclasses__` attribute. By default, `_KEY_NAMER' infers a snakecase name of any passed value.
 * `set_method_namer` may be used to change the global value of the `_METHOD_NAMER`, which controls the naming convention for creation method names used in dispatcher factories. By default `_METHOD_NAMER` uses a prefix of 'from_' followed by the snakecase name of the type of the passed `item` argument. So, as the example above indicates, a class method named `from_path` is used for creating a `Settings` instance from a file path.
 * `set_overwrite_rule` sets whether existing attributes are overwritten when parameters are passed to a factory `create` method. This situation only arises with a registry-based factory stores at least some instances (instead of just classes). In such a situation, if the value is set to True, the passed parameters will be injected and overwrite any existing values. If False, no existing values will be overwritten, even if a parameter with the same attribute name is passed. The value for this setting is stored in `_OVERWRITE` and defaults to True.
 
 ## Contributing
 
-Contributors are always welcome and should find `wonka` easy to work with. The project is highly documented so that users and developers can make `wonka` work with their projects. It is designed for Python coders at all levels. Even beginners should be able to follow the readable code and internal documentation to understand how it works.
+Contributors are always welcome and should find `wonka` easy to work with. The project is highly documented so that users and developers can make `wonka` work with their projects. It is designed for Python coders at all levels. Even beginners should be able to follow the readable code and internal documentation to understand how it works. If you wish to contribute, please read the [Contribution Guide](./contributing.md) and [Code of Conduct](./code_of_conduct.md).
 
 Notably, `wonka` is 100% compatible with my other project framework libraries, of which it was originally a part. This is why you should feel confident in the continued development and maintenance of the library - it is essential part of my overall work. I have decided to make it available as a separate library for those that just want to use its implementation without the other components of my project framework ecosystem. So, for example, any of the many registry types of [ashford](https://github.com/WithPrecedent/ashford) can be used with a `Registrar` in `wonka`. Further, for project workflow pipelining, where dynamic factories are essential, the `wonka` classes are interwoven and can be extended in the [chrisjen](https://github.com/WithPrecedent/chrisjen) and [amos](https://github.com/WithPrecedent/amos) packages. Also, for those using configuration option files, `wonka` is supported by the [bobbie](https://github.com/WithPrecedent/bobbie) project settings library. So, I, and any other maintainers, will do my best to promptly integrate any contributions.
 

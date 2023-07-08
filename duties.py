@@ -37,8 +37,8 @@ def pyprefix(title: str) -> str:  # noqa: D103
 
 
 def merge(d1: Any, d2: Any) -> Any:  # noqa: D103
-    basic_types = (int, float, str, bool, complex)
     if isinstance(d1, dict) and isinstance(d2, dict):
+        basic_types = (int, float, str, bool, complex)
         for key, value in d2.items():
             if key in d1:
                 if isinstance(d1[key], basic_types):

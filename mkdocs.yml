@@ -1,7 +1,4 @@
 # wonka documentation rules and instructions
-# Corey Rayburn Yung <coreyrayburnyung@gmail.com>
-# Copyright 2023, Corey Rayburn Yung
-# License: Apache-2.0
 
 # Project Information
 
@@ -35,8 +32,7 @@ nav:
 
 theme:
   name: material
-  logo: assets/top_hat.png
-  favicon: assets/top_hat.png
+  logo: img/top_hat.png
   locale: en
   icon:
     repo: fontawesome/brands/github
@@ -112,6 +108,7 @@ markdown_extensions:
     permalink: true
 
 plugins:
+- autorefs
 - coverage:
     page_name: coverage
     html_report_dir: htmlcov

@@ -1,13 +1,10 @@
 # wonka packaging rules and instructions
-# Corey Rayburn Yung <coreyrayburnyung@gmail.com>
-# Copyright 2023, Corey Rayburn Yung
-# License: Apache-2.0
 
 [project]
 name = "wonka"
 description = "Extensible, lightweight, accessible constructors"
 authors = [{name = "Corey Rayburn Yung", email = "coreyrayburnyung@gmail.com"}]
-version = "0.1.0"
+version = "0.1.1"
 license = {text = "Apache-2.0"}
 readme = "README.md"
 requires-python = ">=3.9"
@@ -88,6 +85,7 @@ security = ["safety >= 2"]
 
 [tool.yapf]
 based_on_style = "google"
+column_limit = 80
 spaces_before_comment = 4
 split_before_logical_operator = true
 ALIGN_CLOSING_BRACKET_WITH_VISUAL_INDENT = false

@@ -1,34 +1,27 @@
+"""
+Base classes for wonka factories.
 
-# base: base classes for wonka factories
-# Corey Rayburn Yung <coreyrayburnyung@gmail.com>
-# Copyright 2023, Corey Rayburn Yung
-# License: Apache-2.0
+Contents:
+    Factory (abc.ABC): interface for basic wonka creation classes. A 'create' 
+        class method is required for subclasses.
+    Manager (Iterable, abc.ABC): iterable interface for complex construction 
+        managers. A 'manage' instance method is required for subclasses. For
+        compatibility as a wonka constructor, a 'create' property is included
+        which automatically calls the 'manage' method with all args and kwargs.
+    Producer (abc.ABC): mixin interface for classes that alter created items 
+        before returning them. A 'produce' class method is required for 
+        subclasses.
+    Constructor (TypeAlias): type alias for a wonka-compatible constructor type.
+        By default, it includes a Factory subclass, a Factory subclass instance,
+        and a Manager subclass instance.
 
-# Contents:
-#     Factory (abc.ABC): interface for basic wonka creation classes. A 'create' 
-#         class method is required for subclasses.
-#     Manager (Iterable, abc.ABC): iterable interface for complex construction 
-#         managers. A 'manage' instance method is required for subclasses. For
-#         compatibility as a wonka constructor, a 'create' property is included
-#         which automatically calls the 'manage' method with all args and kwargs.
-#     Producer (abc.ABC): mixin interface for classes that alter created items 
-#         before returning them. A 'produce' class method is required for 
-#         subclasses.
-#     Constructor (TypeAlias): type alias for a wonka.compatible constructor type.
-#         By default, it includes a Factory subclass, a Factory subclass instance,
-#         and a Manager subclass instance.
-
-# To Do:
-
-""" Base classes for `wonka`. """
+"""
 
 from __future__ import annotations
 import abc
 from collections.abc import Hashable, Iterable, MutableMapping
 import dataclasses
-from typing import Any, Optional, Type, TypeAlias
-
-import camina
+from typing import Any, Optional, TypeAlias
 
 
 @dataclasses.dataclass
@@ -61,7 +54,7 @@ class Factory(abc.ABC):
         """Returns a created or modified item.
         
         Args:
-            item (Any): data for creation of an item or an item to be modified.     
+            item: data for creation of an item or an item to be modified.     
                          
         Returns:
             Any: created or modified item.
@@ -74,7 +67,7 @@ class Manager(Iterable, abc.ABC):
     """Base for manageing complex class or object construction.
     
     Args:
-        contents (Iterable): an iterable containing Factory subclasses or
+        contents: an iterable containing Factory subclasses or
             Manager subclass instances.
                           
     """
@@ -87,13 +80,12 @@ class Manager(Iterable, abc.ABC):
         """Manages construction and/or modification based on 'item'.
         
         Args:
-            item (Any): item to be passed to factories in 'contents'.
+            item: item to be passed to factories in 'contents'.
                          
         Returns:
             Any: constructed item.
                 
         """
-        pass
 
     """ Properties """
 
@@ -163,4 +155,4 @@ class Producer(abc.ABC):
         """
 
 
-Constructor: TypeAlias = Factory | Type[Factory] | Manager
+Constructor: TypeAlias = Factory | type[Factory] | Manager

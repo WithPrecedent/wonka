@@ -1,11 +1,3 @@
-# wonka: runtime class and object creation, made simple
-# Corey Rayburn Yung <coreyrayburnyung@gmail.com>
-# Copyright 2023, Corey Rayburn Yung
-# License: Apache-2.0
-    
-# ToDo:
-#     Increase test coverage
-
 """ 
 An extensible library that enables simple implementation of class and object 
 constructors. 
@@ -13,7 +5,7 @@ constructors.
    
 from __future__ import annotations
 
-__version__ = '0.1.0'
+__version__ = '0.1.1'
 
 __author__ = 'Corey Rayburn Yung'
 
