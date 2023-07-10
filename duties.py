@@ -52,16 +52,6 @@ def merge(d1: Any, d2: Any) -> Any:  # noqa: D103
         return d1 + d2
     return d2
 
-def mkdocs_config() -> str:  # noqa: D103
-    from mkdocs import utils
-
-    # patch YAML loader to merge arrays
-    utils.merge = merge
-
-    if '+insiders' in pkgversion('mkdocs-material'):
-        return 'mkdocs.insiders.yml'
-    return 'mkdocs.yml'
-
 
 @duty
 def changelog(ctx: Context) -> None:
@@ -109,8 +99,7 @@ def check_quality(ctx: Context) -> None:
     """
     ctx.run(
         ruff.check(*PY_SRC_LIST, config='config/ruff.toml'),
-        title=pyprefix('Checking code quality'),
-    )
+        title = pyprefix('Checking code quality'))
 
 
 @duty
@@ -124,7 +113,7 @@ def check_dependencies(ctx: Context) -> None:
     requirements = ctx.run(
         ['pdm', 'export', '-f', 'requirements', '--without-hashes'],
         title = 'Exporting dependencies as requirements',
-        allow_overrides=False,)
+        allow_overrides = False,)
     ctx.run(safety.check(requirements), title = 'Checking dependencies')
 
 
@@ -141,7 +130,7 @@ def check_docs(ctx: Context) -> None:
     ctx.run(
         mkdocs.build(
             strict = True, 
-            config_file = mkdocs_config()), 
+            config_file = 'mkdocs.yml'()), 
         title = pyprefix('Building documentation'))
 
 
