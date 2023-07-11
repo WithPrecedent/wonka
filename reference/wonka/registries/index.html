@@ -839,10 +839,10 @@
 
 <details class="contents" open>
   <summary>Contents</summary>
-  <p>Registrar (base.Factory): builds classes and/or instances from a registry 
+  <p>Registrar (base.Factory): builds classes and/or instances from a registry
     stored in the 'registry' class attribute.
-Subclasser (base.Factory, abc.ABC): builds classes and/or instances from the 
-    '<strong>subclasses</strong>' method and a dynamically created registry based upon 
+Subclasser (base.Factory, abc.ABC): builds classes and/or instances from the
+    '<strong>subclasses</strong>' method and a dynamically created registry based upon
     it.</p>
 </details>
   
@@ -895,8 +895,8 @@ Subclasser (base.Factory, abc.ABC): builds classes and/or instances from the
           </td>
           <td>
             <div class="doc-md-description">
-              <p>stores classes 
-and/or instances to be used in item construction. Defaults to an 
+              <p>stores classes
+and/or instances to be used in item construction. Defaults to an
 empty dict.</p>
             </div>
           </td>
@@ -921,7 +921,7 @@ empty dict.</p>
 
 
 <h2 id="wonka.registries.Registrar.registry" class="doc doc-heading">
-<code class="codehilite language-python"><span class="n">registry</span><span class="p">:</span> <span class="n">MutableMapping</span><span class="p">[</span><span class="n">Hashable</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span></code>
+<code class="codehilite language-python"><span class="n">registry</span><span class="p">:</span> <span class="n">MutableMapping</span><span class="p">[</span><span class="n">Hashable</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span></code>
   
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
@@ -975,7 +975,7 @@ empty dict.</p>
           </td>
           <td>
             <div class="doc-md-description">
-              <p>name corresponding to a key in 'registry'.  </p>
+              <p>name corresponding to a key in 'registry'.</p>
             </div>
           </td>
           <td>
@@ -985,11 +985,11 @@ empty dict.</p>
         <tr>
           <td><code>parameters</code></td>
           <td>
-                <code><a class="autorefs autorefs-external" title="typing.Optional" href="https://docs.python.org/3/library/typing.html#typing.Optional">Optional</a>[<a class="autorefs autorefs-external" title="collections.abc.MutableMapping" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.MutableMapping">MutableMapping</a>[<a class="autorefs autorefs-external" title="collections.abc.Hashable" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Hashable">Hashable</a>, <a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a>]]</code>
+                <code><a class="autorefs autorefs-external" title="collections.abc.MutableMapping" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.MutableMapping">MutableMapping</a>[<a class="autorefs autorefs-external" title="collections.abc.Hashable" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Hashable">Hashable</a>, <a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a>] | None</code>
           </td>
           <td>
             <div class="doc-md-description">
-              <p>Optional[MutableMapping[Hashable, Any]]: keyword 
+              <p>Optional[MutableMapping[Hashable, Any]]: keyword
 arguments to pass or add to a created instance.</p>
             </div>
           </td>
@@ -1015,7 +1015,7 @@ arguments to pass or add to a created instance.</p>
           </td>
           <td>
             <div class="doc-md-description">
-              <p>If a corresponding item in 'registry' does not exist for 
+              <p>If a corresponding item in 'registry' does not exist for
 'item.'</p>
             </div>
           </td>
@@ -1047,8 +1047,7 @@ arguments to pass or add to a created instance.</p>
 
       <details class="quote">
         <summary>Source code in <code>src/wonka/registries.py</code></summary>
-        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">37</span>
-<span class="normal">38</span>
+        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">38</span>
 <span class="normal">39</span>
 <span class="normal">40</span>
 <span class="normal">41</span>
@@ -1068,21 +1067,26 @@ arguments to pass or add to a created instance.</p>
 <span class="normal">55</span>
 <span class="normal">56</span>
 <span class="normal">57</span>
-<span class="normal">58</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
 <span class="k">def</span> <span class="nf">create</span><span class="p">(</span>
     <span class="bp">cls</span><span class="p">,</span>
     <span class="n">item</span><span class="p">:</span> <span class="n">Hashable</span><span class="p">,</span>
-    <span class="n">parameters</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">MutableMapping</span><span class="p">[</span><span class="n">Hashable</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+    <span class="n">parameters</span><span class="p">:</span> <span class="n">MutableMapping</span><span class="p">[</span><span class="n">Hashable</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Creates an item based on &#39;item&#39; and possibly &#39;parameters&#39;.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        item (Hashable): name corresponding to a key in &#39;registry&#39;.  </span>
-<span class="sd">        parameters: Optional[MutableMapping[Hashable, Any]]: keyword </span>
+<span class="sd">        item (Hashable): name corresponding to a key in &#39;registry&#39;.</span>
+<span class="sd">        parameters: Optional[MutableMapping[Hashable, Any]]: keyword</span>
 <span class="sd">            arguments to pass or add to a created instance.</span>
 
+
 <span class="sd">    Raises:</span>
-<span class="sd">        KeyError: If a corresponding item in &#39;registry&#39; does not exist for </span>
+<span class="sd">        KeyError: If a corresponding item in &#39;registry&#39; does not exist for</span>
 <span class="sd">            &#39;item.&#39;</span>
+
 
 <span class="sd">    Returns:</span>
 <span class="sd">        Any: created item.</span>
@@ -1125,13 +1129,13 @@ arguments to pass or add to a created instance.</p>
 
   
       <p>Builds a subclass without requiring a storage attribute.</p>
-<p>Unlike some other factories, this one does not require any class attributes. 
-Instead, it relies on pre-existing data and lazily adds keys to create 
+<p>Unlike some other factories, this one does not require any class attributes.
+Instead, it relies on pre-existing data and lazily adds keys to create
 a registry facade.</p>
 <p>This factory uses the subclasses stored in '<strong>subclasses</strong>' class method
 that is automatically created with every class. It creates a dict on the fly
 with key names based on 'configuration._KEY_NAMER'. Because of this,
-Subclasser should ordinarily be used as a mixin (although it could simply 
+Subclasser should ordinarily be used as a mixin (although it could simply
 be subclassed, if you prefer).</p>
 
 
@@ -1186,7 +1190,7 @@ naming convention in 'wonka._KEY_NAMER'.</p>
           </td>
           <td>
             <div class="doc-md-description">
-              <p>data for construction of the returned item.       </p>
+              <p>data for construction of the returned item.</p>
             </div>
           </td>
           <td>
@@ -1196,11 +1200,11 @@ naming convention in 'wonka._KEY_NAMER'.</p>
         <tr>
           <td><code>parameters</code></td>
           <td>
-                <code><a class="autorefs autorefs-external" title="typing.Optional" href="https://docs.python.org/3/library/typing.html#typing.Optional">Optional</a>[<a class="autorefs autorefs-external" title="collections.abc.MutableMapping" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.MutableMapping">MutableMapping</a>[<a class="autorefs autorefs-external" title="collections.abc.Hashable" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Hashable">Hashable</a>, <a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a>]]</code>
+                <code><a class="autorefs autorefs-external" title="collections.abc.MutableMapping" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.MutableMapping">MutableMapping</a>[<a class="autorefs autorefs-external" title="collections.abc.Hashable" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Hashable">Hashable</a>, <a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a>] | None</code>
           </td>
           <td>
             <div class="doc-md-description">
-              <p>Optional[MutableMapping[Hashable, Any]]: keyword 
+              <p>Optional[MutableMapping[Hashable, Any]]: keyword
 arguments to pass or add to a created instance.</p>
             </div>
           </td>
@@ -1257,10 +1261,7 @@ arguments to pass or add to a created instance.</p>
 
       <details class="quote">
         <summary>Source code in <code>src/wonka/registries.py</code></summary>
-        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 79</span>
-<span class="normal"> 80</span>
-<span class="normal"> 81</span>
-<span class="normal"> 82</span>
+        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 82</span>
 <span class="normal"> 83</span>
 <span class="normal"> 84</span>
 <span class="normal"> 85</span>
@@ -1284,24 +1285,33 @@ arguments to pass or add to a created instance.</p>
 <span class="normal">103</span>
 <span class="normal">104</span>
 <span class="normal">105</span>
-<span class="normal">106</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
 <span class="k">def</span> <span class="nf">create</span><span class="p">(</span>
     <span class="bp">cls</span><span class="p">,</span>
     <span class="n">item</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
-    <span class="n">parameters</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">MutableMapping</span><span class="p">[</span><span class="n">Hashable</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">parameters</span><span class="p">:</span> <span class="n">MutableMapping</span><span class="p">[</span><span class="n">Hashable</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Creates an item based on &#39;item&#39; and possibly &#39;parameters&#39;.</span>
 
 <span class="sd">    A subclass in the &#39;__subclasses__&#39; class method is selected based on the</span>
 <span class="sd">    naming convention in &#39;wonka._KEY_NAMER&#39;.</span>
 
+
 <span class="sd">    Args:</span>
-<span class="sd">        item (Any): data for construction of the returned item.       </span>
-<span class="sd">        parameters: Optional[MutableMapping[Hashable, Any]]: keyword </span>
+<span class="sd">        item (Any): data for construction of the returned item.</span>
+<span class="sd">        parameters: Optional[MutableMapping[Hashable, Any]]: keyword</span>
 <span class="sd">            arguments to pass or add to a created instance.</span>
+
 
 <span class="sd">    Raises:</span>
 <span class="sd">        KeyError: If a corresponding subclass does not exist for &#39;item.&#39;</span>
+
 
 <span class="sd">    Returns:</span>
 <span class="sd">        Any: created item.</span>
@@ -1393,18 +1403,18 @@ arguments to pass or add to a created instance.</p>
 
       <details class="quote">
         <summary>Source code in <code>src/wonka/registries.py</code></summary>
-        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">131</span>
-<span class="normal">132</span>
-<span class="normal">133</span>
-<span class="normal">134</span>
-<span class="normal">135</span>
-<span class="normal">136</span>
-<span class="normal">137</span>
+        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">137</span>
 <span class="normal">138</span>
 <span class="normal">139</span>
 <span class="normal">140</span>
 <span class="normal">141</span>
-<span class="normal">142</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">_get_all_subclasses</span><span class="p">(</span><span class="n">item</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">type</span><span class="p">[</span><span class="n">Any</span><span class="p">]]:</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">_get_all_subclasses</span><span class="p">(</span><span class="n">item</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">type</span><span class="p">[</span><span class="n">Any</span><span class="p">]]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns a list of all subclasses of &#39;items&#39;, including indirect ones.</span>
 
 <span class="sd">    Args:</span>
@@ -1525,13 +1535,7 @@ is stored.</p>
 
       <details class="quote">
         <summary>Source code in <code>src/wonka/registries.py</code></summary>
-        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">109</span>
-<span class="normal">110</span>
-<span class="normal">111</span>
-<span class="normal">112</span>
-<span class="normal">113</span>
-<span class="normal">114</span>
-<span class="normal">115</span>
+        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">115</span>
 <span class="normal">116</span>
 <span class="normal">117</span>
 <span class="normal">118</span>
@@ -1545,8 +1549,14 @@ is stored.</p>
 <span class="normal">126</span>
 <span class="normal">127</span>
 <span class="normal">128</span>
-<span class="normal">129</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">_get_from_registry</span><span class="p">(</span>
-    <span class="n">item</span><span class="p">:</span> <span class="n">Hashable</span><span class="p">,</span> 
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">_get_from_registry</span><span class="p">(</span>
+    <span class="n">item</span><span class="p">:</span> <span class="n">Hashable</span><span class="p">,</span>
     <span class="n">registry</span><span class="p">:</span> <span class="n">MutableMapping</span><span class="p">[</span><span class="n">Hashable</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns a copy of a stored item in &#39;registry&#39; with the key of &#39;item&#39;.</span>
 

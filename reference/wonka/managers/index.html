@@ -835,7 +835,7 @@
 <a id="wonka.managers"></a>
   <div class="doc doc-contents first">
   
-      <p>Manager classes for iterable constructors. </p>
+      <p>Manager classes for iterable constructors.</p>
 
 <details class="contents" open>
   <summary>Contents</summary>
@@ -873,7 +873,7 @@
         Bases: <code>camina.<span title="camina.Listing">Listing</span></code>, <code><a class="autorefs autorefs-internal" title="wonka.base" href="../base/#wonka.base">base</a>.<a class="autorefs autorefs-internal" title="wonka.base.Manager" href="../base/#wonka.base.Manager">Manager</a></code></p>
 
   
-      <p>Assembly line constructer. </p>
+      <p>Assembly line constructer.</p>
 <p>Assembler stores a sequence of wonka constructors that are called by the
 'manage' (or 'create') method in order to construct an item.</p>
 
@@ -926,8 +926,8 @@ Defaults to an empty list.</p>
 <code class="codehilite language-python"><span class="n">contents</span><span class="p">:</span> <span class="n">MutableSequence</span><span class="p">[</span><span class="n">base</span><span class="o">.</span><span class="n">Constructor</span><span class="p">]</span> <span class="o">=</span> <span class="n">dataclasses</span><span class="o">.</span><span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
   </span>
 
 <a href="#wonka.managers.Assembler.contents" class="headerlink" title="Permanent link">&para;</a></h2>
@@ -974,7 +974,7 @@ Defaults to an empty list.</p>
           </td>
           <td>
             <div class="doc-md-description">
-              <p>item(s) to add 
+              <p>item(s) to add
 to 'contents' attribute.</p>
             </div>
           </td>
@@ -1010,8 +1010,7 @@ constructors.</p>
 
       <details class="quote">
         <summary>Source code in <code>src/wonka/managers.py</code></summary>
-        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">36</span>
-<span class="normal">37</span>
+        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">37</span>
 <span class="normal">38</span>
 <span class="normal">39</span>
 <span class="normal">40</span>
@@ -1030,12 +1029,14 @@ constructors.</p>
 <span class="normal">53</span>
 <span class="normal">54</span>
 <span class="normal">55</span>
-<span class="normal">56</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="n">base</span><span class="o">.</span><span class="n">Constructor</span> <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">base</span><span class="o">.</span><span class="n">Constructor</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="normal">56</span>
+<span class="normal">57</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="n">base</span><span class="o">.</span><span class="n">Constructor</span> <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">base</span><span class="o">.</span><span class="n">Constructor</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Adds &#39;item&#39; to the &#39;contents&#39; attribute.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        item (base.Constructor | Sequence[base.Constructor]): item(s) to add </span>
+<span class="sd">        item (base.Constructor | Sequence[base.Constructor]): item(s) to add</span>
 <span class="sd">            to &#39;contents&#39; attribute.</span>
+
 
 <span class="sd">    Raises:</span>
 <span class="sd">        TypeError: if all of the values of &#39;item&#39; are not wonka-compatible</span>
@@ -1044,13 +1045,12 @@ constructors.</p>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">shared</span><span class="o">.</span><span class="n">is_constructor</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">contents</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">)</span> 
+    <span class="k">elif</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">)</span>
             <span class="ow">and</span> <span class="nb">all</span><span class="p">(</span><span class="n">shared</span><span class="o">.</span><span class="n">is_constructor</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">item</span><span class="p">)):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">contents</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
             <span class="s1">&#39;All values in item must be wonka-compatible constructors&#39;</span><span class="p">)</span>
-    <span class="k">return</span>
 </code></pre></div></td></tr></table></div>
       </details>
   </div>
@@ -1123,8 +1123,7 @@ constructors.</p>
 
       <details class="quote">
         <summary>Source code in <code>src/wonka/managers.py</code></summary>
-        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">58</span>
-<span class="normal">59</span>
+        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">59</span>
 <span class="normal">60</span>
 <span class="normal">61</span>
 <span class="normal">62</span>
@@ -1135,11 +1134,14 @@ constructors.</p>
 <span class="normal">67</span>
 <span class="normal">68</span>
 <span class="normal">69</span>
-<span class="normal">70</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">manage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">manage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Manages construction and/or modification based on &#39;item&#39;.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        item (Any): item to be passed to constructors in &#39;contents&#39;.</span>
+
 
 <span class="sd">    Returns:</span>
 <span class="sd">        Any: constructed item.</span>

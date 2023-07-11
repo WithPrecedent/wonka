@@ -839,11 +839,11 @@
 
 <details class="contents" open>
   <summary>Contents</summary>
-  <p>Classer (base.Producer, abc.ABC): Producer with an 'produce' method that 
+  <p>Classer (base.Producer, abc.ABC): Producer with an 'produce' method that
     always returns a class.
-Flexer (base.Producer, abc.ABC): Producer that conditions return value of 
+Flexer (base.Producer, abc.ABC): Producer that conditions return value of
     the 'produce' method based on whether 'parameters' are passed.
-Instancer (base.Producer, abc.ABC): Producer with an 'produce' method that 
+Instancer (base.Producer, abc.ABC): Producer with an 'produce' method that
     always returns an instance.</p>
 </details>
   
@@ -929,9 +929,9 @@ Instancer (base.Producer, abc.ABC): Producer with an 'produce' method that
           </td>
           <td>
             <div class="doc-md-description">
-              <p>item created by a constructor that may need to be 
-altered before being returned by the constructor 'create' 
-method. </p>
+              <p>item created by a constructor that may need to be
+altered before being returned by the constructor 'create'
+method.</p>
             </div>
           </td>
           <td>
@@ -941,15 +941,15 @@ method. </p>
         <tr>
           <td><code>parameters</code></td>
           <td>
-                <code><a class="autorefs autorefs-external" title="typing.Optional" href="https://docs.python.org/3/library/typing.html#typing.Optional">Optional</a>[<a class="autorefs autorefs-external" title="collections.abc.MutableMapping" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.MutableMapping">MutableMapping</a>[<a class="autorefs autorefs-external" title="collections.abc.Hashable" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Hashable">Hashable</a>, <a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a>]]</code>
+                <code><a class="autorefs autorefs-external" title="collections.abc.MutableMapping" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.MutableMapping">MutableMapping</a>[<a class="autorefs autorefs-external" title="collections.abc.Hashable" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Hashable">Hashable</a>, <a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a>] | None</code>
           </td>
           <td>
             <div class="doc-md-description">
-              <p>Optional[MutableMapping[Hashable, Any]]: keyword 
-arguments to pass or add to a created instance. Defaults to 
+              <p>Optional[MutableMapping[Hashable, Any]]: keyword
+arguments to pass or add to a created instance. Defaults to
 None. The argument for 'parameters' is ignored by Classer - it
 is only included to provide a consistent interface across all
-Producer subclasses.      </p>
+Producer subclasses.</p>
             </div>
           </td>
           <td>
@@ -983,9 +983,7 @@ Producer subclasses.      </p>
 
       <details class="quote">
         <summary>Source code in <code>src/wonka/producers.py</code></summary>
-        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
+        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">31</span>
 <span class="normal">32</span>
 <span class="normal">33</span>
 <span class="normal">34</span>
@@ -1005,23 +1003,27 @@ Producer subclasses.      </p>
 <span class="normal">48</span>
 <span class="normal">49</span>
 <span class="normal">50</span>
-<span class="normal">51</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
 <span class="k">def</span> <span class="nf">produce</span><span class="p">(</span>
     <span class="bp">cls</span><span class="p">,</span>
     <span class="n">item</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
-    <span class="n">parameters</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">MutableMapping</span><span class="p">[</span><span class="n">Hashable</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">parameters</span><span class="p">:</span> <span class="n">MutableMapping</span><span class="p">[</span><span class="n">Hashable</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Modifies &#39;item&#39; and possibly incorporates &#39;parameters&#39;.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        item (Any): item created by a constructor that may need to be </span>
-<span class="sd">            altered before being returned by the constructor &#39;create&#39; </span>
-<span class="sd">            method. </span>
-<span class="sd">        parameters: Optional[MutableMapping[Hashable, Any]]: keyword </span>
-<span class="sd">            arguments to pass or add to a created instance. Defaults to </span>
+<span class="sd">        item (Any): item created by a constructor that may need to be</span>
+<span class="sd">            altered before being returned by the constructor &#39;create&#39;</span>
+<span class="sd">            method.</span>
+<span class="sd">        parameters: Optional[MutableMapping[Hashable, Any]]: keyword</span>
+<span class="sd">            arguments to pass or add to a created instance. Defaults to</span>
 <span class="sd">            None. The argument for &#39;parameters&#39; is ignored by Classer - it</span>
 <span class="sd">            is only included to provide a consistent interface across all</span>
-<span class="sd">            Producer subclasses.      </span>
+<span class="sd">            Producer subclasses.</span>
+
 
 <span class="sd">    Returns:</span>
 <span class="sd">        Any: modified item.</span>
@@ -1117,9 +1119,9 @@ returned. If no 'parameters' are passed, the item will be returned as-is
           </td>
           <td>
             <div class="doc-md-description">
-              <p>item created by a constructor that may need to be 
-altered before being returned by the constructor 'create' 
-method. </p>
+              <p>item created by a constructor that may need to be
+altered before being returned by the constructor 'create'
+method.</p>
             </div>
           </td>
           <td>
@@ -1129,13 +1131,13 @@ method. </p>
         <tr>
           <td><code>parameters</code></td>
           <td>
-                <code><a class="autorefs autorefs-external" title="typing.Optional" href="https://docs.python.org/3/library/typing.html#typing.Optional">Optional</a>[<a class="autorefs autorefs-external" title="collections.abc.MutableMapping" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.MutableMapping">MutableMapping</a>[<a class="autorefs autorefs-external" title="collections.abc.Hashable" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Hashable">Hashable</a>, <a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a>]]</code>
+                <code><a class="autorefs autorefs-external" title="collections.abc.MutableMapping" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.MutableMapping">MutableMapping</a>[<a class="autorefs autorefs-external" title="collections.abc.Hashable" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Hashable">Hashable</a>, <a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a>] | None</code>
           </td>
           <td>
             <div class="doc-md-description">
-              <p>Optional[MutableMapping[Hashable, Any]]: keyword 
-arguments to pass or add to a created instance. Defaults to 
-None.       </p>
+              <p>Optional[MutableMapping[Hashable, Any]]: keyword
+arguments to pass or add to a created instance. Defaults to
+None.</p>
             </div>
           </td>
           <td>
@@ -1169,10 +1171,7 @@ None.       </p>
 
       <details class="quote">
         <summary>Source code in <code>src/wonka/producers.py</code></summary>
-        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">66</span>
-<span class="normal">67</span>
-<span class="normal">68</span>
-<span class="normal">69</span>
+        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">69</span>
 <span class="normal">70</span>
 <span class="normal">71</span>
 <span class="normal">72</span>
@@ -1194,28 +1193,33 @@ None.       </p>
 <span class="normal">88</span>
 <span class="normal">89</span>
 <span class="normal">90</span>
-<span class="normal">91</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="normal">91</span>
+<span class="normal">92</span>
+<span class="normal">93</span>
+<span class="normal">94</span>
+<span class="normal">95</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
 <span class="k">def</span> <span class="nf">produce</span><span class="p">(</span>
     <span class="bp">cls</span><span class="p">,</span>
     <span class="n">item</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
-    <span class="n">parameters</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">MutableMapping</span><span class="p">[</span><span class="n">Hashable</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">parameters</span><span class="p">:</span> <span class="n">MutableMapping</span><span class="p">[</span><span class="n">Hashable</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Modifies &#39;item&#39; and possibly incorporates &#39;parameters&#39;.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        item (Any): item created by a constructor that may need to be </span>
-<span class="sd">            altered before being returned by the constructor &#39;create&#39; </span>
-<span class="sd">            method. </span>
-<span class="sd">        parameters: Optional[MutableMapping[Hashable, Any]]: keyword </span>
-<span class="sd">            arguments to pass or add to a created instance. Defaults to </span>
-<span class="sd">            None.       </span>
+<span class="sd">        item (Any): item created by a constructor that may need to be</span>
+<span class="sd">            altered before being returned by the constructor &#39;create&#39;</span>
+<span class="sd">            method.</span>
+<span class="sd">        parameters: Optional[MutableMapping[Hashable, Any]]: keyword</span>
+<span class="sd">            arguments to pass or add to a created instance. Defaults to</span>
+<span class="sd">            None.</span>
+
 
 <span class="sd">    Returns:</span>
 <span class="sd">        Any: modified item.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">parameters</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">item</span>  
+        <span class="k">return</span> <span class="n">item</span>
     <span class="k">elif</span> <span class="n">inspect</span><span class="o">.</span><span class="n">isclass</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">item</span><span class="p">(</span><span class="o">**</span><span class="n">parameters</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
@@ -1306,9 +1310,9 @@ None.       </p>
           </td>
           <td>
             <div class="doc-md-description">
-              <p>item created by a constructor that may need to be 
-altered before being returned by the constructor 'create' 
-method. </p>
+              <p>item created by a constructor that may need to be
+altered before being returned by the constructor 'create'
+method.</p>
             </div>
           </td>
           <td>
@@ -1318,13 +1322,13 @@ method. </p>
         <tr>
           <td><code>parameters</code></td>
           <td>
-                <code><a class="autorefs autorefs-external" title="typing.Optional" href="https://docs.python.org/3/library/typing.html#typing.Optional">Optional</a>[<a class="autorefs autorefs-external" title="collections.abc.MutableMapping" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.MutableMapping">MutableMapping</a>[<a class="autorefs autorefs-external" title="collections.abc.Hashable" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Hashable">Hashable</a>, <a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a>]]</code>
+                <code><a class="autorefs autorefs-external" title="collections.abc.MutableMapping" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.MutableMapping">MutableMapping</a>[<a class="autorefs autorefs-external" title="collections.abc.Hashable" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Hashable">Hashable</a>, <a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a>] | None</code>
           </td>
           <td>
             <div class="doc-md-description">
-              <p>Optional[MutableMapping[Hashable, Any]]: keyword 
-arguments to pass or add to a created instance. Defaults to 
-None.       </p>
+              <p>Optional[MutableMapping[Hashable, Any]]: keyword
+arguments to pass or add to a created instance. Defaults to
+None.</p>
             </div>
           </td>
           <td>
@@ -1358,11 +1362,7 @@ None.       </p>
 
       <details class="quote">
         <summary>Source code in <code>src/wonka/producers.py</code></summary>
-        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">100</span>
-<span class="normal">101</span>
-<span class="normal">102</span>
-<span class="normal">103</span>
-<span class="normal">104</span>
+        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">104</span>
 <span class="normal">105</span>
 <span class="normal">106</span>
 <span class="normal">107</span>
@@ -1385,21 +1385,27 @@ None.       </p>
 <span class="normal">124</span>
 <span class="normal">125</span>
 <span class="normal">126</span>
-<span class="normal">127</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
 <span class="k">def</span> <span class="nf">produce</span><span class="p">(</span>
     <span class="bp">cls</span><span class="p">,</span>
     <span class="n">item</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
-    <span class="n">parameters</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">MutableMapping</span><span class="p">[</span><span class="n">Hashable</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">parameters</span><span class="p">:</span> <span class="n">MutableMapping</span><span class="p">[</span><span class="n">Hashable</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Modifies &#39;item&#39; and incorporates &#39;parameters&#39;.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        item (Any): item created by a constructor that may need to be </span>
-<span class="sd">            altered before being returned by the constructor &#39;create&#39; </span>
-<span class="sd">            method. </span>
-<span class="sd">        parameters: Optional[MutableMapping[Hashable, Any]]: keyword </span>
-<span class="sd">            arguments to pass or add to a created instance. Defaults to </span>
-<span class="sd">            None.       </span>
+<span class="sd">        item (Any): item created by a constructor that may need to be</span>
+<span class="sd">            altered before being returned by the constructor &#39;create&#39;</span>
+<span class="sd">            method.</span>
+<span class="sd">        parameters: Optional[MutableMapping[Hashable, Any]]: keyword</span>
+<span class="sd">            arguments to pass or add to a created instance. Defaults to</span>
+<span class="sd">            None.</span>
+
 
 <span class="sd">    Returns:</span>
 <span class="sd">        Any: modified item.</span>
@@ -1408,7 +1414,7 @@ None.       </p>
     <span class="k">if</span> <span class="n">inspect</span><span class="o">.</span><span class="n">isclass</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="ow">and</span> <span class="n">parameters</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">item</span><span class="p">()</span>
     <span class="k">elif</span> <span class="n">parameters</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">item</span>  
+        <span class="k">return</span> <span class="n">item</span>
     <span class="k">elif</span> <span class="n">inspect</span><span class="o">.</span><span class="n">isclass</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">item</span><span class="p">(</span><span class="o">**</span><span class="n">parameters</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>

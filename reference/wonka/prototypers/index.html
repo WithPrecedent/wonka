@@ -921,11 +921,11 @@
         <tr>
           <td><code>item</code></td>
           <td>
-                <code><a class="autorefs autorefs-external" title="typing.Optional" href="https://docs.python.org/3/library/typing.html#typing.Optional">Optional</a>[<a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a>]</code>
+                <code>Optional[<a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a>]</code>
           </td>
           <td>
             <div class="doc-md-description">
-              <p>item to clone. If it is None, the 'create' 
+              <p>item to clone. If it is None, the 'create'
 method assumes that it should clone itself. Defaults to None.</p>
             </div>
           </td>
@@ -936,13 +936,13 @@ method assumes that it should clone itself. Defaults to None.</p>
         <tr>
           <td><code>parameters</code></td>
           <td>
-                <code><a class="autorefs autorefs-external" title="typing.Optional" href="https://docs.python.org/3/library/typing.html#typing.Optional">Optional</a>[<a class="autorefs autorefs-external" title="collections.abc.MutableMapping" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.MutableMapping">MutableMapping</a>[<a class="autorefs autorefs-external" title="collections.abc.Hashable" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Hashable">Hashable</a>, <a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a>]]</code>
+                <code><a class="autorefs autorefs-external" title="collections.abc.MutableMapping" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.MutableMapping">MutableMapping</a>[<a class="autorefs autorefs-external" title="collections.abc.Hashable" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Hashable">Hashable</a>, <a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a>] | None</code>
           </td>
           <td>
             <div class="doc-md-description">
-              <p>Optional[MutableMapping[Hashable, Any]]: keyword 
-arguments to pass or add to a created instance. Defaults to 
-None.       </p>
+              <p>Optional[MutableMapping[Hashable, Any]]: keyword
+arguments to pass or add to a created instance. Defaults to
+None.</p>
             </div>
           </td>
           <td>
@@ -976,9 +976,7 @@ None.       </p>
 
       <details class="quote">
         <summary>Source code in <code>src/wonka/prototypers.py</code></summary>
-        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
+        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">26</span>
 <span class="normal">27</span>
 <span class="normal">28</span>
 <span class="normal">29</span>
@@ -997,20 +995,24 @@ None.       </p>
 <span class="normal">42</span>
 <span class="normal">43</span>
 <span class="normal">44</span>
-<span class="normal">45</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
 <span class="k">def</span> <span class="nf">create</span><span class="p">(</span>
     <span class="bp">cls</span><span class="p">,</span>
-    <span class="n">item</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">parameters</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">MutableMapping</span><span class="p">[</span><span class="n">Hashable</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">item</span><span class="p">:</span> <span class="n">Any</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">parameters</span><span class="p">:</span> <span class="n">MutableMapping</span><span class="p">[</span><span class="n">Hashable</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Clones &#39;item&#39; and possibly incorporates &#39;parameters&#39;.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        item (Optional[Any]): item to clone. If it is None, the &#39;create&#39; </span>
+<span class="sd">        item (Optional[Any]): item to clone. If it is None, the &#39;create&#39;</span>
 <span class="sd">            method assumes that it should clone itself. Defaults to None.</span>
-<span class="sd">        parameters: Optional[MutableMapping[Hashable, Any]]: keyword </span>
-<span class="sd">            arguments to pass or add to a created instance. Defaults to </span>
-<span class="sd">            None.       </span>
+<span class="sd">        parameters: Optional[MutableMapping[Hashable, Any]]: keyword</span>
+<span class="sd">            arguments to pass or add to a created instance. Defaults to</span>
+<span class="sd">            None.</span>
+
 
 <span class="sd">    Returns:</span>
 <span class="sd">        Any: cloned item.</span>

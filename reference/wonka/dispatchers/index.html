@@ -839,11 +839,11 @@
 
 <details class="contents" open>
   <summary>Contents</summary>
-  <p>Delegate (base.Factory): builds classes and/or instances using methods 
+  <p>Delegate (base.Factory): builds classes and/or instances using methods
     that follow a naming convention and the str names of the types of the
-    first argument passed to the 'create' class method.<br />
-Sourcerer (base.Factory): builds classes and/or instances using methods 
-    that follow a naming convention (set at 'configuration._METHOD_NAMER') 
+    first argument passed to the 'create' class method.
+Sourcerer (base.Factory): builds classes and/or instances using methods
+    that follow a naming convention (set at 'configuration._METHOD_NAMER')
     and a dict of types stored in the 'sources' class attribute.</p>
 </details>
   
@@ -880,8 +880,8 @@ Sourcerer (base.Factory): builds classes and/or instances using methods
       <p>Builds based on the str name of the type passed.</p>
 <p>This factory acts as a dispatcher to call other methods based on the type
 or name of the type passed in a manner identical to Sourcerer. However,
-unlike Sourcerer, Delegate only finds a matching creation method if the str 
-name of the type of 'item' matches a substring of the creation method name 
+unlike Sourcerer, Delegate only finds a matching creation method if the str
+name of the type of 'item' matches a substring of the creation method name
 using the format of 'configuration._METHOD_NAMER'</p>
 
 
@@ -934,7 +934,7 @@ using the format of 'configuration._METHOD_NAMER'</p>
           </td>
           <td>
             <div class="doc-md-description">
-              <p>data for construction of the returned item.       </p>
+              <p>data for construction of the returned item.</p>
             </div>
           </td>
           <td>
@@ -944,11 +944,11 @@ using the format of 'configuration._METHOD_NAMER'</p>
         <tr>
           <td><code>parameters</code></td>
           <td>
-                <code><a class="autorefs autorefs-external" title="typing.Optional" href="https://docs.python.org/3/library/typing.html#typing.Optional">Optional</a>[<a class="autorefs autorefs-external" title="collections.abc.MutableMapping" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.MutableMapping">MutableMapping</a>[<a class="autorefs autorefs-external" title="collections.abc.Hashable" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Hashable">Hashable</a>, <a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a>]]</code>
+                <code><a class="autorefs autorefs-external" title="collections.abc.MutableMapping" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.MutableMapping">MutableMapping</a>[<a class="autorefs autorefs-external" title="collections.abc.Hashable" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Hashable">Hashable</a>, <a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a>] | None</code>
           </td>
           <td>
             <div class="doc-md-description">
-              <p>Optional[MutableMapping[Hashable, Any]]: keyword 
+              <p>Optional[MutableMapping[Hashable, Any]]: keyword
 arguments to pass or add to a created instance.</p>
             </div>
           </td>
@@ -1016,8 +1016,7 @@ data type of 'item.'</p>
 
       <details class="quote">
         <summary>Source code in <code>src/wonka/dispatchers.py</code></summary>
-        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">38</span>
-<span class="normal">39</span>
+        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">39</span>
 <span class="normal">40</span>
 <span class="normal">41</span>
 <span class="normal">42</span>
@@ -1044,23 +1043,28 @@ data type of 'item.'</p>
 <span class="normal">63</span>
 <span class="normal">64</span>
 <span class="normal">65</span>
-<span class="normal">66</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
 <span class="k">def</span> <span class="nf">create</span><span class="p">(</span>
     <span class="bp">cls</span><span class="p">,</span>
     <span class="n">item</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
-    <span class="n">parameters</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">MutableMapping</span><span class="p">[</span><span class="n">Hashable</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">parameters</span><span class="p">:</span> <span class="n">MutableMapping</span><span class="p">[</span><span class="n">Hashable</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Creates an item based on &#39;item&#39; and possibly &#39;parameters&#39;.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        item (Any): data for construction of the returned item.       </span>
-<span class="sd">        parameters: Optional[MutableMapping[Hashable, Any]]: keyword </span>
+<span class="sd">        item (Any): data for construction of the returned item.</span>
+<span class="sd">        parameters: Optional[MutableMapping[Hashable, Any]]: keyword</span>
 <span class="sd">            arguments to pass or add to a created instance.</span>
+
 
 <span class="sd">    Raises:</span>
 <span class="sd">        AttributeError: If an appropriate method does not exist for the</span>
 <span class="sd">            data type of &#39;item.&#39;</span>
 <span class="sd">        KeyError: If a corresponding subclass does not exist for &#39;item.&#39;</span>
+
 
 <span class="sd">    Returns:</span>
 <span class="sd">        Any: created item.</span>
@@ -1068,7 +1072,7 @@ data type of 'item.'</p>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">builder</span> <span class="o">=</span> <span class="n">_get_creation_method_name</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
     <span class="n">item</span> <span class="o">=</span> <span class="n">_get_from_builder_method</span><span class="p">(</span>
-        <span class="n">factory</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">,</span> 
+        <span class="n">factory</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">,</span>
         <span class="n">method</span> <span class="o">=</span> <span class="n">builder</span><span class="p">,</span>
         <span class="n">source</span> <span class="o">=</span> <span class="n">item</span><span class="p">,</span>
         <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -1109,13 +1113,13 @@ data type of 'item.'</p>
   
       <p>Builds based on compatibility with keys in the 'sources' class attribute.</p>
 <p>This factory acts as a dispatcher to call other methods based on the type
-passed. Unlike Delegate, Sourcerer is more forgiving by allowing the type 
-passed to a subtype or instance of the type listed as a key in the 'sources' 
+passed. Unlike Delegate, Sourcerer is more forgiving by allowing the type
+passed to a subtype or instance of the type listed as a key in the 'sources'
 class attribute.</p>
-<p>The name for a Sourcerer is spelled the way it is instead of "Sorcerer" 
+<p>The name for a Sourcerer is spelled the way it is instead of "Sorcerer"
 because the 'sources' attribute is used. This is inspired by the Divinity:
 Original Sin games where the magic users are called "Sourcerers" because
-they may manipulate the magical energy known as "source". 
+they may manipulate the magical energy known as "source".
 <a href="https://divinity.fandom.com/wiki/Sourcerer">https://divinity.fandom.com/wiki/Sourcerer</a></p>
 
   <p><strong>Attributes:</strong></p>
@@ -1162,7 +1166,7 @@ empty dict.</p>
 
 
 <h2 id="wonka.dispatchers.Sourcerer.sources" class="doc doc-heading">
-<code class="codehilite language-python"><span class="n">sources</span><span class="p">:</span> <span class="n">MutableMapping</span><span class="p">[</span><span class="nb">type</span><span class="p">[</span><span class="n">Any</span><span class="p">],</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span></code>
+<code class="codehilite language-python"><span class="n">sources</span><span class="p">:</span> <span class="n">MutableMapping</span><span class="p">[</span><span class="nb">type</span><span class="p">[</span><span class="n">Any</span><span class="p">],</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span></code>
   
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
@@ -1216,7 +1220,7 @@ empty dict.</p>
           </td>
           <td>
             <div class="doc-md-description">
-              <p>data for construction of the returned item.       </p>
+              <p>data for construction of the returned item.</p>
             </div>
           </td>
           <td>
@@ -1226,11 +1230,11 @@ empty dict.</p>
         <tr>
           <td><code>parameters</code></td>
           <td>
-                <code><a class="autorefs autorefs-external" title="typing.Optional" href="https://docs.python.org/3/library/typing.html#typing.Optional">Optional</a>[<a class="autorefs autorefs-external" title="collections.abc.MutableMapping" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.MutableMapping">MutableMapping</a>[<a class="autorefs autorefs-external" title="collections.abc.Hashable" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Hashable">Hashable</a>, <a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a>]]</code>
+                <code><a class="autorefs autorefs-external" title="collections.abc.MutableMapping" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.MutableMapping">MutableMapping</a>[<a class="autorefs autorefs-external" title="collections.abc.Hashable" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Hashable">Hashable</a>, <a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a>] | None</code>
           </td>
           <td>
             <div class="doc-md-description">
-              <p>Optional[MutableMapping[Hashable, Any]]: keyword 
+              <p>Optional[MutableMapping[Hashable, Any]]: keyword
 arguments to pass or add to a created instance.</p>
             </div>
           </td>
@@ -1299,11 +1303,7 @@ correspond to a method in the Sourcerer subclass.</p>
 
       <details class="quote">
         <summary>Source code in <code>src/wonka/dispatchers.py</code></summary>
-        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 95</span>
-<span class="normal"> 96</span>
-<span class="normal"> 97</span>
-<span class="normal"> 98</span>
-<span class="normal"> 99</span>
+        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 99</span>
 <span class="normal">100</span>
 <span class="normal">101</span>
 <span class="normal">102</span>
@@ -1331,24 +1331,32 @@ correspond to a method in the Sourcerer subclass.</p>
 <span class="normal">124</span>
 <span class="normal">125</span>
 <span class="normal">126</span>
-<span class="normal">127</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
 <span class="k">def</span> <span class="nf">create</span><span class="p">(</span>
     <span class="bp">cls</span><span class="p">,</span>
     <span class="n">item</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
-    <span class="n">parameters</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">MutableMapping</span><span class="p">[</span><span class="n">Hashable</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">parameters</span><span class="p">:</span> <span class="n">MutableMapping</span><span class="p">[</span><span class="n">Hashable</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Creates an item based on &#39;item&#39; and possibly &#39;parameters&#39;.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        item (Any): data for construction of the returned item.       </span>
-<span class="sd">        parameters: Optional[MutableMapping[Hashable, Any]]: keyword </span>
+<span class="sd">        item (Any): data for construction of the returned item.</span>
+<span class="sd">        parameters: Optional[MutableMapping[Hashable, Any]]: keyword</span>
 <span class="sd">            arguments to pass or add to a created instance.</span>
+
 
 <span class="sd">    Raises:</span>
 <span class="sd">        AttributeError: if the value matching the key &#39;item&#39; does not</span>
 <span class="sd">            correspond to a method in the Sourcerer subclass.</span>
 <span class="sd">        KeyError: if there is no key in &#39;sources&#39; matching the type for</span>
 <span class="sd">            &#39;item&#39;.</span>
+
 
 <span class="sd">    Returns:</span>
 <span class="sd">        Any: created item.</span>
@@ -1358,7 +1366,7 @@ correspond to a method in the Sourcerer subclass.</p>
         <span class="k">if</span> <span class="n">_is_kind</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">kind</span><span class="p">):</span>
             <span class="n">builder</span> <span class="o">=</span> <span class="n">_get_creation_method_name</span><span class="p">(</span><span class="n">substring</span><span class="p">)</span>
             <span class="n">item</span> <span class="o">=</span> <span class="n">_get_from_builder_method</span><span class="p">(</span>
-                <span class="n">factory</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">,</span> 
+                <span class="n">factory</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">,</span>
                 <span class="n">method</span> <span class="o">=</span> <span class="n">builder</span><span class="p">,</span>
                 <span class="n">source</span> <span class="o">=</span> <span class="n">item</span><span class="p">,</span>
                 <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -1421,12 +1429,12 @@ correspond to a method in the Sourcerer subclass.</p>
         <tr>
           <td><code>method_namer</code></td>
           <td>
-                <code><a class="autorefs autorefs-external" title="typing.Optional" href="https://docs.python.org/3/library/typing.html#typing.Optional">Optional</a>[<a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a>[[<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#object">object</a> | <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#type">type</a>[<a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a>]], <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>]]</code>
+                <code>Optional[<a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a>[[<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#object">object</a> | <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#type">type</a>[<a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a>]], <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>]]</code>
           </td>
           <td>
             <div class="doc-md-description">
-              <p>callable to create the creation method name. Defaults to None. If it 
-is None, the global namer stored in configuration._METHOD_NAMER will 
+              <p>callable to create the creation method name. Defaults to None. If it
+is None, the global namer stored in configuration._METHOD_NAMER will
 be used.</p>
             </div>
           </td>
@@ -1461,13 +1469,7 @@ be used.</p>
 
       <details class="quote">
         <summary>Source code in <code>src/wonka/dispatchers.py</code></summary>
-        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">130</span>
-<span class="normal">131</span>
-<span class="normal">132</span>
-<span class="normal">133</span>
-<span class="normal">134</span>
-<span class="normal">135</span>
-<span class="normal">136</span>
+        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">136</span>
 <span class="normal">137</span>
 <span class="normal">138</span>
 <span class="normal">139</span>
@@ -1480,16 +1482,22 @@ be used.</p>
 <span class="normal">146</span>
 <span class="normal">147</span>
 <span class="normal">148</span>
-<span class="normal">149</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">_get_creation_method_name</span><span class="p">(</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">_get_creation_method_name</span><span class="p">(</span>
     <span class="n">source</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
-    <span class="n">method_namer</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Callable</span><span class="p">[[</span><span class="nb">object</span> <span class="o">|</span> <span class="nb">type</span><span class="p">[</span><span class="n">Any</span><span class="p">]],</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="n">method_namer</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">object</span> <span class="o">|</span> <span class="nb">type</span><span class="p">[</span><span class="n">Any</span><span class="p">]],</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns the creation method name for factories that call other methods.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        source (Any): source data for creating a method name.</span>
-<span class="sd">        method_namer (Optional[Callable[[object | type[Any]], str]], optional): </span>
-<span class="sd">            callable to create the creation method name. Defaults to None. If it </span>
-<span class="sd">            is None, the global namer stored in configuration._METHOD_NAMER will </span>
+<span class="sd">        method_namer (Optional[Callable[[object | type[Any]], str]], optional):</span>
+<span class="sd">            callable to create the creation method name. Defaults to None. If it</span>
+<span class="sd">            is None, the global namer stored in configuration._METHOD_NAMER will</span>
 <span class="sd">            be used.</span>
 
 <span class="sd">    Returns:</span>
@@ -1622,13 +1630,7 @@ be used.</p>
 
       <details class="quote">
         <summary>Source code in <code>src/wonka/dispatchers.py</code></summary>
-        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">166</span>
-<span class="normal">167</span>
-<span class="normal">168</span>
-<span class="normal">169</span>
-<span class="normal">170</span>
-<span class="normal">171</span>
-<span class="normal">172</span>
+        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">172</span>
 <span class="normal">173</span>
 <span class="normal">174</span>
 <span class="normal">175</span>
@@ -1645,11 +1647,19 @@ be used.</p>
 <span class="normal">186</span>
 <span class="normal">187</span>
 <span class="normal">188</span>
-<span class="normal">189</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">_get_from_builder_method</span><span class="p">(</span>
-    <span class="n">factory</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> 
-    <span class="n">method</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> 
-    <span class="n">source</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> 
-    <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>    
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">_get_from_builder_method</span><span class="p">(</span>
+    <span class="n">factory</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+    <span class="n">method</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">source</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns constructed item from a builder method of &#39;factory&#39;.</span>
 
 <span class="sd">    Args:</span>
@@ -1657,13 +1667,15 @@ be used.</p>
 <span class="sd">        method (str): name of the method of factory to use to construct an item.</span>
 <span class="sd">        source (Any): the source data used to create item.</span>
 
+
 <span class="sd">    Raises:</span>
 <span class="sd">        AttributeError: if &#39;factory&#39; has no method named &#39;method&#39;.</span>
+
 
 <span class="sd">    Returns:</span>
 <span class="sd">        Any: constructed item.</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>           
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">builder</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">factory</span><span class="p">,</span> <span class="n">method</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">builder</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -1755,20 +1767,20 @@ be used.</p>
 
       <details class="quote">
         <summary>Source code in <code>src/wonka/dispatchers.py</code></summary>
-        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">151</span>
-<span class="normal">152</span>
-<span class="normal">153</span>
-<span class="normal">154</span>
-<span class="normal">155</span>
-<span class="normal">156</span>
-<span class="normal">157</span>
+        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">157</span>
 <span class="normal">158</span>
 <span class="normal">159</span>
 <span class="normal">160</span>
 <span class="normal">161</span>
 <span class="normal">162</span>
 <span class="normal">163</span>
-<span class="normal">164</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">_is_kind</span><span class="p">(</span><span class="n">item</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">kind</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">_is_kind</span><span class="p">(</span><span class="n">item</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">kind</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns if &#39;item&#39; is an instance or subclass of &#39;kind&#39;.</span>
 
 <span class="sd">    Args:</span>
@@ -1780,7 +1792,7 @@ be used.</p>
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">(</span>
-        <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">kind</span><span class="p">)</span> 
+        <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">kind</span><span class="p">)</span>
         <span class="ow">or</span> <span class="p">(</span><span class="n">inspect</span><span class="o">.</span><span class="n">isclass</span><span class="p">(</span><span class="n">item</span> <span class="ow">and</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">kind</span><span class="p">))))</span>
 </code></pre></div></td></tr></table></div>
       </details>

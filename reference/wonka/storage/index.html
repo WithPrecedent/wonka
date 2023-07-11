@@ -839,8 +839,8 @@
 
 <details class="contents" open>
   <summary>Contents</summary>
-  <p>Manufacturer (camina.Dictionary): dict-like class that stores wonka 
-    constructors. Has an 'add' method while validates any added values as 
+  <p>Manufacturer (camina.Dictionary): dict-like class that stores wonka
+    constructors. Has an 'add' method while validates any added values as
     wonka compatible.</p>
 </details>
   
@@ -875,10 +875,10 @@
 
   
       <p>Dictionary of factories.</p>
-<p>A Manufacturer may serve as a one-stop spot for constructors. Each 
-constructor need not be of the same subtype, as they pass the 
-'is_constructor' test. The use of a Manufacturer is wholly optional - it is 
-just a convenience offered by wonka. To access individual constructors, the 
+<p>A Manufacturer may serve as a one-stop spot for constructors. Each
+constructor need not be of the same subtype, as they pass the
+'is_constructor' test. The use of a Manufacturer is wholly optional - it is
+just a convenience offered by wonka. To access individual constructors, the
 following format should be used:</p>
 <p>manufacturer_instance['constructor_name'].create(<em>args, </em>*kwargs)</p>
 
@@ -911,11 +911,11 @@ wonka constructors. Defaults to an empty dict.</p>
         <tr>
           <td><code>default_factory</code></td>
           <td>
-                <code><a class="autorefs autorefs-external" title="typing.Optional" href="https://docs.python.org/3/library/typing.html#typing.Optional">Optional</a>[<a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a>]</code>
+                <code>Optional[<a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a>]</code>
           </td>
           <td>
             <div class="doc-md-description">
-              <p>default value to return or default 
+              <p>default value to return or default
 callable to use to create the default value.</p>
             </div>
           </td>
@@ -943,11 +943,11 @@ callable to use to create the default value.</p>
 
 
 <h2 id="wonka.storage.Manufacturer.default_factory" class="doc doc-heading">
-<code class="codehilite language-python"><span class="n">default_factory</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></code>
+<code class="codehilite language-python"><span class="n">default_factory</span><span class="p">:</span> <span class="n">Any</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
   </span>
 
 <a href="#wonka.storage.Manufacturer.default_factory" class="headerlink" title="Permanent link">&para;</a></h2>
@@ -994,7 +994,7 @@ callable to use to create the default value.</p>
           </td>
           <td>
             <div class="doc-md-description">
-              <p>item(s) to 
+              <p>item(s) to
 add to 'contents' attribute.</p>
             </div>
           </td>
@@ -1020,8 +1020,8 @@ add to 'contents' attribute.</p>
           </td>
           <td>
             <div class="doc-md-description">
-              <p>if all of the values of 'item' are not wonka-compatible 
-constructors or if 'item' itself is not a wonka-compatible 
+              <p>if all of the values of 'item' are not wonka-compatible
+constructors or if 'item' itself is not a wonka-compatible
 constructor.</p>
             </div>
           </td>
@@ -1061,18 +1061,19 @@ constructor.</p>
 <span class="normal">73</span>
 <span class="normal">74</span>
 <span class="normal">75</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">add</span><span class="p">(</span>
-    <span class="bp">self</span><span class="p">,</span> 
+    <span class="bp">self</span><span class="p">,</span>
     <span class="n">item</span><span class="p">:</span> <span class="n">MutableMapping</span><span class="p">[</span>
         <span class="n">Hashable</span><span class="p">,</span> <span class="n">base</span><span class="o">.</span><span class="n">Constructor</span><span class="p">]</span> <span class="o">|</span> <span class="n">base</span><span class="o">.</span><span class="n">Constructor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Adds &#39;item&#39; to the &#39;contents&#39; attribute.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        item (MutableMapping[Hashable, Any] | base.Constructor): item(s) to </span>
+<span class="sd">        item (MutableMapping[Hashable, Any] | base.Constructor): item(s) to</span>
 <span class="sd">            add to &#39;contents&#39; attribute.</span>
 
+
 <span class="sd">    Raises:</span>
-<span class="sd">        TypeError: if all of the values of &#39;item&#39; are not wonka-compatible </span>
-<span class="sd">            constructors or if &#39;item&#39; itself is not a wonka-compatible </span>
+<span class="sd">        TypeError: if all of the values of &#39;item&#39; are not wonka-compatible</span>
+<span class="sd">            constructors or if &#39;item&#39; itself is not a wonka-compatible</span>
 <span class="sd">            constructor.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -1089,7 +1090,6 @@ constructor.</p>
         <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
             <span class="s1">&#39;item must either be a wonka-compatible constructor or a dict-&#39;</span>
             <span class="s1">&#39;like object with values that are constructors&#39;</span><span class="p">)</span>
-    <span class="k">return</span>
 </code></pre></div></td></tr></table></div>
       </details>
   </div>
