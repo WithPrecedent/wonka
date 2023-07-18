@@ -83,6 +83,10 @@ typing = [
     "types-toml >= 0.10"]
 security = ["safety >= 2"]
 
+[tool.pytest.ini_options]
+log_cli = true
+log_cli_level = 20
+
 [tool.yapf]
 based_on_style = "google"
 column_limit = 80

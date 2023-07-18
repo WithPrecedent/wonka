@@ -6,14 +6,16 @@
 
 [![PyPI Latest Release](https://img.shields.io/pypi/v/wonka.svg?style=for-the-badge&logo=PyPI)](https://pypi.org/project/wonka/)
 [![Documentation](https://img.shields.io/badge/docs-mkdocs%20material-blue.svg?style=for-the-badge&logo=github)](https://WithPrecedent.github.io/wonka)
-![Code Coverage](https://img.shields.io/codecov/c/github/WithPrecedent/wonka?style=for-the-badge&logo=codecov&logoColor=white)
-[![PDM Managed](https://img.shields.io/badge/pdm-managed-blueviolet?style=for-the-badge)](https://pdm.fming.dev)
+[![CI Build](https://img.shields.io/github/actions/workflow/status/WithPrecedent/wonka/build.yml?branch=main&label=tests&style=for-the-badge&logo=pytest)](https://github.com/WithPrecedent/wonka/actions/workflows/build.yml?query=branch%3Amain)
+[![Project Status](https://img.shields.io/badge/repo%20status-Active-Green?style=for-the-badge&logo=git)](https://www.repostatus.org/#active)
+[![PyPI pyversions](https://img.shields.io/pypi/pyversions/wonka?style=for-the-badge&logo=python)](https://pypi.python.org/pypi/wonka/)
+[![Code Coverage](https://img.shields.io/codecov/c/github/WithPrecedent/wonka?style=for-the-badge&logo=codecov&logoColor=white)](https://codecov.io/gh/WithPrecedent/wonka)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg?style=for-the-badge&logo=apache)](https://opensource.org/licenses/Apache-2.0)
-<!-- ![GitHub Actions](https://img.shields.io/github/actions/workflow/status/WithPrecedent/wonka/actions?style=for-the-badge&logo=githubactions&logoColor=white) -->
+[![PDM Managed](https://img.shields.io/badge/pdm-managed-blueviolet?style=for-the-badge)](https://pdm.fming.dev)
 
 ## What is wonka?
 
-`wonka`[^1] is an extensible library that enables simple implementation of class and object constructors in Python. Out-of-the-box, `wonka` includes various creational design patterns, from registry factories to prototypers to composite builder workflows. It is also easy to add custom factories,[^2] while taking advantage of `wonka`'s convenient mixin classes and helper functions. This readme file offers a basic outline of how `wonka` works. If you would prefer to jump right into the full documentation, go [here](https://WithPrecedent.github.io/wonka).
+`wonka`[^1] is an extensible library for simple implementation of class and object constructors in Python. Out-of-the-box, `wonka` includes various creational design patterns, from registry factories to prototypers to composite builder workflows. It is also easy to add custom factories,[^2] while taking advantage of `wonka`'s convenient mixin classes and helper functions. This readme file offers a basic outline of how `wonka` works. If you would prefer to jump right into the full documentation, go [here](https://WithPrecedent.github.io/wonka).
 
 ## Why use wonka?
 
@@ -27,6 +29,7 @@ Factories are essential components of coding projects that require dynamic, runt
 
 * **Intuitive**: factories use a common interface with a `create` class method for all construction operations.
 * **Extensible**: core classes can be adapted and extended through inheritance or composition.
+* **Flexible**: whenever possible, factories can be mixed in for class and object self-creation or be used for creating external items.
 * **Lightweight**: the library has a miniscule memory footprint with few dependencies.
 * **Robust**: "turn-key" factories handle edge cases and core scenarios without needing further tinkering.
 * **Accessible**: `wonka` is over-documented to make it accessible to beginnning coders and readily usable for developers at all levels.
@@ -85,7 +88,7 @@ parameters = {'name' = 'Ada Lovelace', identification = 1815}
 my_instance = Base.create('indirect_subclass', parameters)
 ```
 
-That's all you need to do to create a subclass and subclass instance of `Base` without any registry attribute cluttering the namespaces of any of the classes. `Subclasser` accomplishes this by taking advantage of the `__subclassess__` attribute of every class and, by default, recursively searches for all subclasses of those subclasses until there are no more to be found (since the `__subclassess__` attribute only includes direct subclasses). It then uses the global setting for creating keys of this implicit registry for constructing a dictionary interface on the fly. If you would prefer a different naming convention for registry keys, you can easily change it from the default of snakecase by using the "set_keyer" function. If you would instead prefer a formal, declared registry for your factory (particularly useful if you have a large number of subclasses), you can subclass the `Registrar` class instead.
+That's all you need to do to create a subclass and subclass instance of `Base` without any registry attribute cluttering the namespaces of any of the classes. `Subclasser` accomplishes this by taking advantage of the `__subclassess__` attribute of every class and, by default, recursively searches for all subclasses of those subclasses (since the `__subclassess__` attribute only includes direct subclasses). It then uses the global setting for creating keys of this implicit registry for constructing a dictionary interface on the fly. If you would prefer a different naming convention for registry keys, you can easily change it from the default of snakecase by using the "set_keyer" function. If you would instead prefer a formal, declared registry for your factory (particularly useful if you have a large number of subclasses or items that are not subclasses), you can subclass the `Registrar` class instead.
 
 But, what if you want the `create` method to always return an instance instead of a class, even when `parameters` are not passed? That's easy. You would just add `Instancer` as a mixin as follows:
 

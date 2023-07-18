@@ -26,6 +26,8 @@ select = [
     "INP",
     "ISC",
     "N",
+    "NPY",
+    "PD",
     "PGH",
     "PIE",
     "PL",
@@ -58,12 +60,15 @@ ignore = [
     "ANN102",  # Missing type annotation for cls
     "ANN204",  # Missing return type annotation for special method __str__
     "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
+    "ARG003",  # Unused class method argument: `parameters`
     "ARG005",  # Unused lambda argument
     "C901",  # Too complex
     "D105",  # Missing docstring in magic method
     "D417",  # Missing argument description in the docstring
     "E501",  # Line too long
+    "E731",  # Do not assign a `lambda` expression, use a `def`
     "ERA001",  # Commented out code
+    "FBT001",  # Boolean positional arg in function definition
     "G004",  # Logging statement uses f-string
     "PLR0911",  # Too many return statements
     "PLR0912",  # Too many branches
@@ -71,6 +76,7 @@ ignore = [
     "PLR0915",  # Too many statements
     "Q000",  # Single quotes found but double quotes preferred
     "SLF001", # Private member accessed
+    "TID252",  # Relative imports are banned
     "TRY003",  # Avoid specifying long messages outside the exception class
 ]
 

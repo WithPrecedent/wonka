@@ -5,11 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+<!-- insertion marker -->
+
 0.1.1
-    Cleaned up top-matter to modules
-    Removed all unused imported modules
+* Cleaned up top-matter to modules
+* Removed all unused imported modules
 
 0.1.0
-
-Initial commitment with core factory, manager, and producer classes
-<!-- insertion marker -->
+* Initial commitment with core factory, manager, and producer classes
+* 

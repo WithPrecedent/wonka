@@ -21,7 +21,9 @@ nav:
   - Changelog: changelog.md
   - Credits: credits.md
   - License: license.md
-- User Guide: user_guide.md
+- User Guide:
+  - Design: design.md
+  - Recipes: recipes.md
 - API: reference/
 - Development:
   - Contributing: contributing.md
