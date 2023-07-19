@@ -101,8 +101,8 @@ def check_quality(ctx: Context) -> None:
         
     """
     ctx.run(
-        ruff.check(*PY_SRC_LIST, config='config/ruff.toml'),
-        title=pyprefix('Checking code quality'))
+        ruff.check(*PY_SRC_LIST, config = 'config/ruff.toml'),
+        title = pyprefix('Checking code quality'))
 
 
 @duty

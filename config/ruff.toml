@@ -1,9 +1,7 @@
 target-version = "py39"
+fix = true
 line-length = 80
-exclude = [
-    "fixtures",
-    "site",
-]
+exclude = ["fixtures", "site"]
 select = [
     "A",
     "ANN",
@@ -52,8 +50,7 @@ select = [
     "TRY",
     "UP",
     "W",
-    "YTT",
-]
+    "YTT"]
 ignore = [
     "A001",  # Variable is shadowing a Python builtin
     "ANN101",  # Missing type annotation for self
@@ -77,23 +74,21 @@ ignore = [
     "Q000",  # Single quotes found but double quotes preferred
     "SLF001", # Private member accessed
     "TID252",  # Relative imports are banned
-    "TRY003",  # Avoid specifying long messages outside the exception class
-]
+    "TRY003"]  # Avoid specifying long messages outside the exception class
 
 [per-file-ignores]
-"src/*/cli.py" = [
-    "T201",  # Print statement
-]
+"src/*/cli.py" = ["T201"]  # Print statement
+
 "scripts/*.py" = [
     "INP001",  # File is part of an implicit namespace package
-    "T201",  # Print statement
-]
+    "T201"]  # Print statement
+
 "tests/*.py" = [
     "ARG005",  # Unused lambda argument
     "FBT001",  # Boolean positional arg in function definition
     "PLR2004",  # Magic value used in comparison
-    "S101",  # Use of assert detected
-]
+    "S101"]  # Use of assert detected
+
 
 [flake8-quotes]
 docstring-quotes = "double"
