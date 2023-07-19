@@ -72,6 +72,7 @@ ignore = [
     "PLR0913",  # Too many arguments to function call
     "PLR0915",  # Too many statements
     "Q000",  # Single quotes found but double quotes preferred
+    "RET505",  # Unnecessary "else" after a "return" statement
     "SLF001", # Private member accessed
     "TID252",  # Relative imports are banned
     "TRY003"]  # Avoid specifying long messages outside the exception class

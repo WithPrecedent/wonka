@@ -1,6 +1,4 @@
-"""An extensible library that enables simple implementation of class and object
-constructors.
-"""
+"""An extensible library for simple implementation of constructors."""
 
 from __future__ import annotations
 
