@@ -21,7 +21,7 @@ CHANGELOG_FILE = 'CHANGELOG.md'
 CI = os.environ.get('CI', '0') in {'1', 'true', 'yes', ''}
 DOCS_CONFIG_FILE = 'mkdocs.yml'
 MULTIRUN = os.environ.get('PDM_MULTIRUN', '0') == '1'
-PY_SRC_PATHS = (Path(_) for _ in ('src', 'duties.py', 'scripts'))
+PY_SRC_PATHS = (Path(_) for _ in ('src', 'tests', 'duties.py', 'scripts'))
 PY_SRC_LIST = tuple(str(_) for _ in PY_SRC_PATHS)
 PY_SRC = ' '.join(PY_SRC_LIST)
 TYPING_CONFIG_FILE = 'config/mypy.ini'
