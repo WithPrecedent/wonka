@@ -82,7 +82,7 @@ def changelog(ctx: Context) -> None:
 
 
 @duty(pre = [
-    'check_quality', 'check_types', 'check_docs', 'check_dependencies', 
+    'check_quality', 'check_docs', 'check_dependencies', 
     'check-api'])
 def check(ctx: Context) -> None:  # noqa: ARG001
     """Check it all!

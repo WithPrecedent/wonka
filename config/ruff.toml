@@ -1,4 +1,4 @@
-target-version = "py39"
+target-version = "py310"
 fix = true
 line-length = 80
 exclude = ["fixtures", "site"]

@@ -16,6 +16,7 @@ from typing import Any
 
 import camina
 
+
 _KEY_NAMER: Callable[[object | type[Any]], str] = camina.namify
 _METHOD_NAMER: Callable[[object | type[Any]], str] = (lambda x: f'from_{x}')
 _OVERWRITE: bool = True
@@ -36,7 +37,7 @@ def set_compatibility_rule(compatibility: bool) -> None:
 
     """
     if isinstance(compatibility, bool):
-        globals()._STRICT_COMPATIBILITY = compatibility
+        globals()["_STRICT_COMPATIBILITY"] = compatibility
     else:
         raise TypeError('compatibility argument must be boolean')
 
@@ -52,7 +53,7 @@ def set_keyer(keyer: Callable[[object | type[Any]], str]) -> None:
 
     """
     if isinstance(keyer, Callable):
-        globals()._KEY_NAMER = keyer
+        globals()["_KEY_NAMER"] = keyer
     else:
         raise TypeError('keyer argument must be a callable')
 
@@ -68,7 +69,7 @@ def set_method_namer(namer: Callable[[object | type[Any]], str]) -> None:
 
     """
     if isinstance(namer, Callable):
-        globals()._METHOD_NAMER = namer
+        globals()["_METHOD_NAMER"] = namer
     else:
         raise TypeError('namerargument must be a callable')
 
@@ -84,7 +85,7 @@ def set_overwrite_rule(overwrite: bool) -> None:
 
     """
     if isinstance(overwrite, bool):
-        globals()._OVERWRITE = overwrite
+        globals()["_OVERWRITE"] = overwrite
     else:
         raise TypeError('overwrite argument must be boolean')
 
@@ -100,7 +101,7 @@ def set_verbose_rule(verbose: bool) -> None:
 
     """
     if isinstance(verbose, bool):
-        globals()._OVERWRITE = verbose
+        globals()["_VERBOSE"] = verbose
     else:
         raise TypeError('verbose argument must be boolean')
 
