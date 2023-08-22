@@ -1,16 +1,19 @@
-# wonka documentation rules and instructions
+# Project Documentation Rules and Instructions
 
 # Project Information
 
 site_name: wonka
-site_description: Extensible, lightweight, accessible constructors
+site_description: Fleixble, accessible, extensible Python factories
 site_url: https://WithPrecedent.github.io/wonka
-# site_dir: "site"
 repo_name: WithPrecedent/wonka
 repo_url: https://github.com/WithPrecedent/wonka
-# edit_uri: blob/main/docs/
-watch: [mkdocs.yml, README.md, CONTRIBUTING.md, CHANGELOG.md, src/wonka]
-copyright: Copyright &copy; 2023 Corey Rayburn Yung
+watch: [
+  mkdocs.yml,
+  README.md,
+  CONTRIBUTING.md,
+  CHANGELOG.md,
+  src/wonka]
+copyright: Copyright, 2023 Corey Rayburn Yung
 docs_dir: docs
 
 # Documentation Structure
@@ -28,13 +31,12 @@ nav:
 - Development:
   - Contributing: contributing.md
   - Code of Conduct: code_of_conduct.md
-  - Coverage Report: coverage.md
+  # - Coverage Report: coverage.md
 
 # Documentation Appearance
 
 theme:
   name: material
-  logo: img/top_hat.png
   locale: en
   icon:
     repo: fontawesome/brands/github
@@ -61,7 +63,7 @@ theme:
     toggle:
       icon: material/brightness-auto
       name: Switch to light mode
-  - media: "(prefers-color-scheme: lighht)"
+  - media: "(prefers-color-scheme: light)"
     scheme: default
     primary: teal
     accent: purple
@@ -75,7 +77,6 @@ theme:
     toggle:
       icon: material/weather-night
       name: Switch to system preference
-  # use_directory_urls: false
 
 # Extras, Extensions, and Plugins
 
@@ -111,15 +112,12 @@ markdown_extensions:
 
 plugins:
 - autorefs
-- coverage:
-    page_name: coverage
-    html_report_dir: htmlcov
+# - coverage:
+#     page_name: coverage
+#     html_report_dir: htmlcov
 - gen-files:
     scripts:
-    - scripts/gen_ref_nav.py
-# - git-committers:
-#     enabled: !ENV [DEPLOY, false]
-#     repository: WithPrecedent/wonka
+    - docs/scripts/gen_ref_nav.py
 - literate-nav:
     nav_file: SUMMARY.md
 - markdown-exec:
@@ -139,9 +137,6 @@ plugins:
           merge_init_into_class: true
           separate_signature: false
           show_signature_annotations: false
-          # show_submodules: true
-# - render_swagger:
-#     title: API Reference        
 - search:
 
 extra:

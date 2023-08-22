@@ -12,9 +12,10 @@ Contents:
 from __future__ import annotations
 
 import abc
+from collections.abc import Callable
 import dataclasses
 import inspect
-from typing import TYPE_CHECKING, Any, Callable, ClassVar
+from typing import TYPE_CHECKING, Any, ClassVar
 
 from . import base, configuration, shared
 

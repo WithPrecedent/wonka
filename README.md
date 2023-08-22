@@ -4,14 +4,17 @@
 <img src="./docs/img/top_hat.png" alt="wonka top hat logo" style="width:250px;"/>
 </p>
 
-[![PyPI Latest Release](https://img.shields.io/pypi/v/wonka.svg?style=for-the-badge&logo=PyPI)](https://pypi.org/project/wonka/)
-[![Documentation](https://img.shields.io/badge/docs-mkdocs%20material-blue.svg?style=for-the-badge&logo=github)](https://WithPrecedent.github.io/wonka)
-[![CI Build](https://img.shields.io/github/actions/workflow/status/WithPrecedent/wonka/build.yml?branch=main&label=tests&style=for-the-badge&logo=pytest)](https://github.com/WithPrecedent/wonka/actions/workflows/build.yml?query=branch%3Amain)
-[![Project Status](https://img.shields.io/badge/repo%20status-Active-Green?style=for-the-badge&logo=git)](https://www.repostatus.org/#active)
-[![PyPI pyversions](https://img.shields.io/pypi/pyversions/wonka?style=for-the-badge&logo=python)](https://pypi.python.org/pypi/wonka/)
-[![Code Coverage](https://img.shields.io/codecov/c/github/WithPrecedent/wonka?style=for-the-badge&logo=codecov&logoColor=white)](https://codecov.io/gh/WithPrecedent/wonka)
-[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg?style=for-the-badge&logo=apache)](https://opensource.org/licenses/Apache-2.0)
-[![PDM Managed](https://img.shields.io/badge/pdm-managed-blueviolet?style=for-the-badge)](https://pdm.fming.dev)
+| | |
+| --- | --- |
+| Version | [![PyPI Latest Release](https://img.shields.io/pypi/v/wonka.svg?style=for-the-badge&label=pypi&logo=PyPI&color=darkorange)](https://pypi.org/project/wonka/) [![GitHub Latest Release](https://img.shields.io/github/v/tag/WithPrecedent/wonka?style=for-the-badge&label=branch&logo=github&color=navy)](https://github.com/WithPrecedent/wonka/releases)
+| Status | [![Build Status](https://img.shields.io/github/actions/workflow/status/WithPrecedent/wonka/ci.yml?branch=main&label=tests&style=for-the-badge&logo=pytest&color=cadetblue)](https://github.com/WithPrecedent/wonka/actions/workflows/ci.yml?query=branch%3Amain) [![Development Status](https://img.shields.io/badge/Development-Active-Green?style=for-the-badge&logo=git)](https://www.repostatus.org/#active) [![Project Stability](https://img.shields.io/badge/stability-beta-firebrick?style=for-the-badge&logo=git)](https://www.repostatus.org/#active) [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg?style=for-the-badge&logo=apache&color=goldenrod)](https://opensource.org/licenses/Apache-2.0)
+| Docs | [![Hosted By](https://img.shields.io/badge/hosted_by-github_pages-blue?style=for-the-badge&logo=github&color=navy)](https://WithPrecedent.github.io/wonka)
+| Compatibility | [![Compatible Python Versions](https://img.shields.io/pypi/pyversions/wonka?style=for-the-badge&logo=python&color=darkorange)](https://pypi.python.org/pypi/wonka/) [![Linux](https://img.shields.io/badge/linux-maroon?style=for-the-badge&logo=linux&labelColor=gray)](https://www.linux.org/) [![MacOS](https://img.shields.io/badge/macos-yellow?style=for-the-badge&logo=apple&labelColor=gray)](https://www.apple.com/macos/) [![Windows](https://img.shields.io/badge/windows-blue?style=for-the-badge&logo=windows&labelColor=gray)](https://www.microsoft.com/en-us/windows?r=1)
+| Stats | [![PyPI Download Rate (per month)](https://img.shields.io/pypi/dm/wonka?style=for-the-badge&logo=pypi&color=darkorange)](https://pypi.org/project/wonka) [![GitHub Contributors](https://img.shields.io/github/contributors/WithPrecedent/wonka?style=for-the-badge&label=contributors&logo=github&color=darksalmon)](https://github.com/WithPrecedent/wonka/graphs/contributors) [![GitHub Contributors](https://img.shields.io/github/issues/WithPrecedent/wonka?style=for-the-badge&label=issues&logo=github&color=deeppink)](https://github.com/WithPrecedent/wonka/graphs/contributors) [![GitHub Stars](https://img.shields.io/github/stars/WithPrecedent/wonka?style=for-the-badge&label=Stars&logo=github&color=firebrick)](https://github.com/WithPrecedent/wonka/stargazers) [![GitHub Forks](https://img.shields.io/github/forks/WithPrecedent/wonka?style=for-the-badge&label=forks&logo=github&color=coral)](https://github.com/WithPrecedent/wonka/forks)
+| Tools | [![Documentation](https://img.shields.io/badge/MkDocs-magenta?style=for-the-badge&logo=markdown&labelColor=gray)](https://squidfunk.github.io/mkdocs-material/) [![Linter](https://img.shields.io/endpoint?style=for-the-badge&url=https://raw.githubusercontent.com/charliermarsh/Ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/Ruff) [![Dependency Manager](https://img.shields.io/badge/PDM-blueviolet?style=for-the-badge&logo=affinity&labelColor=gray)](https://PDM.fming.dev) [![Pre-commit](https://img.shields.io/badge/pre--commit-brightgreen?style=for-the-badge&logo=pre-commit&logoColor=white&labelColor=gray)](https://github.com/TezRomacH/python-package-template/blob/master/.pre-commit-config.yaml) [![CI](https://img.shields.io/badge/github_actions-yellow?style=for-the-badge&logo=githubactions&labelColor=gray)](https://github.com/features/actions) [![Editor Settings](https://img.shields.io/badge/editor_config-blue?style=for-the-badge&logo=editorconfig&labelColor=gray)](https://github.com/features/actions) [![Template](https://img.shields.io/badge/snickerdoodle-brown?style=for-the-badge&logo=cookiecutter&labelColor=gray)](https://www.github.com/WithPrecedent/snickerdoodle)
+| | |
+
+-----
 
 
 ## What is wonka?
@@ -234,9 +237,7 @@ The library includes `Manufacturer`, a dictionary of factories, if you want all 
 
 ## Contributing
 
-Contributors are always welcome and should find `wonka` easy to work with. The project is highly documented so that users and developers can make `wonka` work with their projects. It is designed for Python coders at all levels. Even beginners should be able to follow the readable code and internal documentation to understand how it works. If you wish to contribute, please read the [Contribution Guide](./CONTRIBUTING.md) and [Code of Conduct](./CODE_OF_CONDUCT.md).
-
-Notably, `wonka` is 100% compatible with my other project framework libraries, of which it was originally a part. This is why you should feel confident in the continued development and maintenance of the library - it is essential part of my overall work. I have decided to make it available as a separate library for those that just want to use its implementation without the other components of my project framework ecosystem. So, for example, any of the many registry types of [ashford](https://github.com/WithPrecedent/ashford) can be used with a `Registrar` in `wonka`. Further, for project workflow pipelining, where dynamic factories are essential, the `wonka` classes are interwoven and can be extended in the [chrisjen](https://github.com/WithPrecedent/chrisjen) and [amos](https://github.com/WithPrecedent/amos) packages. Also, for those using configuration option files, `wonka` is supported by the [bobbie](https://github.com/WithPrecedent/bobbie) project settings library. So, I, and any other maintainers, will do my best to promptly integrate any contributions.
+Contributors are always welcome. Feel free to grab an [issue](https://www.github.com/WithPrecedent/wonka/issues) to work on or make a suggested improvement. If you wish to contribute, please read the [Contribution Guide](https://www.github.com/WithPrecedent/wonka/contributing.md) and [Code of Conduct](https://www.github.com/WithPrecedent/wonka/code_of_conduct.md).
 
 ## Similar Projects
 
@@ -262,6 +263,10 @@ Lastly, I want to extend a special thanks to the late, great Gene Wilder, whose 
 <p align="center">
 <img src="https://media.giphy.com/media/3o6ZtbOoOHu28ftYiI/giphy.gif" alt="RIP, Gene Wilder, 1933-2016" style="width:200px;"/>
 </p>
+
+## License
+
+Use of this repository is authorized under the [Apache Software License 2.0](https://www.github.com/WithPrecedent/wonka/blog/main/LICENSE).
 
 [^1]: This project is not affiliated with Willy Wonka candy, either of the Willy Wonka films (especially the Johnny Depp one), or any other Willy Wonka product. It's just named "wonka" because all of the most obvious names for a Python package of factories and other constructors on [pypi.org](https://pypi.org) were taken and Willy Wonka's insane candy factory was the first relevant pop-culture touchstone I could think of.
 
