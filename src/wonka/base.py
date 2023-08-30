@@ -21,7 +21,6 @@ from __future__ import annotations
 import abc
 import dataclasses
 from collections.abc import Hashable, Iterable, MutableMapping
-import sys
 from typing import Any, TypeAlias
 
 

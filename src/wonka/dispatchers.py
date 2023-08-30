@@ -12,9 +12,9 @@ Contents:
 from __future__ import annotations
 
 import abc
-from collections.abc import Callable
 import dataclasses
 import inspect
+from collections.abc import Callable
 from typing import TYPE_CHECKING, Any, ClassVar
 
 from . import base, configuration, shared
@@ -93,7 +93,7 @@ class Sourcerer(base.Factory, abc.ABC):
             empty dict.
 
     """
-    sources: ClassVar[MutableMapping[type[Any], str]] = ""
+    sources: ClassVar[MutableMapping[type[Any], str]] = {}
 
     """ Class Methods """
 

@@ -18,7 +18,7 @@ import camina
 
 
 _KEY_NAMER: Callable[[object | type[Any]], str] = camina.namify
-_METHOD_NAMER: Callable[[object | type[Any]], str] = (lambda x: f'from_{x}')
+_METHOD_NAMER: Callable[[object | type[Any]], str] = lambda x: f'from_{x}'
 _OVERWRITE: bool = True
 _STRICT_COMPATIBILITY: bool = True
 _VERBOSE: bool = False
@@ -126,4 +126,3 @@ def set_verbose_rule(verbose: bool) -> None:
 # # alternative to None when None is a valid value for an argument. This provides
 # # a fuller repr and traceback.
 # _MISSING = _MISSING_VALUE()
-

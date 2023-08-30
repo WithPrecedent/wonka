@@ -29,6 +29,7 @@ class Assembler(camina.Listing, base.Manager):
             Defaults to an empty list.
 
     """
+
     contents: MutableSequence[base.Constructor] = dataclasses.field(
         default_factory = list)
 
@@ -60,7 +61,7 @@ class Assembler(camina.Listing, base.Manager):
         """Manages construction and/or modification based on 'item'.
 
         Args:
-            item (Any): item to be passed to constructors in 'contents'.
+            item: item to be passed to constructors in 'contents'.
 
 
         Returns:

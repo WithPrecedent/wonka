@@ -29,7 +29,7 @@ If applicable, add screenshots to help explain your problem.
 
 **System (please complete the following information):**
 
-- `wonka` version: [e.g. 0.2.1]
+- `{{cookiecutter.project_name}}` version: [e.g. 0.2.1]
 - Python version: [e.g. 3.9]
 - OS: [Windows/Linux/MacOS]
 
