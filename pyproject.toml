@@ -106,12 +106,13 @@ ignore = [
     "PLR0915",  # Too many statements
     "PLR1711", # Useless 'return' at the end of function
     "Q000",  # Single quotes found but double quotes preferred
+    # "S0001",  # Use of assert detected
     "SLF001", # Private member accessed
     "TID252",  # Relative imports are banned
-    "TRY003",  # Avoid specifying long messages outside the exception class
-    "W0105",  # String statement has no effect
-    "W0221",  # Arguments differ
-    "W0222",]  # Access to a protected member 
+    "TRY003",]  # Avoid specifying long messages outside the exception class
+    # "W0105",  # String statement has no effect
+    # "W0221",  # Arguments differ
+    # "W0222",]  # Access to a protected member
 line-length = 80
 select = [
     "A",  # flake8-buttons
@@ -119,7 +120,7 @@ select = [
     "ARG",  # flake8-unused-arguments
     "B",  # flake8-bugbear
     "BLE",  # flake8-blind-except
-    "C",  # 
+    "C",  #
     "C4",  # flake8-comprehensions
     "COM",  # flake8-commas
     "D",  # pydocstyle
@@ -154,7 +155,7 @@ select = [
     "S",  # bandit
     "SIM",  # flake8-slots
     "SLF",  # flake8-self
-    "T",  # 
+    "T",  #
     "T10",  # flake8-debugger
     "T20",  # flake8-print
     "TCH",  # flake8-type-checking
