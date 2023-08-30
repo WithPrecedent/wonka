@@ -37,6 +37,7 @@ class Manufacturer(camina.Dictionary):
             callable to use to create the default value.
 
     """
+
     contents: MutableMapping[Hashable, base.Constructor] = dataclasses.field(
         default_factory = dict)
     default_factory: Any | None = None
@@ -73,4 +74,3 @@ class Manufacturer(camina.Dictionary):
             raise TypeError(
                 'item must either be a wonka-compatible constructor or a dict-'
                 'like object with values that are constructors')
-

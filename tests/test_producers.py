@@ -3,7 +3,7 @@
 ToDo:
     Use better example to test Flexer (which isn't working right now because of
         the use of Delegate classes in the tests)
-  
+
 """
 from __future__ import annotations
 import dataclasses
@@ -15,31 +15,31 @@ import wonka
 
 @dataclasses.dataclass
 class Configuration(wonka.Classer, wonka.Delegate):
-    
+
     contents: dict[str, Any] = dataclasses.field(default_factory = dict)
-        
+
     @classmethod
-    def from_dict(cls, item: dict[str, Any]) -> Settings:        
+    def from_dict(cls, item: dict[str, Any]) -> Settings:
         return cls(contents = item)
 
 
 @dataclasses.dataclass
 class Settings(wonka.Flexer, wonka.Delegate):
-    
+
     contents: dict[str, Any] = dataclasses.field(default_factory = dict)
-        
+
     @classmethod
-    def from_dict(cls, item: dict[str, Any]) -> Settings:        
+    def from_dict(cls, item: dict[str, Any]) -> Settings:
         return cls(contents = item)
 
 
 @dataclasses.dataclass
 class Setup(wonka.Instancer, wonka.Delegate):
-    
+
     contents: dict[str, Any] = dataclasses.field(default_factory = dict)
-        
+
     @classmethod
-    def from_dict(cls, item: dict[str, Any]) -> Settings:        
+    def from_dict(cls, item: dict[str, Any]) -> Settings:
         return cls(contents = item)
 
 

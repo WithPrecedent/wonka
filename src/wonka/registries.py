@@ -25,12 +25,13 @@ if TYPE_CHECKING:
 class Registrar(base.Factory):
     """Builds an item from a registry.
 
-    Attributes:
+    Attributes
         registry (ClassVar[MutableMapping[Hashable, Any]]): stores classes
             and/or instances to be used in item construction. Defaults to an
             empty dict.
 
     """
+
     registry: ClassVar[MutableMapping[Hashable, Any]] = ""
 
     """ Class Methods """
@@ -92,10 +93,10 @@ class Subclasser(base.Factory, abc.ABC):
 
 
         Args:
-            item (Any): data for construction of the returned item.
+            item: data for construction of the returned item.
             parameters: Optional[MutableMapping[Hashable, Any]]: keyword
                 arguments to pass or add to a created instance.
-
+            kwargs: allows subclass to take kwargs.
 
         Raises:
             KeyError: If a corresponding subclass does not exist for 'item.'

@@ -37,7 +37,7 @@ class Classer(base.Producer, abc.ABC):
         """Modifies 'item' and possibly incorporates 'parameters'.
 
         Args:
-            item (Any): item created by a constructor that may need to be
+            item: item created by a constructor that may need to be
                 altered before being returned by the constructor 'create'
                 method.
             parameters: Optional[MutableMapping[Hashable, Any]]: keyword
@@ -45,7 +45,7 @@ class Classer(base.Producer, abc.ABC):
                 None. The argument for 'parameters' is ignored by Classer - it
                 is only included to provide a consistent interface across all
                 Producer subclasses.
-
+            kwargs: allows subclass to take kwargs.
 
         Returns:
             Any: modified item.
@@ -75,13 +75,13 @@ class Flexer(base.Producer, abc.ABC):
         """Modifies 'item' and possibly incorporates 'parameters'.
 
         Args:
-            item (Any): item created by a constructor that may need to be
+            item: item created by a constructor that may need to be
                 altered before being returned by the constructor 'create'
                 method.
             parameters: Optional[MutableMapping[Hashable, Any]]: keyword
                 arguments to pass or add to a created instance. Defaults to
                 None.
-
+            kwargs: allows subclass to take kwargs.
 
         Returns:
             Any: modified item.
@@ -110,13 +110,13 @@ class Instancer(base.Producer, abc.ABC):
         """Modifies 'item' and incorporates 'parameters'.
 
         Args:
-            item (Any): item created by a constructor that may need to be
+            item: item created by a constructor that may need to be
                 altered before being returned by the constructor 'create'
                 method.
             parameters: Optional[MutableMapping[Hashable, Any]]: keyword
                 arguments to pass or add to a created instance. Defaults to
                 None.
-
+            kwargs: allows subclass to take kwargs.
 
         Returns:
             Any: modified item.

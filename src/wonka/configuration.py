@@ -16,7 +16,6 @@ from typing import Any
 
 import camina
 
-
 _KEY_NAMER: Callable[[object | type[Any]], str] = camina.namify
 _METHOD_NAMER: Callable[[object | type[Any]], str] = lambda x: f'from_{x}'
 _OVERWRITE: bool = True

@@ -14,13 +14,12 @@ from __future__ import annotations
 import abc
 import dataclasses
 import inspect
-from collections.abc import Callable
 from typing import TYPE_CHECKING, Any, ClassVar
 
 from . import base, configuration, shared
 
 if TYPE_CHECKING:
-    from collections.abc import Hashable, MutableMapping
+    from collections.abc import Callable, Hashable, MutableMapping
 
 
 @dataclasses.dataclass
@@ -49,7 +48,7 @@ class Delegate(base.Factory):
             item (Any): data for construction of the returned item.
             parameters: Optional[MutableMapping[Hashable, Any]]: keyword
                 arguments to pass or add to a created instance.
-
+            kwargs: allows subclass to take kwargs.
 
         Raises:
             AttributeError: If an appropriate method does not exist for the
@@ -86,13 +85,14 @@ class Sourcerer(base.Factory, abc.ABC):
     https://divinity.fandom.com/wiki/Sourcerer
 
 
-    Attributes:
+    Attributes
         sources (ClassVar[MutableMapping[type[Any], str]]): dict with keys that
             are types and values are substrings of the names of methods to call
             when the key type is passed to the 'create' method. Defaults to an
             empty dict.
 
     """
+
     sources: ClassVar[MutableMapping[type[Any], str]] = {}
 
     """ Class Methods """
@@ -106,10 +106,10 @@ class Sourcerer(base.Factory, abc.ABC):
         """Creates an item based on 'item' and possibly 'parameters'.
 
         Args:
-            item (Any): data for construction of the returned item.
+            item: data for construction of the returned item.
             parameters: Optional[MutableMapping[Hashable, Any]]: keyword
                 arguments to pass or add to a created instance.
-
+            kwargs: allows subclass to take kwargs.
 
         Raises:
             AttributeError: if the value matching the key 'item' does not
@@ -140,7 +140,7 @@ def _get_creation_method_name(
     """Returns the creation method name for factories that call other methods.
 
     Args:
-        source (Any): source data for creating a method name.
+        source: source data for creating a method name.
         method_namer (Optional[Callable[[object | type[Any]], str]], optional):
             callable to create the creation method name. Defaults to None. If it
             is None, the global namer stored in configuration._METHOD_NAMER will
@@ -179,9 +179,9 @@ def _get_from_builder_method(
 
     Args:
         factory (Any): factory class or instance.
-        method (str): name of the method of factory to use to construct an item.
-        source (Any): the source data used to create item.
-
+        method : name of the method of factory to use to construct an item.
+        source: the source data used to create item.
+        kwargs: allows subclass to take kwargs.
 
     Raises:
         AttributeError: if 'factory' has no method named 'method'.

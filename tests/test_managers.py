@@ -15,7 +15,7 @@ class Options(wonka.Subclasser):
 @dataclasses.dataclass
 class Settings(Options):
     pass
-        
+
 
 @dataclasses.dataclass
 class Configuration(Settings):
@@ -30,22 +30,22 @@ class Setup(Settings):
 
 @dataclasses.dataclass
 class Registration_Desk(wonka.Registrar):
-    
+
     registry: ClassVar[dict[str, Any]] = {
-        'configuration': Configuration, 
+        'configuration': Configuration,
         'setup': Setup}
 
 
 def test_assembler():
     assembly_line = wonka.Assembler()
-    
+
     dictionary = {'verbose': True, 'processors': 8}
     config = Registration_Desk.create(
-        'configuration', 
+        'configuration',
         parameters = {'contents': dictionary})
     other_dictionary = {'ghost': 'town'}
     setup = Options.create(
-        'configuration', 
+        'configuration',
         parameters = {'contents': other_dictionary})
     assembly_line.add(config)
     assembly_line.add(setup)

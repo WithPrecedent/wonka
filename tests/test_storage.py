@@ -15,7 +15,7 @@ class Options(wonka.Subclasser):
 @dataclasses.dataclass
 class Settings(Options):
     pass
-        
+
 
 @dataclasses.dataclass
 class Configuration(Settings):
@@ -30,9 +30,9 @@ class Setup(Settings):
 
 @dataclasses.dataclass
 class Registration_Desk(wonka.Registrar):
-    
+
     registry: ClassVar[dict[str, Any]] = {
-        'configuration': Configuration, 
+        'configuration': Configuration,
         'setup': Setup}
 
 
@@ -43,15 +43,15 @@ def test_manufacturer():
     depot.add(Options)
     depot.add({'registration': Registration_Desk})
     setup = depot['options'].create(
-        'configuration', 
+        'configuration',
         parameters = {'contents': dictionary})
     assert setup.contents['processors'] == 8
     assert isinstance(setup, Configuration)
     registration = depot['registration'].create(
-        'configuration', 
+        'configuration',
         parameters = {'contents': other_dictionary})
     assert registration.contents['tree'] == 'house'
-    assert isinstance(registration, Configuration)    
+    assert isinstance(registration, Configuration)
     return
 
 if __name__ == '__main__':

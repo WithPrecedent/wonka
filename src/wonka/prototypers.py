@@ -32,12 +32,12 @@ class Scribe(base.Factory):
         """Clones 'item' and possibly incorporates 'parameters'.
 
         Args:
-            item (Optional[Any]): item to clone. If it is None, the 'create'
+            item: item to clone. If it is None, the 'create'
                 method assumes that it should clone itself. Defaults to None.
             parameters: Optional[MutableMapping[Hashable, Any]]: keyword
                 arguments to pass or add to a created instance. Defaults to
                 None.
-
+            kwargs: allows subclass to take kwargs.
 
         Returns:
             Any: cloned item.

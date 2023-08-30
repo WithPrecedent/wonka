@@ -32,21 +32,21 @@ import wonka
 # may use standard classes, if you would prefer.
 @dataclasses.dataclass
 class Base(wonka.Subclasser):
-    
+
     name: str
     identification: int
 
 
 @dataclasses.dataclass
 class DirectSubclass(Base):
-    
+
     name: str
     identification: int
 
 
 @dataclasses.dataclass
 class IndirectSubclass(DirectSubclass):
-    
+
     name: str
     identification: int
 
@@ -66,7 +66,7 @@ But, what if you want the `create` method to always return an instance instead o
 ```python
 @dataclasses.dataclass
 class Base(wonka.Instancer, wonka.Subclasser):
-    
+
     name: str
     identification: int
 ```
@@ -87,7 +87,7 @@ import wonka
 
 @dataclasses.dataclass
 class Settings(wonka.Sourcerer):
-    
+
     contents: MutableMapping[Hashable, Any] = dataclasses.field(
         default_factory = dict)
     defaults: Optional[MutableMapping[Hashable, Any]] = dataclasses.field(
@@ -100,23 +100,23 @@ class Settings(wonka.Sourcerer):
 
     @classmethod
     def from_dictionary(cls, item: MutableMapping[Hashable, Any]) -> Settings:
-        """Creates a Settings instance from a dict-like object."""      
+        """Creates a Settings instance from a dict-like object."""
         return cls(contents = item)
-        
+
     @classmethod
     def from_path(cls, item: str | pathlib.Path) -> Settings:
         """Creates a Settings instance from an .ini file."""
-        path = pathlib.Path(item) if str else path  
+        path = pathlib.Path(item) if str else path
         contents = configparser.ConfigParser(dict_type = dict)
         contents.optionxform = lambda option: option
         contents.read(path)
         return cls(contents = dict(contents._sections))
-    
+
 parameters = {'defaults': {'verbose': True}, 'infer_types': False}
-# The 'create' class method detects the data type of the first argument passed 
-# and calls the appropriate construction method based on its type. Unlike 
-# ordinary dispatch systems, Sourcerer tests whether the passed argument is 
-# a subclass or subclass instance of the types included in the 'sources' class 
+# The 'create' class method detects the data type of the first argument passed
+# and calls the appropriate construction method based on its type. Unlike
+# ordinary dispatch systems, Sourcerer tests whether the passed argument is
+# a subclass or subclass instance of the types included in the 'sources' class
 # attribute.
 initialization = Settings.create('some_path.ini', parameters = parameters)
 ```

@@ -61,7 +61,7 @@ There are three categories of base classes in `wonka`: factories, managers, and 
 <img src="https://media2.giphy.com/media/o4aGs2I3rVKjC/giphy.gif" alt="Come with me and you'll be in a world of pure imagination" style="width:350px;"/>
 </p>
 
-All `wonka` factory classes have a `create` class method which is used to construct new items. The only required parameter for `create` is `item`, which contains the data for building products. 
+All `wonka` factory classes have a `create` class method which is used to construct new items. The only required parameter for `create` is `item`, which contains the data for building products.
 
 Out-of-the-box, this library offers three general subtypes of its base `Factory` class. These are not subclasses, but rather describe the type of functionality in the included `Factory` subclasses.
 

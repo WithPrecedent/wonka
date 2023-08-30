@@ -12,22 +12,22 @@ import wonka
 
 @dataclasses.dataclass
 class Settings(wonka.Delegate):
-    
+
     contents: dict[str, Any] = dataclasses.field(default_factory = dict)
-        
+
     @classmethod
-    def from_dict(cls, item: dict[str, Any]) -> Settings:        
+    def from_dict(cls, item: dict[str, Any]) -> Settings:
         return cls(contents = item)
 
 
 @dataclasses.dataclass
 class Configuration(wonka.Sourcerer):
-    
+
     contents: dict[str, Any] = dataclasses.field(default_factory = dict)
     sources: ClassVar[dict[str, Any]] = {MutableMapping: 'dictionary'}
-        
+
     @classmethod
-    def from_dictionary(cls, item: dict[str, Any]) -> Configuration:        
+    def from_dictionary(cls, item: dict[str, Any]) -> Configuration:
         return cls(contents = item)
 
 
@@ -37,16 +37,16 @@ def test_delegate():
     assert settings.contents['tree'] == 'house'
     assert isinstance(settings, Settings)
     return
-  
+
 def test_sourcerer():
     contents = {'tree': 'house', 'ghost': 'town'}
     configuration = Configuration.create(contents)
     assert configuration.contents['tree'] == 'house'
-    assert isinstance(configuration, Configuration)    
+    assert isinstance(configuration, Configuration)
     new_contents = camina.Dictionary(contents)
     new_configuration = Configuration.create(new_contents)
-    assert new_configuration.contents['ghost'] == 'town'  
-    assert isinstance(new_configuration, Configuration)  
+    assert new_configuration.contents['ghost'] == 'town'
+    assert isinstance(new_configuration, Configuration)
     return
 
 

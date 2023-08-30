@@ -14,7 +14,7 @@ class Options(wonka.Subclasser):
 @dataclasses.dataclass
 class Settings(Options):
     pass
-        
+
 
 @dataclasses.dataclass
 class Configuration(Settings):
@@ -29,16 +29,16 @@ class Setup(Settings):
 
 @dataclasses.dataclass
 class Registration_Desk(wonka.Registrar):
-    
+
     registry: ClassVar[dict[str, Any]] = {
-        'configuration': Configuration, 
+        'configuration': Configuration,
         'setup': Setup}
 
 
 def test_registrar():
     dictionary = {'verbose': True, 'processors': 8}
     config = Registration_Desk.create(
-        'configuration', 
+        'configuration',
         parameters = {'contents': dictionary})
     assert config.contents['processors'] == 8
     assert isinstance(config, Configuration)
@@ -47,7 +47,7 @@ def test_registrar():
 def test_subclasser():
     dictionary = {'verbose': True, 'processors': 8}
     setup = Options.create(
-        'configuration', 
+        'configuration',
         parameters = {'contents': dictionary})
     assert setup.contents['processors'] == 8
     assert isinstance(setup, Configuration)

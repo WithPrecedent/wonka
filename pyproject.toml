@@ -58,7 +58,7 @@ docs = [
     "mkdocstrings[python] >= 0.22.0",
     "toml >= 0.10.2"]
 quality = [
-    "pre-commit >= 3.3.3", 
+    "pre-commit >= 3.3.3",
     "ruff >= 0.0.286"]
 tests = [
     "coverage >= 7.2.7",
@@ -106,6 +106,7 @@ ignore = [
     "PLR0915",  # Too many statements
     "PLR1711", # Useless 'return' at the end of function
     "Q000",  # Single quotes found but double quotes preferred
+    "RET505", # Unnecessary elif statement after return
     # "S0001",  # Use of assert detected
     "SLF001", # Private member accessed
     "TID252",  # Relative imports are banned

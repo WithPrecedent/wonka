@@ -20,7 +20,7 @@ from __future__ import annotations
 
 import abc
 import dataclasses
-from collections.abc import Hashable, Iterable, MutableMapping
+from collections.abc import Hashable, Iterable, Iterator, MutableMapping
 from typing import Any, TypeAlias
 
 
@@ -55,7 +55,8 @@ class Factory(abc.ABC):
 
         Args:
             item: data for creation of an item or an item to be modified.
-
+            args: allows subclass to take args.
+            kwargs: allows subclass to take kwargs.
 
         Returns:
             Any: created or modified item.
@@ -72,6 +73,7 @@ class Manager(Iterable, abc.ABC):
             Manager subclass instances.
 
     """
+
     contents: Iterable
 
     """ Required Subclass Methods """
@@ -82,7 +84,8 @@ class Manager(Iterable, abc.ABC):
 
         Args:
             item: item to be passed to factories in 'contents'.
-
+            args: allows subclass to take args.
+            kwargs: allows subclass to take kwargs.
 
         Returns:
             Any: constructed item.
@@ -108,7 +111,7 @@ class Manager(Iterable, abc.ABC):
 
     """ Dunder Methods """
 
-    def __iter__(self) -> Iterable:
+    def __iter__(self) -> Iterator:
         """Returns iterable of 'contents'.
 
         Manager is agnostic as to the type of iterable that is used in order to

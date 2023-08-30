@@ -7,10 +7,10 @@ import wonka
 
 @dataclasses.dataclass
 class Clone(wonka.Scribe):
-    
+
     contents: dict[str, wonka.Factory] = dataclasses.field(
         default_factory = lambda: {'tree': 'house', 'ghost': 'town'})
-    
+
 
 def test_scribe():
     clone_class = Clone.create()
@@ -24,5 +24,3 @@ def test_scribe():
 
 if __name__ == '__main__':
     test_scribe()
-
-    
