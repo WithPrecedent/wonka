@@ -1,4 +1,4 @@
-# Action for regular updates to any branch
+# Automatic jobs upon a commit or pull-request
 
 # This Action builds, tests, and lints the package. Then, it builds the
 # documentation and deploys it on GitHub Pages.
@@ -6,6 +6,10 @@
 name: continuous integration
 
 on: [push, pull_request]
+
+permissions:
+  contents: write
+  pull-requests: write
 
 jobs:
 
@@ -100,3 +104,18 @@ jobs:
 
     - name: Deploy documentation to GitHub Pages
       run: pdm run mkdocs gh-deploy --force --clean --verbose
+
+  # Only triggered if the commit message matches the semantic version format 
+  # (e.g. "v0.1.2").
+  create_github_release:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Create GitHub Release
+      uses: CupOfTea696/gh-action-auto-release@v1.0.2
+      with:
+        title: "Release: $version"
+        tag: "v$semver"
+        regex: "/^v#{semver}$/i"
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}   

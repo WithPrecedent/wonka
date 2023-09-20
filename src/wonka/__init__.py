@@ -1,10 +1,11 @@
-"""An extensible library for simple implementation of constructors."""
+"""Flexible, accessible, extensible Python factories"""
 
 from __future__ import annotations
 
+
 __version__ = '0.1.2'
 
-__author__ = 'Corey Rayburn Yung'
+__author__: str = 'Corey Rayburn Yung'
 
 __all__: list[str] = [
     'Assembler',

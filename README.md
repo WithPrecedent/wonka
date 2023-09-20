@@ -1,24 +1,27 @@
 # wonka
 
-<p align="center">
-<img src="https://github.com/WithPrecedent/wonka/blob/main/docs/img/top_hat.png" alt="wonka top hat logo" style="width:250px;"/>
-</p>
-
 | | |
 | --- | --- |
-| Version | [![PyPI Latest Release](https://img.shields.io/pypi/v/wonka.svg?style=for-the-badge&label=pypi&logo=PyPI&color=darkorange)](https://pypi.org/project/wonka/) [![GitHub Latest Release](https://img.shields.io/github/v/tag/WithPrecedent/wonka?style=for-the-badge&label=branch&logo=github&color=navy)](https://github.com/WithPrecedent/wonka/releases)
-| Status | [![Build Status](https://img.shields.io/github/actions/workflow/status/WithPrecedent/wonka/ci.yml?branch=main&label=tests&style=for-the-badge&logo=pytest&color=cadetblue)](https://github.com/WithPrecedent/wonka/actions/workflows/ci.yml?query=branch%3Amain) [![Development Status](https://img.shields.io/badge/Development-Active-Green?style=for-the-badge&logo=git)](https://www.repostatus.org/#active) [![Project Stability](https://img.shields.io/badge/stability-beta-firebrick?style=for-the-badge&logo=git)](https://www.repostatus.org/#active) [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg?style=for-the-badge&logo=apache&color=goldenrod)](https://opensource.org/licenses/Apache-2.0)
-| Docs | [![Hosted By](https://img.shields.io/badge/hosted_by-github_pages-blue?style=for-the-badge&logo=github&color=navy)](https://WithPrecedent.github.io/wonka)
-| Compatibility | [![Compatible Python Versions](https://img.shields.io/pypi/pyversions/wonka?style=for-the-badge&logo=python&color=darkorange)](https://pypi.python.org/pypi/wonka/) [![Linux](https://img.shields.io/badge/linux-maroon?style=for-the-badge&logo=linux&labelColor=gray)](https://www.linux.org/) [![MacOS](https://img.shields.io/badge/macos-yellow?style=for-the-badge&logo=apple&labelColor=gray)](https://www.apple.com/macos/) [![Windows](https://img.shields.io/badge/windows-blue?style=for-the-badge&logo=windows&labelColor=gray)](https://www.microsoft.com/en-us/windows?r=1)
-| Stats | [![PyPI Download Rate (per month)](https://img.shields.io/pypi/dm/wonka?style=for-the-badge&logo=pypi&color=darkorange)](https://pypi.org/project/wonka) [![GitHub Contributors](https://img.shields.io/github/contributors/WithPrecedent/wonka?style=for-the-badge&label=contributors&logo=github&color=darksalmon)](https://github.com/WithPrecedent/wonka/graphs/contributors) [![GitHub Contributors](https://img.shields.io/github/issues/WithPrecedent/wonka?style=for-the-badge&label=issues&logo=github&color=deeppink)](https://github.com/WithPrecedent/wonka/graphs/contributors) [![GitHub Stars](https://img.shields.io/github/stars/WithPrecedent/wonka?style=for-the-badge&label=Stars&logo=github&color=firebrick)](https://github.com/WithPrecedent/wonka/stargazers) [![GitHub Forks](https://img.shields.io/github/forks/WithPrecedent/wonka?style=for-the-badge&label=forks&logo=github&color=coral)](https://github.com/WithPrecedent/wonka/forks)
-| Tools | [![Documentation](https://img.shields.io/badge/MkDocs-magenta?style=for-the-badge&logo=markdown&labelColor=gray)](https://squidfunk.github.io/mkdocs-material/) [![Linter](https://img.shields.io/endpoint?style=for-the-badge&url=https://raw.githubusercontent.com/charliermarsh/Ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/Ruff) [![Dependency Manager](https://img.shields.io/badge/PDM-blueviolet?style=for-the-badge&logo=affinity&labelColor=gray)](https://PDM.fming.dev) [![Pre-commit](https://img.shields.io/badge/pre--commit-brightgreen?style=for-the-badge&logo=pre-commit&logoColor=white&labelColor=gray)](https://github.com/TezRomacH/python-package-template/blob/master/.pre-commit-config.yaml) [![CI](https://img.shields.io/badge/github_actions-yellow?style=for-the-badge&logo=githubactions&labelColor=gray)](https://github.com/features/actions) [![Editor Settings](https://img.shields.io/badge/editor_config-blue?style=for-the-badge&logo=editorconfig&labelColor=gray)](https://github.com/features/actions) [![Template](https://img.shields.io/badge/snickerdoodle-brown?style=for-the-badge&logo=cookiecutter&labelColor=gray)](https://www.github.com/WithPrecedent/snickerdoodle)
+| Version | [![PyPI Latest Release](https://img.shields.io/pypi/v/wonka.svg?style=for-the-badge&color=steelblue&label=PyPI&logo=PyPI&logoColor=yellow)](https://pypi.org/project/wonka/) [![GitHub Latest Release](https://img.shields.io/github/v/tag/WithPrecedent/wonka?style=for-the-badge&color=navy&label=GitHub&logo=github)](https://github.com/WithPrecedent/wonka/releases)
+| Status | [![Build Status](https://img.shields.io/github/actions/workflow/status/WithPrecedent/wonka/ci.yml?branch=main&style=for-the-badge&color=cadetblue&label=Tests&logo=pytest)](https://github.com/WithPrecedent/wonka/actions/workflows/ci.yml?query=branch%3Amain) [![Development Status](https://img.shields.io/badge/Development-Active-seagreen?style=for-the-badge&logo=git)](https://www.repostatus.org/#active) [![Project Stability](https://img.shields.io/pypi/status/wonka?style=for-the-badge&logo=pypi&label=Stability&logoColor=yellow)](https://pypi.org/project/wonka/)
+| Documentation | [![Hosted By](https://img.shields.io/badge/Hosted_by-Github_Pages-blue?style=for-the-badge&color=navy&logo=github)](https://WithPrecedent.github.io/wonka)
+| Tools | [![Documentation](https://img.shields.io/badge/MkDocs-magenta?style=for-the-badge&color=deepskyblue&logo=markdown&labelColor=gray)](https://squidfunk.github.io/mkdocs-material/) [![Linter](https://img.shields.io/endpoint?style=for-the-badge&url=https://raw.githubusercontent.com/charliermarsh/Ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/Ruff) [![Dependency Manager](https://img.shields.io/badge/PDM-mediumpurple?style=for-the-badge&logo=affinity&labelColor=gray)](https://PDM.fming.dev) [![Pre-commit](https://img.shields.io/badge/pre--commit-darkolivegreen?style=for-the-badge&logo=pre-commit&logoColor=white&labelColor=gray)](https://github.com/TezRomacH/python-package-template/blob/master/.pre-commit-config.yaml) [![CI](https://img.shields.io/badge/GitHub_Actions-navy?style=for-the-badge&logo=githubactions&labelColor=gray&logoColor=white)](https://github.com/features/actions) [![Editor Settings](https://img.shields.io/badge/Editor_Config-paleturquoise?style=for-the-badge&logo=editorconfig&labelColor=gray)](https://editorconfig.org/) [![Repository Template](https://img.shields.io/badge/snickerdoodle-bisque?style=for-the-badge&logo=cookiecutter&labelColor=gray)](https://www.github.com/WithPrecedent/wonka) [![Dependency Maintainer](https://img.shields.io/badge/dependabot-navy?style=for-the-badge&logo=dependabot&logoColor=white&labelColor=gray)](https://github.com/dependabot)
+| Compatibility | [![Compatible Python Versions](https://img.shields.io/pypi/pyversions/wonka?style=for-the-badge&color=steelblue&label=Python&logo=python&logoColor=yellow)](https://pypi.python.org/pypi/wonka/) [![Linux](https://img.shields.io/badge/Linux-lightseagreen?style=for-the-badge&logo=linux&labelColor=gray&logoColor=white)](https://www.linux.org/) [![MacOS](https://img.shields.io/badge/MacOS-snow?style=for-the-badge&logo=apple&labelColor=gray)](https://www.apple.com/macos/) [![Windows](https://img.shields.io/badge/windows-blue?style=for-the-badge&logo=Windows&labelColor=gray&color=orangered)](https://www.microsoft.com/en-us/windows?r=1)
+| Stats | [![PyPI Download Rate (per month)](https://img.shields.io/pypi/dm/wonka?style=for-the-badge&color=steelblue&label=Downloads%20💾&logo=pypi&logoColor=yellow)](https://pypi.org/project/wonka) [![GitHub Stars](https://img.shields.io/github/stars/WithPrecedent/wonka?style=for-the-badge&color=navy&label=Stars%20⭐&logo=github)](https://github.com/WithPrecedent/wonka/stargazers) [![GitHub Contributors](https://img.shields.io/github/contributors/WithPrecedent/wonka?style=for-the-badge&color=navy&label=Contributors%20🙋&logo=github)](https://github.com/WithPrecedent/wonka/graphs/contributors) [![GitHub Issues](https://img.shields.io/github/issues/WithPrecedent/wonka?style=for-the-badge&color=navy&label=Issues%20📘&logo=github)](https://github.com/WithPrecedent/wonka/graphs/contributors) [![GitHub Forks](https://img.shields.io/github/forks/WithPrecedent/wonka?style=for-the-badge&color=navy&label=Forks%20🍴&logo=github)](https://github.com/WithPrecedent/wonka/forks)
 | | |
 
 -----
 
 ## What is wonka?
 
-`wonka`[^1] is an extensible library for simple implementation of class and object constructors in Python. Out-of-the-box, `wonka` has implementations of several common creational design patterns, including: registry factories, prototypers, and composite builder workflows. It is also easy to extend `wonka` by adding your own custom factories[^2] while taking advantage of `wonka`'s convenient mixin classes and helper functions. This readme file offers a basic outline of how `wonka` works. If you would prefer to jump right into the full documentation, go [here](https://WithPrecedent.github.io/wonka).
+`wonka`[^1] is an extensible library for simple implementation of class and
+object constructors in Python. Out-of-the-box, `wonka` has implementations of
+several common creational design patterns, including: registry factories,
+prototypers, and composite builder workflows. It is also easy to extend `wonka`
+by adding your own custom factories[^2] while taking advantage of `wonka`'s
+convenient mixin classes and helper functions. 
+
+This readme offers a basic outline of how `wonka` works. If you would prefer to jump right into the full documentation, go [here](https://WithPrecedent.github.io/wonka).
 
 ## Why use wonka?
 
@@ -55,7 +58,7 @@ pip install wonka
 
 There are three categories of base classes in `wonka`: factories, managers, and producers. Each is described in greater detail below.
 
-### Factories
+#### Factories
 
 <p align="center">
 <img src="https://media2.giphy.com/media/o4aGs2I3rVKjC/giphy.gif" alt="Come with me and you'll be in a world of pure imagination" style="width:350px;"/>
@@ -69,17 +72,7 @@ Out-of-the-box, this library offers three general subtypes of its base `Factory`
 * Dispatchers - factories that call appropriate creation methods or functions based on the type or content of data passed.
 * Prototypers - factories that clone exsting classes or objects.
 
-Here are the included factories:
-
-| Factory | Subtype | Produces | Description |
-| --- | --- | --- | --- |
-| Registrar | Registry | Class or Instance | Creates items from data in `registry` |
-| Subclasser | Registry | Subclass | Like `Registrar`, but without the `registry` attribute |
-| Sourcerer | Dispatcher | Class or Instance | Calls the appropriate creation class method from data in `sources` |
-| Delegate | Dispatcher | Class or Instance | Like `Sourcerer`, but without `sources` |
-| Scribe | Prototyper | Class or Instance | Makes a deep copy of an item |
-
-### Managers
+#### Managers
 
 <p align="center">
 <img src="https://media.giphy.com/media/NsBAHgohHByp2/giphy.gif" alt="Don't just stand there! Do something!" style="width:300px;"/>
@@ -91,27 +84,13 @@ For more complex construction, you can use subclasses of `Manager`, which is an 
 2. Calling its `create` method (which just calls the `manage` method, but this allows a `Manager` subclass instance to be used anywhere a `Factory` could be used while still being distinguishable from an ordinary `Factory`).
 3. Iterating it directly.
 
-Here are the Manager classes included in `wonka`:
-
-| Manager | Manages | Produces | Description |
-| --- | --- | --- | --- |
-| Assembler | Factory Classes, Factory Instances, and/or other Manager Instances | Class(es) and/or Instance(s) | A linear constructer, like an assembly line |
-
-### Producers
+#### Producers
 
 <p align="center">
 <img src="https://media4.giphy.com/media/l0HlHSB8v5yRtBlHW/giphy.gif" alt="Willy Wonka completes a forward roll and pops up" style="width:350px;"/>
 </p>
 
 As another optional feature, `wonka` supports post-construction modification of built items through subclasses of `Producer`. This is particularly important for factories that use other resources (such as registries). `wonka` [separates concerns](https://dev.to/suspir0n/soc-separation-of-concerns-5ak7) so that the return value can be modified through a simple mixin system. This division of labor makes it incredibly easy to put together a `Factory` or `Manager` with a `Producer`.
-
-These are the basic producers provied by `wonka`:
-
-| Producer | Mixes With | Produces | Description |
-| --- | --- | --- | --- |
-| Classer | Factory or Manager | Class | `create` method always returns a class |
-| Flexer | Factory or Manager | Class or Instance | `create` returns a class or instance, depending on data passed |
-| Instancer | Factory or Manager | Instance | `create` method always returns an instance |
 
 ## Contributing
 
@@ -130,13 +109,14 @@ If `wonka` does not fit your needs, you might find one of these other packages h
 * [Model Bakery](https://github.com/model-bakers/model_bakery): object factory for Django.
 * [Polyfactory](https://github.com/litestar-org/polyfactory): factory framework for mock data generation.
 
-## Acknowledgements
+## Acknowledgments
 
-[PDM](https://github.com/pdm-project/pdm) and [MkDocs](https://github.com/mkdocs/mkdocs) made my `wonka` development workflow better and easier. I'd also like to extend a special thanks to [pawamoy](https://github.com/pawamoy) whose excellent PDM and Mkdocs extensions and utlities are incorporated into `wonka`. The scripts, documentation, configuration files, and other CI code were all adapted (or simply copied) from pawamoy's repositories.
+I would like to thank the University of Kansas School of Law for tolerating and
+supporting this law professor's coding efforts, an endeavor which is well
+outside the typical scholarly activities in the discipline.
 
-I would also like to thank the University of Kansas School of Law for tolerating and supporting this law professor's coding efforts, an endeavor which is well outside the typical scholarly activities in the discipline.
-
-Lastly, I want to extend a special thanks to the late, great Gene Wilder, whose work inspired the name of this project and made my childhood better.
+Lastly, I want to extend a special thanks to the late, great Gene Wilder, whose
+work inspired the name of this project and made my childhood better.
 
 <p align="center">
 <img src="https://media.giphy.com/media/3o6ZtbOoOHu28ftYiI/giphy.gif" alt="RIP, Gene Wilder, 1933-2016" style="width:200px;"/>

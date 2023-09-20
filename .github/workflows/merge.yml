@@ -1,9 +1,14 @@
-# Action for merging branches
+# Merges branches on GitHub
+# This action is currently untested
 
 name: merge
 
 # Allows this Action to be called by other Actions or through GitHub
 on: [workflow_call, workflow_dispatch]
+
+permissions:
+  contents: write
+  pull-requests: write
 
 jobs:
 
