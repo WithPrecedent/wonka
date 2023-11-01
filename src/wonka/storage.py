@@ -10,7 +10,7 @@ from __future__ import annotations
 import copy
 import dataclasses
 from collections.abc import Hashable, Iterator, MutableMapping, Sequence
-from typing import Any, Self
+from typing import Any
 
 from . import base, configuration, shared, utilities
 
@@ -193,7 +193,7 @@ class Manufacturer(MutableMapping):
         self.contents[key] = value
         return
 
-    def __add__(self, other: Any) -> Self:
+    def __add__(self, other: Any) -> Manufacturer:
         """Combines argument with `contents` using the `add` method.
 
         Args:
@@ -203,7 +203,7 @@ class Manufacturer(MutableMapping):
         self.add(item = other)
         return self
 
-    def __iadd__(self, other: Any) -> Self:
+    def __iadd__(self, other: Any) -> Manufacturer:  # noqa: PYI034
         """Combines argument with `contents` using the `add` method.
 
         Args:
@@ -213,7 +213,7 @@ class Manufacturer(MutableMapping):
         self.add(item = other)
         return self
 
-    def __delitem__(self, item: Hashable) -> Self:
+    def __delitem__(self, item: Hashable) -> Manufacturer:
         """Deletes `item` from `contents`.
 
         Args:
