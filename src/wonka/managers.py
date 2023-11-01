@@ -10,7 +10,7 @@ from __future__ import annotations
 import copy
 import dataclasses
 from collections.abc import Iterator, MutableSequence, Sequence
-from typing import Any, Self
+from typing import Any
 
 from wonka import utilities
 
@@ -170,7 +170,7 @@ class Assembler(MutableSequence, base.Manager):
 
     def __add__(
         self,
-        other: base.Constructor | Sequence[base.Constructor]) -> Self:
+        other: base.Constructor | Sequence[base.Constructor]) -> Assembler:
         """Combines argument with `contents` using the `add` method.
 
         Args:
@@ -180,9 +180,9 @@ class Assembler(MutableSequence, base.Manager):
         self.add(item = other)
         return self
 
-    def __iadd__(
+    def __iadd__(  # noqa: PYI034
         self,
-        other: base.Constructor | Sequence[base.Constructor]) -> Self:
+        other: base.Constructor | Sequence[base.Constructor]) -> Assembler:
         """Combines argument with `contents` using the `add` method.
 
         Args:
@@ -192,7 +192,7 @@ class Assembler(MutableSequence, base.Manager):
         self.add(item = other)
         return self
 
-    def __delitem__(self, item: int) -> Self:
+    def __delitem__(self, item: int) -> Assembler:
         """Deletes `item` from `contents`.
 
         Args:

@@ -38,7 +38,7 @@ build-backend = "pdm.backend"
 
 [tool.pdm]
 plugins = [
-    "sync-pre-commit-lock[pdm]", 
+    "sync-pre-commit-lock[pdm]",
     "pdm-multirun"]
 
 [tool.pdm.build]
@@ -186,7 +186,7 @@ ignore-variadic-names = true
 
 [tool.ruff.isort]
 case-sensitive = true
-known-first-party = ["{{cookiecutter.repo_name}}"]
+known-first-party = ["wonka"]
 required-imports = ["from __future__ import annotations"]
 split-on-trailing-comma = false
 
