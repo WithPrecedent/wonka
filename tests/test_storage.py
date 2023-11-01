@@ -4,7 +4,6 @@ import dataclasses
 from typing import Any, ClassVar
 
 import wonka
-from wonka.storage import Manufacturer
 
 
 @dataclasses.dataclass
@@ -39,7 +38,7 @@ class Registration_Desk(wonka.Registrar):
 def test_manufacturer():
     dictionary = {'verbose': True, 'processors': 8}
     other_dictionary = {'tree': 'house', 'ghost': 'town'}
-    depot = Manufacturer()
+    depot = wonka.Manufacturer()
     depot.add(Options)
     depot.add({'registration': Registration_Desk})
     setup = depot['options'].create(

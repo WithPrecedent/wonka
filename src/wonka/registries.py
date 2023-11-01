@@ -25,7 +25,7 @@ if TYPE_CHECKING:
 class Registrar(base.Factory):
     """Builds an item from a registry.
 
-    Attributes
+    Attributes:
         registry (ClassVar[MutableMapping[Hashable, Any]]): stores classes
             and/or instances to be used in item construction. Defaults to an
             empty dict.

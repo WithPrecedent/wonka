@@ -1,5 +1,9 @@
 # wonka
 
+<p align="center">
+<img src="https://github.com/WithPrecedent/wonka/blob/main/docs/images/logo.png?raw=true" alt="logo" style="width:250px;"/>
+</p>
+
 | | |
 | --- | --- |
 | Version | [![PyPI Latest Release](https://img.shields.io/pypi/v/wonka.svg?style=for-the-badge&color=steelblue&label=PyPI&logo=PyPI&logoColor=yellow)](https://pypi.org/project/wonka/) [![GitHub Latest Release](https://img.shields.io/github/v/tag/WithPrecedent/wonka?style=for-the-badge&color=navy&label=GitHub&logo=github)](https://github.com/WithPrecedent/wonka/releases)

@@ -14,9 +14,9 @@ from __future__ import annotations
 from collections.abc import Callable
 from typing import Any
 
-import camina
+from . import utilities
 
-_KEY_NAMER: Callable[[object | type[Any]], str] = camina.namify
+_KEY_NAMER: Callable[[object | type[Any]], str] = utilities._namify
 _METHOD_NAMER: Callable[[object | type[Any]], str] = lambda x: f'from_{x}'
 _OVERWRITE: bool = True
 _STRICT_COMPATIBILITY: bool = True

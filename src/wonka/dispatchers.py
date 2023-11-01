@@ -84,8 +84,7 @@ class Sourcerer(base.Factory, abc.ABC):
     they may manipulate the magical energy known as "source".
     https://divinity.fandom.com/wiki/Sourcerer
 
-
-    Attributes
+    Attributes:
         sources (ClassVar[MutableMapping[type[Any], str]]): dict with keys that
             are types and values are substrings of the names of methods to call
             when the key type is passed to the 'create' method. Defaults to an
@@ -116,7 +115,6 @@ class Sourcerer(base.Factory, abc.ABC):
                 correspond to a method in the Sourcerer subclass.
             KeyError: if there is no key in 'sources' matching the type for
                 'item'.
-
 
         Returns:
             Any: created item.

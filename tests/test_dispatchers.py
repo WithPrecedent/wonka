@@ -5,8 +5,6 @@ from collections.abc import MutableMapping
 import dataclasses
 from typing import Any, ClassVar
 
-import camina
-
 import wonka
 
 
@@ -43,8 +41,7 @@ def test_sourcerer():
     configuration = Configuration.create(contents)
     assert configuration.contents['tree'] == 'house'
     assert isinstance(configuration, Configuration)
-    new_contents = camina.Dictionary(contents)
-    new_configuration = Configuration.create(new_contents)
+    new_configuration = Configuration.create(contents)
     assert new_configuration.contents['ghost'] == 'town'
     assert isinstance(new_configuration, Configuration)
     return

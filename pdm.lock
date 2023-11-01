@@ -17,15 +17,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "camina"
-version = "0.1.16"
-requires_python = ">=3.9,<4.0"
-summary = "Your Python project companion"
-dependencies = [
-    "miller<0.2.0,>=0.1.7",
-]
-
-[[package]]
 name = "certifi"
 version = "2023.7.22"
 requires_python = ">=3.6"
@@ -230,16 +221,6 @@ requires_python = ">=3.6"
 summary = "A deep merge function for 🐍."
 
 [[package]]
-name = "miller"
-version = "0.1.8"
-requires_python = ">=3.9,<4.0"
-summary = "introspection tools using consistent, accessible syntax"
-dependencies = [
-    "camina<0.2.0,>=0.1.15",
-    "nagata<0.2.0,>=0.1.5",
-]
-
-[[package]]
 name = "mkdocs"
 version = "1.5.3"
 requires_python = ">=3.7"
@@ -383,16 +364,6 @@ summary = "Automatic documentation from sources, for MkDocs."
 dependencies = [
     "mkdocstrings-python>=0.5.2",
     "mkdocstrings==0.23.0",
-]
-
-[[package]]
-name = "nagata"
-version = "0.1.6"
-requires_python = ">=3.9"
-summary = "python file management using a common, intuitive syntax"
-dependencies = [
-    "camina",
-    "miller",
 ]
 
 [[package]]
@@ -629,7 +600,7 @@ summary = "Backport of pathlib-compatible object wrapper for zip files"
 lock_version = "4.2"
 cross_platform = true
 groups = ["default", "docs", "quality", "tests"]
-content_hash = "sha256:611ead20fa206b4c3f31180103542cab4eeb9ecb34e8f5dafcfa988c42a9f0db"
+content_hash = "sha256:dd34da0eff55b6261d462418156be0818f7675fac0cd1bc2ed1f3ee0f9aaf537"
 
 [metadata.files]
 "babel 2.12.1" = [
@@ -639,10 +610,6 @@ content_hash = "sha256:611ead20fa206b4c3f31180103542cab4eeb9ecb34e8f5dafcfa988c4
 "beautifulsoup4 4.12.2" = [
     {url = "https://files.pythonhosted.org/packages/57/f4/a69c20ee4f660081a7dedb1ac57f29be9378e04edfcb90c526b923d4bebc/beautifulsoup4-4.12.2-py3-none-any.whl", hash = "sha256:bd2520ca0d9d7d12694a53d44ac482d181b4ec1888909b035a3dbf40d0f57d4a"},
     {url = "https://files.pythonhosted.org/packages/af/0b/44c39cf3b18a9280950ad63a579ce395dda4c32193ee9da7ff0aed547094/beautifulsoup4-4.12.2.tar.gz", hash = "sha256:492bbc69dca35d12daac71c4db1bfff0c876c00ef4a2ffacce226d4638eb72da"},
-]
-"camina 0.1.16" = [
-    {url = "https://files.pythonhosted.org/packages/94/5a/f78a2d389bf17f3336e02b6ff2a4802d1daa0af04ff7a7b9d5f2132ff7ae/camina-0.1.16.tar.gz", hash = "sha256:c9082f54f7d043ce7a04b4c35275fb55d19a9fddb2dfee6d38141c48836f2a06"},
-    {url = "https://files.pythonhosted.org/packages/bd/22/94291e68a0c388bfed32646a0de227a809a2a9dec296e3ac5031a90b4fd9/camina-0.1.16-py3-none-any.whl", hash = "sha256:342ef041fd3bd37b00ebc655d8ada48de9e017006166d73b73fce69fbcab4f13"},
 ]
 "certifi 2023.7.22" = [
     {url = "https://files.pythonhosted.org/packages/4c/dd/2234eab22353ffc7d94e8d13177aaa050113286e93e7b40eae01fbf7c3d9/certifi-2023.7.22-py3-none-any.whl", hash = "sha256:92d6037539857d8206b8f6ae472e8b77db8058fec5937a1ef3f54304089edbb9"},
@@ -1024,10 +991,6 @@ content_hash = "sha256:611ead20fa206b4c3f31180103542cab4eeb9ecb34e8f5dafcfa988c4
     {url = "https://files.pythonhosted.org/packages/2c/19/04f9b178c2d8a15b076c8b5140708fa6ffc5601fb6f1e975537072df5b2a/mergedeep-1.3.4-py3-none-any.whl", hash = "sha256:70775750742b25c0d8f36c55aed03d24c3384d17c951b3175d898bd778ef0307"},
     {url = "https://files.pythonhosted.org/packages/3a/41/580bb4006e3ed0361b8151a01d324fb03f420815446c7def45d02f74c270/mergedeep-1.3.4.tar.gz", hash = "sha256:0096d52e9dad9939c3d975a774666af186eda617e6ca84df4c94dec30004f2a8"},
 ]
-"miller 0.1.8" = [
-    {url = "https://files.pythonhosted.org/packages/1c/de/ba050aa3a28ab20000a29c0c946a9ed45c6aeefe58fa6ec2f772af5d2c55/miller-0.1.8-py3-none-any.whl", hash = "sha256:78c8edd577005833cabeb4a7d24b9abed9d5b65966a60e9ab82e8596e9dacd3e"},
-    {url = "https://files.pythonhosted.org/packages/7a/d4/965aff02432c8288a424fd941135081bab0ceda682214451cd50f86f9bcd/miller-0.1.8.tar.gz", hash = "sha256:65896480a53a60d7365f99fc6e13fd4bef7cdc43bfeb3a4289ed7b5dab846527"},
-]
 "mkdocs 1.5.3" = [
     {url = "https://files.pythonhosted.org/packages/89/58/aa3301b23966a71d7f8e55233f467b3cec94a651434e9cd9053811342539/mkdocs-1.5.3-py3-none-any.whl", hash = "sha256:3b3a78e736b31158d64dbb2f8ba29bd46a379d0c6e324c2246c3bc3d2189cfc1"},
     {url = "https://files.pythonhosted.org/packages/ed/bb/24a22f8154cf79b07b45da070633613837d6e59c7d870076f693b7b1c556/mkdocs-1.5.3.tar.gz", hash = "sha256:eb7c99214dcb945313ba30426c2451b735992c73c2e10838f76d09e39ff4d0e2"},
@@ -1071,10 +1034,6 @@ content_hash = "sha256:611ead20fa206b4c3f31180103542cab4eeb9ecb34e8f5dafcfa988c4
 "mkdocstrings-python 1.7.0" = [
     {url = "https://files.pythonhosted.org/packages/0e/36/7dba2bb3211420952ac9bf2a95a383f34d56a0d42a132a1aa622597c7ba8/mkdocstrings_python-1.7.0.tar.gz", hash = "sha256:5dac2712bd38a3ff0812b8650a68b232601d1474091b380a8b5bc102c8c0d80a"},
     {url = "https://files.pythonhosted.org/packages/6a/12/9f9287e88a04dcdd8af6d9d6fb4307f635670c8ea8879dea9e5a56810289/mkdocstrings_python-1.7.0-py3-none-any.whl", hash = "sha256:85c5f009a5a0ebb6076b7818c82a2bb0eebd0b54662628fa8b25ee14a6207951"},
-]
-"nagata 0.1.6" = [
-    {url = "https://files.pythonhosted.org/packages/4a/af/a40fec20e164d329d78f8d8fb0c1fe835fcfc9dabb1954fcfe31cdde7e2d/nagata-0.1.6-py3-none-any.whl", hash = "sha256:85fa815bba0bd20fc39f3e3334151668c60f853fd9746c1e7f7c53db30423a3d"},
-    {url = "https://files.pythonhosted.org/packages/69/aa/24012396512f35de6d5943f32e6f5f3492e0d6681642e2b926582b4a2c5f/nagata-0.1.6.tar.gz", hash = "sha256:e66e71bc0f231a9428a0882098a44cd2fb95997d051976d5c9a938793a6d0a07"},
 ]
 "nodeenv 1.8.0" = [
     {url = "https://files.pythonhosted.org/packages/1a/e6/6d2ead760a9ddb35e65740fd5a57e46aadd7b0c49861ab24f94812797a1c/nodeenv-1.8.0-py2.py3-none-any.whl", hash = "sha256:df865724bb3c3adc86b3876fa209771517b0cfe596beff01a92700e0e8be4cec"},
