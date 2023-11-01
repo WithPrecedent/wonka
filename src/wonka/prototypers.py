@@ -1,8 +1,8 @@
 """Factory classes that clone items.
 
 Contents:
-    Scribe (base.Factory): factory that clones a passed argument or, if none is
-        passed, itself.
+    Scribe (`base.Factory`): factory that clones a passed argument or, if none
+        is passed, itself.
 
 """
 from __future__ import annotations
@@ -29,18 +29,17 @@ class Scribe(base.Factory):
         item: Any | None = None,
         parameters: MutableMapping[Hashable, Any] | None = None,
         **kwargs: Any) -> Any:
-        """Clones 'item' and possibly incorporates 'parameters'.
+        """Clones `item` and possibly incorporates `parameters`.
 
         Args:
-            item: item to clone. If it is None, the 'create'
-                method assumes that it should clone itself. Defaults to None.
-            parameters: Optional[MutableMapping[Hashable, Any]]: keyword
-                arguments to pass or add to a created instance. Defaults to
-                None.
+            item: item to clone. If it is None, the `create` method assumes that
+                it should clone itself. Defaults to None.
+            parameters: keyword arguments to pass or add to a created instance.
+                Defaults to `None`.
             kwargs: allows subclass to take kwargs.
 
         Returns:
-            Any: cloned item.
+            Cloned item.
 
         """
         item = item or cls

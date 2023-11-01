@@ -1,16 +1,16 @@
 """Manager classes for iterable constructors.
 
 Contents:
-    Assembler (camina.Listing, base.Manager): iterable that stores a list of
-        constructors that build an item like an assembly line.
+    Assembler (`MutableSequence`, `base.Manager`): iterable that stores a list
+        of constructors that build an item like an assembly line.
 
 """
 from __future__ import annotations
 
 import copy
 import dataclasses
-from collections.abc import MutableSequence, Sequence
-from typing import Any, Hashable, Iterator, Self
+from collections.abc import Iterator, MutableSequence, Sequence
+from typing import Any, Self
 
 from wonka import utilities
 
@@ -22,12 +22,10 @@ class Assembler(MutableSequence, base.Manager):
     """Assembly line constructer.
 
     Assembler stores a sequence of wonka constructors that are called by the
-    'manage' (or 'create') method in order to construct an item.
-
+    `manage` (or `create`) method in order to construct an item.
 
     Args:
-        contents (MutableMapping[Hashable, base.Factory]): stored constructors.
-            Defaults to an empty list.
+        contents: stored constructors. Defaults to an empty list.
 
     """
 
@@ -37,15 +35,14 @@ class Assembler(MutableSequence, base.Manager):
     """ Instance Methods """
 
     def add(self, item: base.Constructor | Sequence[base.Constructor]) -> None:
-        """Adds 'item' to the 'contents' attribute.
+        """Adds `item` to the `contents` attribute.
 
         Args:
-            item (base.Constructor | Sequence[base.Constructor]): item(s) to add
-                to 'contents' attribute.
+            item: item(s) to add to `contents` attribute.
 
 
         Raises:
-            TypeError: if all of the values of 'item' are not wonka-compatible
+            TypeError: if all of the values of `item` are not wonka-compatible
                 constructors.
 
         """
@@ -59,35 +56,34 @@ class Assembler(MutableSequence, base.Manager):
                 'All values in item must be wonka-compatible constructors')
 
     def delete(self, item: int) -> None:
-        """Deletes item at the index in 'contents'.
+        """Deletes item at the index in `contents`.
 
         Args:
-            item (Any): index in 'contents' to delete.
+            item: index in `contents` to delete.
 
         """
         del self.contents[item]
         return
 
     def insert(self, index: int, item: Any) -> None:
-        """Inserts 'item' at 'index' in 'contents'.
+        """Inserts `item` at `index` in `contents`.
 
         Args:
-            index (int): index to insert 'item' at.
-            item (Any): object to be inserted.
+            index: index to insert `item` at.
+            item: object to be inserted.
 
         """
         self.contents.insert(index, item)
         return
 
     def manage(self, item: Any) -> Any:
-        """Manages construction and/or modification based on 'item'.
+        """Manages construction and/or modification based on `item`.
 
         Args:
-            item: item to be passed to constructors in 'contents'.
-
+            item: item to be passed to constructors in `contents`.
 
         Returns:
-            Any: constructed item.
+            Constructed item.
 
         """
         for constructor in self.contents:
@@ -95,13 +91,13 @@ class Assembler(MutableSequence, base.Manager):
         return item
 
     def prepend(self, item: Any | Sequence[Any]) -> None:
-        """Prepends 'item' to 'contents'.
+        """Prepends `item` to `contents`.
 
-        If 'item' is a non-str sequence, 'prepend' adds its contents to the
-        stored list in the order they appear in 'item'.
+        If `item` is a non-`str` sequence, `prepend` adds its contents to the
+        stored list in the order they appear in `item`.
 
         Args:
-            item (Any | Sequence[Any]): item(s) to prepend to 'contents'.
+            item: item(s) to prepend to `contents`.
 
         """
         if utilities._is_sequence(item = item):
@@ -115,23 +111,21 @@ class Assembler(MutableSequence, base.Manager):
         self,
         include: Any | Sequence[Any] | None = None,
         exclude: Any | Sequence[Any] | None = None) -> Assembler:
-        """Returns a new instance with a subset of 'contents'.
+        """Returns a new instance with a subset of `contents`.
 
-        This method applies 'include' before 'exclude' if both are passed. If
-        'include' is None, all existing items will be added to the new subset
-        class instance before 'exclude' is applied.
+        This method applies `include` before `exclude` if both are passed. If
+        `include` is None, all existing items will be added to the new subset
+        class instance before `exclude` is applied.
 
         Args:
-            include (Optional[Any | Sequence[Any]]): item(s) to include in
-                the new instance. Defaults to None.
-            exclude (Optional[Any | Sequence[Any]]): item(s) to exclude in
-                the new instance. Defaults to None.
+            include: item(s) to include in the new instance. Defaults to None.
+            exclude: item(s) to exclude in the new instance. Defaults to None.
 
         Raises:
-            ValueError: if 'include' and 'exclude' are both None.
+            ValueError: if `include` and `exclude` are both None.
 
         Returns:
-            Assembler with only items from 'include' and no items in 'exclude'.
+            Assembler with only items from `include` and no items in `exclude`.
 
         """
         if include is None and exclude is None:
@@ -151,30 +145,44 @@ class Assembler(MutableSequence, base.Manager):
 
     """ Dunder Methods """
 
-    def __getitem__(self, index: Any) -> Any:
-        """Returns value(s) for 'key' in 'contents'.
+    def __getitem__(self, index: int) -> base.Constructor:
+        """Returns value(s) for `key` in `contents`.
 
         Args:
-            index (Any): index to search for in 'contents'.
+            index: index to search for in `contents`.
 
         Returns:
-            Any: item stored in 'contents' at key.
+            Item stored in `contents` at key.
 
         """
         return self.contents[index]
 
-    def __setitem__(self, index: Any, value: Any) -> None:
-        """Sets 'key' in 'contents' to 'value'.
+    def __setitem__(self, index: int, value: base.Constructor) -> None:
+        """Sets `key` in `contents` to `value`.
 
         Args:
-            index (Any): index to set 'value' to in 'contents'.
-            value (Any): value to be set at 'key' in 'contents'.
+            index: index to set `value` to in `contents`.
+            value: value to be set at `key` in `contents`.
 
         """
         self.contents[index] = value
         return
 
-    def __add__(self, other: Any) -> Self:
+    def __add__(
+        self,
+        other: base.Constructor | Sequence[base.Constructor]) -> Self:
+        """Combines argument with `contents` using the `add` method.
+
+        Args:
+            other: tem to add to `contents` using the `add` method.
+
+        """
+        self.add(item = other)
+        return self
+
+    def __iadd__(
+        self,
+        other: base.Constructor | Sequence[base.Constructor]) -> Self:
         """Combines argument with `contents` using the `add` method.
 
         Args:
@@ -184,21 +192,11 @@ class Assembler(MutableSequence, base.Manager):
         self.add(item = other)
         return self
 
-    def __iadd__(self, other: Any) -> Self:
-        """Combines argument with `contents` using the `add` method.
-
-        Args:
-            other: item to add to `contents` using the `add` method.
-
-        """
-        self.add(item = other)
-        return self
-
-    def __delitem__(self, item: Hashable) -> Self:
+    def __delitem__(self, item: int) -> Self:
         """Deletes `item` from `contents`.
 
         Args:
-            item: item or key to delete in `contents`.
+            item: index of item to delete in `contents`.
 
         Raises:
             KeyError: if `item` is not in `contents`.
@@ -207,7 +205,7 @@ class Assembler(MutableSequence, base.Manager):
         self.delete(item = item)
         return self
 
-    def __iter__(self) -> Iterator[Any]:
+    def __iter__(self) -> Iterator[base.Constructor]:
         """Returns iterator of `contents`.
 
         Returns:

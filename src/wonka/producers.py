@@ -1,12 +1,12 @@
 """Mixins for created object modification.
 
 Contents:
-    Classer (base.Producer, abc.ABC): Producer with an 'produce' method that
+    Classer (`base.Producer`, `abc.ABC`): Producer with an `produce` method that
         always returns a class.
-    Flexer (base.Producer, abc.ABC): Producer that conditions return value of
-        the 'produce' method based on whether 'parameters' are passed.
-    Instancer (base.Producer, abc.ABC): Producer with an 'produce' method that
-        always returns an instance.
+    Flexer (`base.Producer`, `abc.ABC`): Producer that conditions return value
+        of the `produce` method based on whether `parameters` are passed.
+    Instancer (`base.Producer`, `abc.ABC`): Producer with an `produce` method
+        that always returns an instance.
 
 """
 from __future__ import annotations
@@ -24,7 +24,7 @@ if TYPE_CHECKING:
 
 @dataclasses.dataclass
 class Classer(base.Producer, abc.ABC):
-    """Producer with an 'produce' method always return a class."""
+    """Producer with an `produce` method always return a class."""
 
     """ Class Methods """
 
@@ -34,21 +34,19 @@ class Classer(base.Producer, abc.ABC):
         item: Any,
         parameters: MutableMapping[Hashable, Any] | None = None,
         **kwargs: Any) -> Any:
-        """Modifies 'item' and possibly incorporates 'parameters'.
+        """Modifies `item` and possibly incorporates `parameters`.
 
         Args:
-            item: item created by a constructor that may need to be
-                altered before being returned by the constructor 'create'
-                method.
-            parameters: Optional[MutableMapping[Hashable, Any]]: keyword
-                arguments to pass or add to a created instance. Defaults to
-                None. The argument for 'parameters' is ignored by Classer - it
-                is only included to provide a consistent interface across all
-                Producer subclasses.
+            item: item created by a constructor that may need to be altered
+                before being returned by the constructor `create` method.
+            parameters: keyword arguments to pass or add to a created instance.
+                Defaults to `None`. The argument for `parameters` is ignored by
+                `Classer` - it is only included to provide a consistent
+                interface across all `Producer` subclasses.
             kwargs: allows subclass to take kwargs.
 
         Returns:
-            Any: modified item.
+            Modified item.
 
         """
         return item if inspect.isclass(item) else item.__class__
@@ -56,10 +54,10 @@ class Classer(base.Producer, abc.ABC):
 
 @dataclasses.dataclass
 class Flexer(base.Producer, abc.ABC):
-    """Producer that conditions return value of the 'produce' method.
+    """Producer that conditions return value of the `produce` method.
 
-    If 'parameters' are passed to the 'produce' method, an instance is always
-    returned. If no 'parameters' are passed, the item will be returned as-is
+    If `parameters` are passed to the `produce` method, an instance is always
+    returned. If no `parameters` are passed, the item will be returned as-is
     (depending on the constructor used).
 
     """
@@ -72,19 +70,17 @@ class Flexer(base.Producer, abc.ABC):
         item: Any,
         parameters: MutableMapping[Hashable, Any] | None = None,
         **kwargs: Any) -> Any:
-        """Modifies 'item' and possibly incorporates 'parameters'.
+        """Modifies `item` and possibly incorporates `parameters`.
 
         Args:
-            item: item created by a constructor that may need to be
-                altered before being returned by the constructor 'create'
-                method.
-            parameters: Optional[MutableMapping[Hashable, Any]]: keyword
-                arguments to pass or add to a created instance. Defaults to
-                None.
+            item: item created by a constructor that may need to be altered
+                before being returned by the constructor `create` method.
+            parameters: keyword arguments to pass or add to a created instance.
+                Defaults to `None`.
             kwargs: allows subclass to take kwargs.
 
         Returns:
-            Any: modified item.
+            Modified item.
 
         """
         if parameters is None:
@@ -97,7 +93,7 @@ class Flexer(base.Producer, abc.ABC):
 
 @dataclasses.dataclass
 class Instancer(base.Producer, abc.ABC):
-    """Producer with an 'produce' method always return an instance."""
+    """Producer with an `produce` method always return an instance."""
 
     """ Class Methods """
 
@@ -107,19 +103,17 @@ class Instancer(base.Producer, abc.ABC):
         item: Any,
         parameters: MutableMapping[Hashable, Any] | None = None,
         **kwargs: Any) -> Any:
-        """Modifies 'item' and incorporates 'parameters'.
+        """Modifies `item` and incorporates `parameters`.
 
         Args:
-            item: item created by a constructor that may need to be
-                altered before being returned by the constructor 'create'
-                method.
-            parameters: Optional[MutableMapping[Hashable, Any]]: keyword
-                arguments to pass or add to a created instance. Defaults to
-                None.
+            item: item created by a constructor that may need to be altered
+                before being returned by the constructor `create` method.
+            parameters: keyword arguments to pass or add to a created instance.
+                Defaults to `None`.
             kwargs: allows subclass to take kwargs.
 
         Returns:
-            Any: modified item.
+            Modified item.
 
         """
         if inspect.isclass(item) and parameters is None:
