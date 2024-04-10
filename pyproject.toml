@@ -74,7 +74,6 @@ path = "src/wonka/__init__.py"
 
 [tool.pytest.ini_options]
 addopts = "--showlocals"
-asyncio_mode = "auto"
 filterwarnings = ["ignore::DeprecationWarning"]
 pythonpath = ["src"]
 
