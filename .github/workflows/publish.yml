@@ -24,10 +24,10 @@ jobs:
 
     steps:
     - name: Checkout Repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Setup PDM
-      uses: pdm-project/setup-pdm@v3
+      uses: pdm-project/setup-pdm@v4
 
     - name: Publish to PyPI
       run: pdm publish

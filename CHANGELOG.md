@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 <!-- insertion marker -->
 
+## 0.1.4
+
+* Removed empty keystons module until it is ready to prevent linting errors
+* Updated out-of-date actions
+* Removed extraneous actions
+
 ## 0.1.3
 
 * Fixed unit test setting bug
