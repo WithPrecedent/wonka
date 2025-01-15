@@ -144,19 +144,18 @@ class Manufacturer(MutableMapping):
         if include is None and exclude is None:
             message = 'either the include or exclude argument must not be None'
             raise ValueError(message)
+        if include is None:
+            contents = copy.deepcopy(self.contents)
         else:
-            if include is None:
-                contents = copy.deepcopy(self.contents)
-            else:
-                include = list(utilities._iterify(include))
-                contents = {k: self.contents[k] for k in include}
-            if exclude is not None:
-                exclude = list(utilities._iterify(exclude))
-                contents = {
-                    k: v for k, v in contents.items()
-                    if k not in exclude}
-            new_dictionary = copy.deepcopy(self)
-            new_dictionary.contents = contents
+            include = list(utilities._iterify(include))
+            contents = {k: self.contents[k] for k in include}
+        if exclude is not None:
+            exclude = list(utilities._iterify(exclude))
+            contents = {
+                k: v for k, v in contents.items()
+                if k not in exclude}
+        new_dictionary = copy.deepcopy(self)
+        new_dictionary.contents = contents
         return new_dictionary
 
     def values(self) -> tuple[Any, ...]:

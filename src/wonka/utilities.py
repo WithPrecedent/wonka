@@ -10,6 +10,7 @@ To Do:
 from __future__ import annotations
 
 import inspect
+import pathlib
 import re
 from collections.abc import Sequence
 from typing import TYPE_CHECKING, Any
@@ -65,6 +66,28 @@ def _namify(item: Any, /, default: str | None = None) -> str | None:
                 return _snakify(item.__class__.__name__)
             else:
                 return default
+
+
+def _pathlibify(item: str | pathlib.Path) -> str:
+    """Converts a `str` path to a `pathlib.Path` type.
+
+    Args:
+        item: item to convert, if it is not already a `pathlib.Path` type.
+
+    Returns:
+        `item` converted to `pathlib.Path`.
+
+    Raises:
+        TypeError if `item` is neither a `str` or `Pathlib.Path` type.
+
+    """
+    if isinstance(item, pathlib.Path):
+        return item
+    elif isinstance(item, str):
+        return pathlib.Path(item)
+    else:
+        message = 'item must be a str or pathlib.Path type'
+        raise TypeError(message)
 
 def _snakify(item: str) -> str:
     """Converts a capitalized `str` to snake case.

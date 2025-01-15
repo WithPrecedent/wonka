@@ -31,7 +31,7 @@ class Registrar(base.Factory):
 
     """
 
-    registry: ClassVar[MutableMapping[Hashable, Any]] = ""
+    registry: ClassVar[MutableMapping[Hashable, Any]] = {}
 
     """ Class Methods """
 

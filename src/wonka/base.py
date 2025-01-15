@@ -95,8 +95,8 @@ class Manager(Iterable, abc.ABC):
     """ Properties """
 
     @property
-    def create(self, *args: Any, **kwargs:  Any) -> Any:
-        """Calls `manage` method with args and kwargs.
+    def create(self) -> Any:
+        """Calls `manage` method.
 
         This property is included as a convenience so that an instance of a
         `Manager` can be used as a drop-in for a `Factory` subclass. `Manager`
@@ -108,7 +108,7 @@ class Manager(Iterable, abc.ABC):
         workflow.
 
         """
-        return self.manage(*args, **kwargs)
+        return self.manage
 
     """ Dunder Methods """
 
@@ -163,3 +163,4 @@ class Producer(abc.ABC):
 
 
 Constructor: TypeAlias = Factory | type[Factory] | Manager
+

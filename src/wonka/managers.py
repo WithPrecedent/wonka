@@ -130,17 +130,16 @@ class Assembler(MutableSequence, base.Manager):
         """
         if include is None and exclude is None:
             raise ValueError('include or exclude must not be None')
+        if include is None:
+            contents = copy.deepcopy(self.contents)
         else:
-            if include is None:
-                contents = copy.deepcopy(self.contents)
-            else:
-                include = list(utilities._iterify(include))
-                contents = [i for i in self.contents if i in include]
-            if exclude is not None:
-                exclude = list(utilities._iterify(exclude))
-                contents = [i for i in contents if i not in exclude]
-            new_listing = copy.deepcopy(self)
-            new_listing.contents = contents
+            include = list(utilities._iterify(include))
+            contents = [i for i in self.contents if i in include]
+        if exclude is not None:
+            exclude = list(utilities._iterify(exclude))
+            contents = [i for i in contents if i not in exclude]
+        new_listing = copy.deepcopy(self)
+        new_listing.contents = contents
         return new_listing
 
     """ Dunder Methods """
