@@ -109,7 +109,7 @@ class Manufacturer(MutableMapping):
             A `tuple` equivalent to `dict.items()`.
 
         """
-        return tuple(zip(self.keys(), self.values()))
+        return tuple(zip(self.keys(), self.values(), strict = False))
 
     def keys(self) -> tuple[Hashable, ...]:
         """Returns `contents` keys as a `tuple`.
