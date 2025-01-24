@@ -179,18 +179,6 @@ class Assembler(MutableSequence, base.Manager):
         self.add(item = other)
         return self
 
-    def __iadd__(  # noqa: PYI034
-        self,
-        other: base.Constructor | Sequence[base.Constructor]) -> Assembler:
-        """Combines argument with `contents` using the `add` method.
-
-        Args:
-            other: item to add to `contents` using the `add` method.
-
-        """
-        self.add(item = other)
-        return self
-
     def __delitem__(self, item: int) -> Assembler:
         """Deletes `item` from `contents`.
 

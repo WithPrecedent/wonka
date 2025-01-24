@@ -14,12 +14,9 @@ from __future__ import annotations
 import abc
 import dataclasses
 import inspect
-from typing import TYPE_CHECKING, Any
+from typing import Any
 
 from . import base, shared
-
-if TYPE_CHECKING:
-    from collections.abc import Hashable, MutableMapping
 
 
 @dataclasses.dataclass
@@ -32,8 +29,8 @@ class Classer(base.Producer, abc.ABC):
     def produce(
         cls,
         item: Any,
-        parameters: MutableMapping[Hashable, Any] | None = None,
-        **kwargs: Any) -> Any:
+        parameters: base.GenericDict | None = None,
+        **kwargs: base.Kwargs) -> Any:
         """Modifies `item` and possibly incorporates `parameters`.
 
         Args:
@@ -68,8 +65,8 @@ class Flexer(base.Producer, abc.ABC):
     def produce(
         cls,
         item: Any,
-        parameters: MutableMapping[Hashable, Any] | None = None,
-        **kwargs: Any) -> Any:
+        parameters: base.GenericDict | None = None,
+        **kwargs: base.Kwargs) -> Any:
         """Modifies `item` and possibly incorporates `parameters`.
 
         Args:
@@ -101,8 +98,8 @@ class Instancer(base.Producer, abc.ABC):
     def produce(
         cls,
         item: Any,
-        parameters: MutableMapping[Hashable, Any] | None = None,
-        **kwargs: Any) -> Any:
+        parameters: base.GenericDict | None = None,
+        **kwargs: base.Kwargs) -> Any:
         """Modifies `item` and incorporates `parameters`.
 
         Args:

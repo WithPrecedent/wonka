@@ -9,12 +9,9 @@ from __future__ import annotations
 
 import copy
 import dataclasses
-from typing import TYPE_CHECKING, Any
+from typing import Any
 
 from . import base, shared
-
-if TYPE_CHECKING:
-    from collections.abc import Hashable, MutableMapping
 
 
 @dataclasses.dataclass
@@ -27,8 +24,8 @@ class Scribe(base.Factory):
     def create(
         cls,
         item: Any | None = None,
-        parameters: MutableMapping[Hashable, Any] | None = None,
-        **kwargs: Any) -> Any:
+        parameters: base.GenericDict | None = None,
+        **kwargs: base.Kwargs) -> Any:
         """Clones `item` and possibly incorporates `parameters`.
 
         Args:

@@ -31,17 +31,17 @@ __all__: list[str] = [
 
 
 from .base import Factory, Manager, Producer
-from .configuration import (
+from .clusters import Manufacturer
+from .dispatchers import Delegate, Sourcerer
+from .managers import Assembler
+from .options import (
     set_compatibility_rule,
     set_keyer,
     set_method_namer,
     set_overwrite_rule,
     set_verbose_rule,
 )
-from .dispatchers import Delegate, Sourcerer
-from .managers import Assembler
 from .producers import Classer, Flexer, Instancer
 from .prototypers import Scribe
 from .registries import Registrar, Subclasser
 from .shared import finalize, inject_attributes, is_constructor
-from .storage import Manufacturer

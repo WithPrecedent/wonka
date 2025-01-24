@@ -13,12 +13,9 @@ from __future__ import annotations
 import abc
 import copy
 import dataclasses
-from typing import TYPE_CHECKING, Any, ClassVar
+from typing import Any, ClassVar
 
-from . import base, configuration, shared
-
-if TYPE_CHECKING:
-    from collections.abc import Hashable, MutableMapping
+from . import base, options, shared
 
 
 @dataclasses.dataclass
@@ -31,15 +28,15 @@ class Registrar(base.Factory):
 
     """
 
-    registry: ClassVar[MutableMapping[Hashable, Any]] = {}
+    registry: ClassVar[base.GenericDict] = {}
 
     """ Class Methods """
 
     @classmethod
     def create(
         cls,
-        item: Hashable,
-        parameters: MutableMapping[Hashable, Any] | None = None) -> Any:
+        item: str,
+        parameters: base.GenericDict | None = None) -> Any:
         """Creates an item based on `item` and possibly `parameters`.
 
         Args:
@@ -80,8 +77,8 @@ class Subclasser(base.Factory, abc.ABC):
     def create(
         cls,
         item: Any,
-        parameters: MutableMapping[Hashable, Any] | None = None,
-        **kwargs: Any) -> Any:
+        parameters: base.GenericDict | None = None,
+        **kwargs: base.Kwargs) -> Any:
         """Creates an item based on `item` and possibly `parameters`.
 
         A subclass in the `__subclasses__` class method is selected based on the
@@ -99,16 +96,14 @@ class Subclasser(base.Factory, abc.ABC):
             Any: created item.
 
         """
-        keyer = configuration._KEY_NAMER
+        keyer = options._KEY_NAMER
         all_subclasses = _get_all_subclasses(cls)
         registry = {keyer(s): s for s in all_subclasses}
         item = _get_from_registry(item = item, registry = registry)
         return shared.finalize(item = item, parameters = parameters)
 
 
-def _get_from_registry(
-    item: Hashable,
-    registry: MutableMapping[Hashable, Any]) -> Any:
+def _get_from_registry(item: str, registry: base.GenericDict) -> Any:
     """Returns a copy of a stored item in `registry` with the key of `item`.
 
     Args:

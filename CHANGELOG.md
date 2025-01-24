@@ -10,6 +10,8 @@ All notable changes to this project will be documented in this file.
 * Added more recipes to recipes.md
 * Added Registry class, offering extra functionality beyond a `dict`
 * Added documentation to advanced.md
+* Added support for Python 3.13
+* Changed 'Manager' 'create' property to a proper alias method for 'manage' to preserve its signature when introspected
 
 ## 0.1.5
 

@@ -32,7 +32,7 @@ def _iterify(item: Any) -> Iterable:
     """
     if item is None:
         return iter(())
-    elif isinstance(item, (str, bytes)):
+    elif isinstance(item, str | bytes):
         return iter([item])
     else:
         try:

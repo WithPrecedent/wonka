@@ -16,15 +16,15 @@ import dataclasses
 import inspect
 from typing import TYPE_CHECKING, Any, ClassVar
 
-from . import base, configuration, shared
+from . import base, options, shared
 
 if TYPE_CHECKING:
-    from collections.abc import Callable, Hashable, MutableMapping
+    from collections.abc import Callable, MutableMapping
 
 
 @dataclasses.dataclass
 class Delegate(base.Factory):
-    """Builds based on the str name of the type passed.
+    """Builds based on the `str` name of the type passed.
 
     This factory acts as a dispatcher to call creation methods based on the type
     or name of the type passed in a manner identical to `Sourcerer`. However,
@@ -40,8 +40,8 @@ class Delegate(base.Factory):
     def create(
         cls,
         item: Any,
-        parameters: MutableMapping[Hashable, Any] | None = None,
-        **kwargs: Any) -> Any:
+        parameters: base.GenericDict | None = None,
+        **kwargs: base.Kwargs) -> Any:
         """Creates an item based on `item` and possibly `parameters`.
 
         Args:
@@ -97,8 +97,8 @@ class Sourcerer(base.Factory, abc.ABC):
     def create(
         cls,
         item: Any,
-        parameters: MutableMapping[Hashable, Any] | None = None,
-        **kwargs: Any) -> Any:
+        parameters: base.GenericDict | None = None,
+        **kwargs: base.Kwargs) -> Any:
         """Creates an item based on `item` and possibly `parameters`.
 
         Args:
@@ -144,8 +144,8 @@ def _get_creation_method_name(
 
     """
     if not isinstance(source, str):
-        source = configuration._KEY_NAMER(source)
-    namer = method_namer or configuration._METHOD_NAMER
+        source = options._KEY_NAMER(source)
+    namer = method_namer or options._METHOD_NAMER
     return namer(source)
 
 def _is_kind(item: Any, kind: type[Any]) -> bool:
@@ -167,7 +167,7 @@ def _get_from_builder_method(
     factory: Any,
     method: str,
     source: Any,
-    **kwargs: Any) -> Any:
+    **kwargs: base.Kwargs) -> Any:
     """Returns constructed item from a builder method of `factory`.
 
     Args:

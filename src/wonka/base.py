@@ -1,4 +1,4 @@
-"""Base classes for `wonka` constructors.
+"""Base classes for `wonka`.
 
 Contents:
     Factory (`abc.ABC`): interface for basic `wonka` creation classes. A
@@ -21,8 +21,10 @@ from __future__ import annotations
 import abc
 import dataclasses
 from collections.abc import Hashable, Iterable, Iterator, MutableMapping
-from typing import Any, TypeAlias
+from typing import Any, TypeAlias, Unpack
 
+GenericDict: TypeAlias = MutableMapping[Hashable, Any]
+Kwargs: TypeAlias = Unpack[GenericDict]
 
 @dataclasses.dataclass
 class Factory(abc.ABC):
@@ -31,7 +33,7 @@ class Factory(abc.ABC):
     A `wonka` `Factory` can be subclassed into any constructer design (not just
     those that fit the classical factory design pattern). So, for example, the
     `wonka` package itself includes `Factory` subclasses that fit the prototype
-    (`Scribe`), registry (`Registar` and` Subclasser`), and traditional
+    (`Scribe`), registry (`Registar` and` Subclasser`), and traditional factory
     (`Delegate` and `Sourcerer`) design patterns. Further, a `Manager` class
     instance may act as the director in a builder design pattern.
 
@@ -50,16 +52,15 @@ class Factory(abc.ABC):
 
     @classmethod
     @abc.abstractmethod
-    def create(cls, item: Any, *args: Any, **kwargs: Any) -> Any:
+    def create(cls, item: Any, **kwargs: Kwargs) -> Any:
         """Returns a created or modified item.
 
         Args:
             item: data for creation of an item or an item to be modified.
-            args: allows subclass to take args.
-            kwargs: allows subclass to take kwargs.
+            kwargs: allows subclass to take other keyword arguments.
 
         Returns:
-            Any: created or modified item.
+            Created item.
 
         """
 
@@ -79,26 +80,24 @@ class Manager(Iterable, abc.ABC):
     """ Required Subclass Methods """
 
     @abc.abstractmethod
-    def manage(self, item: Any, *args: Any, **kwargs: Any) -> Any:
+    def manage(self, item: Any, **kwargs: Kwargs) -> Any:
         """Manages construction and/or modification based on `item`.
 
         Args:
             item: item to be passed to factories in `contents`.
-            args: allows subclass to take args.
-            kwargs: allows subclass to take kwargs.
+            kwargs: allows subclass to take other keyword arguments.
 
         Returns:
-            Any: constructed item.
+            Constructed item.
 
         """
 
-    """ Properties """
+    """ Instance Methods """
 
-    @property
-    def create(self) -> Any:
+    def create(self, item: Any, **kwargs: Kwargs) -> Any:
         """Calls `manage` method.
 
-        This property is included as a convenience so that an instance of a
+        This method is included as a convenience so that an instance of a
         `Manager` can be used as a drop-in for a `Factory` subclass. `Manager`
         cannot easily be made a subclass for `Factory` because it will often
         need to rely on instance data for construction. So, every `Manager`
@@ -107,8 +106,15 @@ class Manager(Iterable, abc.ABC):
         subclass instances to be stored in `contents` as part of an iterable
         workflow.
 
+        Args:
+            item: item to be passed to factories in `contents`.
+            kwargs: allows subclass to take other keyword arguments.
+
+        Returns:
+            Constructed item.
+
         """
-        return self.manage
+        return self.manage(item, **kwargs)
 
     """ Dunder Methods """
 
@@ -148,7 +154,7 @@ class Producer(abc.ABC):
     def produce(
         cls,
         item: Any,
-        parameters: MutableMapping[Hashable, Any] | None = None) -> Any:
+        parameters: GenericDict | None = None) -> Any:
         """Modifies `item` and possibly incorporates `parameters`.
 
         Args:
@@ -163,4 +169,108 @@ class Producer(abc.ABC):
 
 
 Constructor: TypeAlias = Factory | type[Factory] | Manager
+ConstructorDict: TypeAlias = MutableMapping[str, Constructor]
 
+
+@dataclasses.dataclass
+class Cluster(abc.ABC):
+    """Base for collections of factories.
+
+    Args:
+        contents: stored `dict` of `wonka` factories. Defaults to an empty
+            `dict`.
+
+    """
+
+    contents: ConstructorDict = dataclasses.field(default_factory = dict)
+
+    """ Required Subclass Methods """
+
+    @abc.abstractmethod
+    def add(
+        self,
+        item: ConstructorDict | Constructor,
+        **kwargs: Kwargs) -> None:
+        """Adds `item` to the `contents` attribute.
+
+        Args:
+            item: factory or factories to add.
+            kwargs: allows subclass to take other keyword arguments.
+
+        """
+
+    @abc.abstractmethod
+    def delete(self, item: str, **kwargs: Kwargs) -> None:
+        """Deletes `item` in `contents`.
+
+        Args:
+            item: key in `contents` to delete the key/value pair.
+            kwargs: allows subclass to take other keyword arguments.
+
+        """
+
+    """ Dunder Methods """
+
+    def __getitem__(self, key: str) -> Any:
+        """Returns value for `key` in `contents`.
+
+        Args:
+            key: key in `contents` for which a value is sought.
+
+        Returns:
+            Value stored in `contents`.
+
+        """
+        return self.contents[key]
+
+    def __setitem__(self, key: str, value: Any) -> None:
+        """Sets `key` in `contents` to `value`.
+
+        Args:
+            key: key to set in `contents`.
+            value: value to be paired with `key` in `contents`.
+
+        """
+        self.contents[key] = value
+        return
+
+    def __delitem__(self, item: str) -> Cluster:
+        """Deletes `item` from `contents`.
+
+        Args:
+            item: item or key to delete in `contents`.
+
+        Raises:
+            KeyError: if `item` is not in `contents`.
+
+        """
+        self.delete(item = item)
+        return self
+
+    def __add__(self, other: Any) -> Cluster:
+        """Combines argument with `contents` using the `add` method.
+
+        Args:
+            other: item to add to `contents` using the `add` method.
+
+        """
+        self.add(item = other)
+        return self
+
+    def __iter__(self) -> Iterator[Any]:
+        """Returns iterator of `contents`.
+
+        Returns:
+            Iterator of `contents`.
+
+        """
+        return iter(self.contents)
+
+    def __len__(self) -> int:
+        """Returns length of `contents`.
+
+        Returns:
+            Length of `contents`.
+
+        """
+        return len(self.contents)

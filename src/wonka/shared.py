@@ -12,17 +12,14 @@ Contents:
 from __future__ import annotations
 
 import inspect
-from typing import TYPE_CHECKING, Any
+from typing import Any
 
-from . import base, configuration
-
-if TYPE_CHECKING:
-    from collections.abc import Hashable, MutableMapping
+from . import base, options
 
 
 def finalize(
     item: Any,
-    parameters: MutableMapping[Hashable, Any] | None = None,
+    parameters: base.GenericDict | None = None,
     factory: type[base.Factory] | None = None) -> Any:
     """Modifies `item` and possibly incorporates `parameters`.
 
@@ -48,7 +45,7 @@ def finalize(
 
 def inject_attributes(
     item: Any,
-    parameters: MutableMapping[Hashable, Any] | None = None,
+    parameters: base.GenericDict | None = None,
     overwrite: bool | None = None) -> Any:
     """Manages `item` and possibly incorporates `parameters`.
 
@@ -64,7 +61,7 @@ def inject_attributes(
 
     """
     if parameters:
-        overwrite = configuration._OVERWRITE if overwrite is None else overwrite
+        overwrite = options._OVERWRITE if overwrite is None else overwrite
         for key, value in parameters.items():
             if overwrite or not hasattr(item, key):
                 setattr(item, key, value)
@@ -87,7 +84,7 @@ def is_constructor(item: Any) -> bool:
         Whether `item` is a wonka-compatible constructor
 
     """
-    if configuration._STRICT_COMPATIBILITY:
+    if options._STRICT_COMPATIBILITY:
         return (
             (inspect.isclass(item) and issubclass(item, base.Factory))
             or isinstance(item, base.Manager | base.Factory))
