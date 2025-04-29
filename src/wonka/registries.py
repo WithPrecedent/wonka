@@ -11,6 +11,7 @@ Contents:
 from __future__ import annotations
 
 import abc
+import contextlib
 import copy
 import dataclasses
 from typing import Any, ClassVar
@@ -53,6 +54,30 @@ class Registrar(base.Factory):
         """
         item = _get_from_registry(item = item, registry = cls.registry)
         return shared.finalize(item = item, parameters = parameters)
+
+
+@dataclasses.dataclass
+class AutoRegistrar(Registrar, abc.ABC):
+    """Mixin for core package base classes.
+
+    Attributes:
+        registry: stores classes and/or instances to be used in item
+            construction. Defaults to an empty `dict`.
+
+    """
+
+    registry: ClassVar[base.GenericDict] = {}
+
+    """ Initialization Methods """
+
+    @classmethod
+    def __init_subclass__(cls, *args: Any, **kwargs: Any):
+        """Automatically registers subclasses."""
+        with contextlib.suppress(AttributeError):
+            super().__init_subclass__(*args, **kwargs)
+        keyer = options._KEY_NAMER
+        key = keyer(cls)
+        cls.registry[key] = cls
 
 
 @dataclasses.dataclass

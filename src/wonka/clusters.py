@@ -7,12 +7,15 @@ Contents:
 """
 from __future__ import annotations
 
-import copy
+import abc
+import contextlib
 import dataclasses
-from collections.abc import Hashable, MutableMapping
+import inspect
+from collections.abc import ClassVar, Hashable, MutableMapping
+from types import SimpleNamespace
 from typing import Any
 
-from . import base, options, shared, utilities
+from . import base, options, registries, shared, utilities
 
 
 @dataclasses.dataclass
@@ -143,220 +146,245 @@ class Manufacturer(base.Cluster):
         return tuple(self.contents.values())
 
 
-# @dataclasses.dataclass
-# class Keystones(base.Cluster):
-#     """Stores Keystone subclasses.
+@dataclasses.dataclass
+class Hub(base.Cluster):
+    """Stores Keystone classes.
 
-#     For each Keystone, a class attribute is added with the snakecase name of
-#     that Keystone. In that class attribute, a dict-like object (determined by
-#     'default_factory') is the value and it stores all Keystone subclasses of
-#     that type (again using snakecase names as keys).
+    Attributes:
+        contents: dictionary of all direct Keystone
+            subclasses. Keys are snakecase names of the Keystone subclass and
+            values are the base Keystone subclasses.
+        defaults: dictionary of the default class
+            for each of the Keystone subclasses. Keys are snakecase names of the
+            base type and values are Keystone subclasses.
+        All direct Keystone subclasses will have an attribute name added
+        dynamically.
 
-#     Attributes:
-#         bases (ClassVar[camina.Dictionary]): dictionary of all direct Keystone
-#             subclasses. Keys are snakecase names of the Keystone subclass and
-#             values are the base Keystone subclasses.
-#         defaults (ClassVar[camina.Dictionary]): dictionary of the default class
-#             for each of the Keystone subclasses. Keys are snakecase names of the
-#             base type and values are Keystone subclasses.
-#         default_factory (ClassVar[Type[MutableMapping]]): dict-like class used
-#             to store Keystone subclasses. Defaults to camina.Dictionary.
-#         All direct Keystone subclasses will have an attribute name added
-#         dynamically.
+    """
+    contents: base.ConstructorDict = dataclasses.field(default_factory = dict)
+    defaults: base.GenericDict = dataclasses.field(default_factory = dict)
 
-#     """
-#     contents: base.ConstructorDict = dataclasses.field(default_factory = dict)
-#     defaults: ClassVar[camina.Dictionary] = camina.Dictionary()
-#     default_factory: ClassVar[Type[MutableMapping]] = camina.Dictionary
+    """ Properties """
 
-#     """ Public Methods """
+    @property
+    def registry(self) -> SimpleNamespace:
+        """Returns an object of `contents` supporting dot access."""
+        return SimpleNamespace(self.contents)
 
-#     @classmethod
-#     def add(cls, item: Type[Keystone]) -> None:
-#         """Adds a new keystone attribute with an empty dictionary.
+    """ Public Methods """
 
-#         Args:
-#             item (Type[Keystone]): direct Keystone subclass from which the name
-#                 of a new attribute should be derived.
+    @classmethod
+    def add(cls, item: type[Keystone]) -> None:
+        """Adds a new keystone attribute with an empty dictionary.
 
-#         """
-#         name = cls._get_name(item = item)
-#         cls.bases[name] = item
-#         setattr(cls, name, cls.default_factory())
-#         # Automatically sets cls to the default option if it is concrete.
-#         if abc.ABC not in item.__bases__:
-#             cls.set_default(item = item, base = name)
-#         # Otherwise the default is set to None (if there is no previously
-#         # assigned default option).
-#         elif name not in cls.defaults:
-#             cls.defaults[name] = None
-#         return
+        Args:
+            item: direct Keystone subclass from which the name
+                of a new attribute should be derived.
 
-#     @classmethod
-#     def classify(cls, item: str | Type[Keystone] | Keystone) -> str:
-#         """Returns the str name of the Keystone of which 'item' is.
+        """
+        name = cls._get_name(item = item)
+        cls.bases[name] = item
+        setattr(cls, name, cls.default_factory())
+        # Automatically sets cls to the default option if it is concrete.
+        if abc.ABC not in item.__bases__:
+            cls.set_default(item = item, base = name)
+        # Otherwise the default is set to None (if there is no previously
+        # assigned default option).
+        elif name not in cls.defaults:
+            cls.defaults[name] = None
+        return
 
-#         Args:
-#             item (str | Type[Keystone] | Keystone): Keystone subclass, subclass
-#                 instance, or its str name.
+    @classmethod
+    def classify(cls, item: str | type[Keystone] | Keystone) -> str:
+        """Returns the str name of the Keystone of which `item` is.
 
-#         Raises:
-#             ValueError: if 'item' does not match a subclass of any Keystone
-#                 type.
+        Args:
+            item: Keystone subclass, subclass instance, or its str name.
 
-#         Returns:
-#             str: snakecase str name of the Keystone base type of which 'item' is
-#                 a subclass or subclass instance.
+        Raises:
+            ValueError: if `item` does not match a subclass of any Keystone
+                type.
 
-#         """
-#         if isinstance(item, str):
-#             for key in cls.bases.keys():
-#                 subtype_library = getattr(cls, key)
-#                 for name in subtype_library.keys():
-#                     if item == name:
-#                         return key
-#         else:
-#             if not inspect.isclass(item):
-#                 item = item.__class__
-#             for key, value in cls.bases.items():
-#                 if issubclass(item, value):
-#                     return key
-#         raise ValueError(f'{item} is not a subclass of any Keystone')
+        Returns:
+            str: snakecase str name of the Keystone base type of which `item` is
+                a subclass or subclass instance.
 
-#     @classmethod
-#     def register(
-#         cls,
-#         item: Type[Keystone],
-#         name: Optional[str] = None) -> None:
-#         """Registers 'item' in the appropriate class attribute registry.
+        """
+        if isinstance(item, str):
+            for key in cls.bases:
+                subtype_library = getattr(cls, key)
+                for name in subtype_library:
+                    if item == name:
+                        return key
+        else:
+            if not inspect.isclass(item):
+                item = item.__class__
+            for key, value in cls.bases.items():
+                if issubclass(item, value):
+                    return key
+        raise ValueError(f'{item} is not a subclass of any Keystone')
 
-#         Args:
-#             item (Type[Keystone]): Keystone subclass to register.
-#             name (Optional[str], optional): key name to use in storing 'item'.
-#                 Defaults to None.
+    @classmethod
+    def register(
+        cls,
+        item: type[Keystone],
+        name: str | None = None,
+        base: str | None = None) -> None:
+        """Registers `item` in the appropriate class attribute registry.
 
-#         """
-#         name = name or cls._get_name(item = item, name = name)
-#         keystone = cls.classify(item)
-#         getattr(cls, keystone)[name] = item
-#         if cls.defaults[keystone] is None and abc.ABC not in item.__bases__:
-#             cls.set_default(item = item, base = keystone)
-#         return
+        Args:
+            item: Keystone subclass to register.
+            name: key name to use in storing `item`. Defaults to None.
+            base: class to use for the newly created insance. Defaults to None.
 
-#     @classmethod
-#     def set_default(
-#         cls,
-#         item: Type[Keystone],
-#         name: Optional[str] = None,
-#         base: Optional[str] = None) -> None:
-#         """Registers 'item' as the default subclass of 'base'.
+        """
+        name = name or cls._get_name(item = item, name = name)
+        keystone = cls.classify(item)
+        getattr(cls, keystone)[name] = item
+        if cls.defaults[keystone] is None and abc.ABC not in item.__bases__:
+            cls.set_default(item = item, base = keystone)
+        return
 
-#         If 'base' is not passed, the 'classify' method will be used to determine
-#         the appropriate base.
+    @classmethod
+    def set_default(
+        cls,
+        item: type[Keystone],
+        name: str | None = None,
+        base: str | None = None) -> None:
+        """Registers `item` as the default subclass of 'base'.
 
-#         Args:
-#             item (Type[Keystone]): Keystone subclass to make the default.
-#             name (Optional[str], optional): key name to use in the 'defaults'
-#                 dictionary. Defaults to None.
-#             base (Optional[str]): key name to use in storing 'item'. Defaults to
-#                 None.
+        If 'base' is not passed, the 'classify' method will be used to determine
+        the appropriate base.
 
-#         """
-#         key = base or cls.classify(item)
-#         name = cls._get_name(item = item, name = name)
-#         cls.defaults[key] = name
-#         return
+        Args:
+            item (Type[Keystone]): Keystone subclass to make the default.
+            name (Optional[str], optional): key name to use in the 'defaults'
+                dictionary. Defaults to None.
+            base (Optional[str]): key name to use in storing `item`. Defaults to
+                None.
 
-#     @classmethod
-#     def validate(
-#         cls,
-#         item: object,
-#         attribute: str,
-#         parameters: Optional[MutableMapping[str, Any]] = None) -> object:
-#         """Creates or validates 'attribute' in 'item'.
+        """
+        key = base or cls.classify(item)
+        name = cls._get_name(item = item, name = name)
+        cls.defaults[key] = name
+        return
 
-#         Args:
-#             item (object): object (often a Project or Manager instance) of which
-#                 a Keystone in 'attribute' needs to be validated or
-#                 created.
-#             attribute (str): name of the attribute' in item containing a value
-#                 to be validated or which provides information to create an
-#                 appropriate instance.
-#             parameters (Optional[MutableMapping[str, Any]]): parameters to pass
-#                 to or inject in the Keystone subclass instance.
+    @classmethod
+    def validate(
+        cls,
+        item: object,
+        attribute: str,
+        parameters: base.GenericDict | None = None) -> object:
+        """Creates or validates 'attribute' in `item`.
 
-#         Raises:
-#             ValueError: if the value of 'attribute' in 'item' does match any
-#                 known subclass or subclass instance of that Keystone
-#                 subtype.
+        Args:
+            item: object (often a Project or Manager instance) of which
+                a Keystone in 'attribute' needs to be validated or
+                created.
+            attribute: name of the attribute' in item containing a value
+                to be validated or which provides information to create an
+                appropriate instance.
+            parameters: parameters to pass
+                to or inject in the Keystone subclass instance.
 
-#         Returns:
-#             object: completed, linked instance.
+        Raises:
+            ValueError: if the value of 'attribute' in `item` does match any
+                known subclass or subclass instance of that Keystone
+                subtype.
 
-#         """
-#         parameters = parameters or {}
-#         instance = None
-#         # Get current value of 'attribute' in 'item'.
-#         value = getattr(item, attribute)
-#         # Get the corresponding base class.
-#         base = cls.bases[attribute]
-#         # Gets the relevant registry for 'attribute'.
-#         registry = getattr(cls, attribute)
-#         # Adds parameters to 'value' is already an instance of the appropriate
-#         # base type.
-#         if isinstance(value, base):
-#             for parameter, argument in parameters.items():
-#                 setattr(value, parameter, argument)
-#             instance = value
-#         # Selects default class for 'attribute' if none exists.
-#         elif value is None:
-#             name = cls.defaults[attribute]
-#             if name:
-#                 value = registry[name]
-#             else:
-#                 raise ValueError(
-#                     f'Neither a value for {attribute} nor a default class '
-#                     f'exists')
-#         # Uses str value to select appropriate subclass.
-#         elif isinstance(value, str):
-#             name = getattr(item, attribute)
-#             value = registry[name]
-#         # Gets name of class if it is already an appropriate subclass.
-#         elif inspect.issubclass(value, base):
-#             name = camina.namify(value)
-#         else:
-#             raise ValueError(f'{value} is not a recognized keystone')
-#         # Creates a subclass instance.
-#         if instance is None:
-#             instance = value.create(name = name, **parameters)
-#         setattr(item, attribute, instance)
-#         return item
+        Returns:
+            Completed, linked instance.
 
-#     """ Private Methods """
+        """
+        parameters = parameters or {}
+        instance = None
+        # Get current value of 'attribute' in `item`.
+        value = getattr(item, attribute)
+        # Get the corresponding base class.
+        base = cls.bases[attribute]
+        # Gets the relevant registry for 'attribute'.
+        registry = getattr(cls, attribute)
+        # Adds parameters to 'value' is already an instance of the appropriate
+        # base type.
+        if isinstance(value, base):
+            for parameter, argument in parameters.items():
+                setattr(value, parameter, argument)
+            instance = value
+        # Selects default class for 'attribute' if none exists.
+        elif value is None:
+            name = cls.defaults[attribute]
+            if name:
+                value = registry[name]
+            else:
+                raise ValueError(
+                    f'Neither a value for {attribute} nor a default class '
+                    f'exists')
+        # Uses str value to select appropriate subclass.
+        elif isinstance(value, str):
+            name = getattr(item, attribute)
+            value = registry[name]
+        # Gets name of class if it is already an appropriate subclass.
+        elif inspect.issubclass(value, base):
+            name = utilities._namify(value)
+        else:
+            raise ValueError(f'{value} is not a recognized keystone')
+        # Creates a subclass instance.
+        if instance is None:
+            instance = value.create(name = name, **parameters)
+        setattr(item, attribute, instance)
+        return item
 
-#     @classmethod
-#     def _get_name(
-#         cls,
-#         item: Type[Keystone],
-#         name: Optional[str] = None) -> None:
-#         """Returns 'name' or str name of item.
+    """ Private Methods """
 
-#         By default, the method uses camina.namify to create a snakecase name. If
-#         the resultant name begins with 'project_', that substring is removed.
+    @classmethod
+    def _get_name(
+        cls,
+        item: type[Keystone],
+        name: str | None = None) -> None:
+        """Returns 'name' or str name of item.
 
-#         If you want to use another naming convention, just subclass and override
-#         this method. All other methods will call this method for naming.
+        By default, the method uses utilities._namify to create a snakecase
+        name. If the resultant name begins with 'project_', that substring is
+        removed.
 
-#         Args:
-#             item (Type[Keystone]): item to name.
-#             name (Optional[str], optional): optional name to use. A 'project_'
-#                 prefix will be removed, if it exists. Defaults to None.
+        If you want to use another naming convention, just subclass and override
+        this method. All other methods will call this method for naming.
 
-#         Returns:
-#             str: name of 'item' or 'name' (with the 'project' prefix removed).
+        Args:
+            item: item to name.
+            name: optional name to use. A 'project_'
+                prefix will be removed, if it exists. Defaults to None.
 
-#         """
-#         name = name or camina.namify(item)
-#         if name.startswith('project_'):
-#             name = name[8:]
-#         return name
+        Returns:
+            str: name of `item` or 'name' (with the 'project' prefix removed).
+
+        """
+        name = name or utilities._namify(item)
+        if name.startswith('project_'):
+            name = name[8:]
+        return name
+
+
+@dataclasses.dataclass
+class Keystone(registries.AutoRegistrar):
+    """_summary
+
+    Attributes:
+        registry: stores classes and/or instances to be used in item
+            construction. Defaults to an empty `dict`.
+
+    """
+
+    registry: ClassVar[base.GenericDict] = {}  # noqa: RUF008
+    hub: ClassVar[Hub] = Hub
+
+    """ Initialization Methods """
+
+    @classmethod
+    def __init_subclass__(cls, *args: Any, **kwargs: Any):
+        """Automatically registers subclasses."""
+        with contextlib.suppress(AttributeError):
+            super().__init_subclass__(*args, **kwargs)
+        keyer = options._KEY_NAMER
+        key = keyer(cls)
+        cls.registry[key] = cls
