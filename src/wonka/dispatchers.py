@@ -9,6 +9,7 @@ Contents:
         and a `dict` of types stored in the `sources` class attribute.
 
 """
+
 from __future__ import annotations
 
 import abc
@@ -41,7 +42,8 @@ class Delegate(base.Factory):
         cls,
         item: Any,
         parameters: base.GenericDict | None = None,
-        **kwargs: base.Kwargs) -> Any:
+        **kwargs: base.Kwargs,
+    ) -> Any:
         """Creates an item based on `item` and possibly `parameters`.
 
         Args:
@@ -60,11 +62,9 @@ class Delegate(base.Factory):
         """
         builder = _get_creation_method_name(item)
         item = _get_from_builder_method(
-            factory = cls,
-            method = builder,
-            source = item,
-            **kwargs)
-        return shared.finalize(item = item, parameters = parameters)
+            factory=cls, method=builder, source=item, **kwargs
+        )
+        return shared.finalize(item=item, parameters=parameters)
 
 
 @dataclasses.dataclass
@@ -98,7 +98,8 @@ class Sourcerer(base.Factory, abc.ABC):
         cls,
         item: Any,
         parameters: base.GenericDict | None = None,
-        **kwargs: base.Kwargs) -> Any:
+        **kwargs: base.Kwargs,
+    ) -> Any:
         """Creates an item based on `item` and possibly `parameters`.
 
         Args:
@@ -120,17 +121,15 @@ class Sourcerer(base.Factory, abc.ABC):
             if _is_kind(item, kind):
                 builder = _get_creation_method_name(substring)
                 item = _get_from_builder_method(
-                    factory = cls,
-                    method = builder,
-                    source = item,
-                    **kwargs)
-                return shared.finalize(item = item, parameters = parameters)
-        raise KeyError(f'{item} does not match any recognized types')
+                    factory=cls, method=builder, source=item, **kwargs
+                )
+                return shared.finalize(item=item, parameters=parameters)
+        raise KeyError(f"{item} does not match any recognized types")
 
 
 def _get_creation_method_name(
-    source: Any,
-    method_namer: Callable[[object | type[Any]], str] | None = None) -> str:
+    source: Any, method_namer: Callable[[object | type[Any]], str] | None = None
+) -> str:
     """Returns the creation method name for factories that call other methods.
 
     Args:
@@ -148,6 +147,7 @@ def _get_creation_method_name(
     namer = method_namer or options._METHOD_NAMER
     return namer(source)
 
+
 def _is_kind(item: Any, kind: type[Any]) -> bool:
     """Returns if `item` is an instance or subclass of `kind`.
 
@@ -159,15 +159,14 @@ def _is_kind(item: Any, kind: type[Any]) -> bool:
         Whether `item` is an instance or subclass of `kind`.
 
     """
-    return (
-        isinstance(item, kind)
-        or (inspect.isclass(item and issubclass(item, kind))))
+    return isinstance(item, kind) or (
+        inspect.isclass(item and issubclass(item, kind))
+    )
+
 
 def _get_from_builder_method(
-    factory: Any,
-    method: str,
-    source: Any,
-    **kwargs: base.Kwargs) -> Any:
+    factory: Any, method: str, source: Any, **kwargs: base.Kwargs
+) -> Any:
     """Returns constructed item from a builder method of `factory`.
 
     Args:
@@ -188,4 +187,4 @@ def _get_from_builder_method(
         builder = getattr(factory, method)
         return builder(source, **kwargs)
     except AttributeError as e:
-        raise AttributeError(f'{method} does not exist in {factory}') from e
+        raise AttributeError(f"{method} does not exist in {factory}") from e

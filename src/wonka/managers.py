@@ -5,6 +5,7 @@ Contents:
         of constructors that build an item like an assembly line.
 
 """
+
 from __future__ import annotations
 
 import copy
@@ -30,7 +31,8 @@ class Assembler(MutableSequence, base.Manager):
     """
 
     contents: MutableSequence[base.Constructor] = dataclasses.field(
-        default_factory = list)
+        default_factory=list
+    )
 
     """ Instance Methods """
 
@@ -48,12 +50,14 @@ class Assembler(MutableSequence, base.Manager):
         """
         if shared.is_constructor(item):
             self.contents.append(item)
-        elif (isinstance(item, Sequence)
-                and all(shared.is_constructor(v) for v in item)):
+        elif isinstance(item, Sequence) and all(
+            shared.is_constructor(v) for v in item
+        ):
             self.contents.extend(item)
         else:
             raise TypeError(
-                'All values in item must be wonka-compatible constructors')
+                "All values in item must be wonka-compatible constructors"
+            )
 
     def delete(self, item: int) -> None:
         """Deletes item at the index in `contents`.
@@ -100,9 +104,9 @@ class Assembler(MutableSequence, base.Manager):
             item: item(s) to prepend to `contents`.
 
         """
-        if utilities._is_sequence(item = item):
+        if utilities._is_sequence(item=item):
             for thing in reversed(item):
-                self.prepend(item = thing)
+                self.prepend(item=thing)
         else:
             self.insert(0, item)
         return
@@ -110,7 +114,8 @@ class Assembler(MutableSequence, base.Manager):
     def subset(
         self,
         include: Any | Sequence[Any] | None = None,
-        exclude: Any | Sequence[Any] | None = None) -> Assembler:
+        exclude: Any | Sequence[Any] | None = None,
+    ) -> Assembler:
         """Returns a new instance with a subset of `contents`.
 
         This method applies `include` before `exclude` if both are passed. If
@@ -129,7 +134,7 @@ class Assembler(MutableSequence, base.Manager):
 
         """
         if include is None and exclude is None:
-            raise ValueError('include or exclude must not be None')
+            raise ValueError("include or exclude must not be None")
         if include is None:
             contents = copy.deepcopy(self.contents)
         else:
@@ -168,15 +173,15 @@ class Assembler(MutableSequence, base.Manager):
         return
 
     def __add__(
-        self,
-        other: base.Constructor | Sequence[base.Constructor]) -> Assembler:
+        self, other: base.Constructor | Sequence[base.Constructor]
+    ) -> Assembler:
         """Combines argument with `contents` using the `add` method.
 
         Args:
             other: tem to add to `contents` using the `add` method.
 
         """
-        self.add(item = other)
+        self.add(item=other)
         return self
 
     def __delitem__(self, item: int) -> Assembler:
@@ -189,7 +194,7 @@ class Assembler(MutableSequence, base.Manager):
             KeyError: if `item` is not in `contents`.
 
         """
-        self.delete(item = item)
+        self.delete(item=item)
         return self
 
     def __iter__(self) -> Iterator[base.Constructor]:

@@ -9,6 +9,7 @@ Contents:
         constructor.
 
 """
+
 from __future__ import annotations
 
 import inspect
@@ -20,7 +21,8 @@ from . import base, options
 def finalize(
     item: Any,
     parameters: base.GenericDict | None = None,
-    factory: type[base.Factory] | None = None) -> Any:
+    factory: type[base.Factory] | None = None,
+) -> Any:
     """Modifies `item` and possibly incorporates `parameters`.
 
     Args:
@@ -38,15 +40,17 @@ def finalize(
 
     """
     factory = factory or item
-    if (hasattr(factory, 'produce') and inspect.ismethod(factory.produce)):
+    if hasattr(factory, "produce") and inspect.ismethod(factory.produce):
         return factory.produce(item, parameters)
     else:
         return item if parameters is None else item(**parameters)
 
+
 def inject_attributes(
     item: Any,
     parameters: base.GenericDict | None = None,
-    overwrite: bool | None = None) -> Any:
+    overwrite: bool | None = None,
+) -> Any:
     """Manages `item` and possibly incorporates `parameters`.
 
     Args:
@@ -67,6 +71,7 @@ def inject_attributes(
                 setattr(item, key, value)
     return item
 
+
 def is_constructor(item: Any) -> bool:
     """Returns if `item` is a wonka-compatible constructor.
 
@@ -86,9 +91,7 @@ def is_constructor(item: Any) -> bool:
     """
     if options._STRICT_COMPATIBILITY:
         return (
-            (inspect.isclass(item) and issubclass(item, base.Factory))
-            or isinstance(item, base.Manager | base.Factory))
+            inspect.isclass(item) and issubclass(item, base.Factory)
+        ) or isinstance(item, base.Manager | base.Factory)
     else:
-        return (
-            hasattr(item, 'create')
-            and inspect.ismethod(item.create))
+        return hasattr(item, "create") and inspect.ismethod(item.create)

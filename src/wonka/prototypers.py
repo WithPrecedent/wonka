@@ -5,6 +5,7 @@ Contents:
         is passed, itself.
 
 """
+
 from __future__ import annotations
 
 import copy
@@ -25,7 +26,8 @@ class Scribe(base.Factory):
         cls,
         item: Any | None = None,
         parameters: base.GenericDict | None = None,
-        **kwargs: base.Kwargs) -> Any:
+        **kwargs: base.Kwargs,
+    ) -> Any:
         """Clones `item` and possibly incorporates `parameters`.
 
         Args:
@@ -41,4 +43,4 @@ class Scribe(base.Factory):
         """
         item = item or cls
         item = copy.deepcopy(item)
-        return shared.finalize(item = item, parameters = parameters)
+        return shared.finalize(item=item, parameters=parameters)

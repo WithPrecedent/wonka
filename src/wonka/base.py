@@ -26,6 +26,7 @@ from typing import Any, TypeAlias, Unpack
 GenericDict: TypeAlias = MutableMapping[Hashable, Any]
 Kwargs: TypeAlias = Unpack[GenericDict]
 
+
 @dataclasses.dataclass
 class Factory(abc.ABC):
     """Base for `wonka` constructors.
@@ -151,10 +152,7 @@ class Producer(abc.ABC):
 
     @classmethod
     @abc.abstractmethod
-    def produce(
-        cls,
-        item: Any,
-        parameters: GenericDict | None = None) -> Any:
+    def produce(cls, item: Any, parameters: GenericDict | None = None) -> Any:
         """Modifies `item` and possibly incorporates `parameters`.
 
         Args:
@@ -182,15 +180,14 @@ class Cluster(abc.ABC):
 
     """
 
-    contents: ConstructorDict = dataclasses.field(default_factory = dict)
+    contents: ConstructorDict = dataclasses.field(default_factory=dict)
 
     """ Required Subclass Methods """
 
     @abc.abstractmethod
     def add(
-        self,
-        item: ConstructorDict | Constructor,
-        **kwargs: Kwargs) -> None:
+        self, item: ConstructorDict | Constructor, **kwargs: Kwargs
+    ) -> None:
         """Adds `item` to the `contents` attribute.
 
         Args:
@@ -244,7 +241,7 @@ class Cluster(abc.ABC):
             KeyError: if `item` is not in `contents`.
 
         """
-        self.delete(item = item)
+        self.delete(item=item)
         return self
 
     def __add__(self, other: Any) -> Cluster:
@@ -254,7 +251,7 @@ class Cluster(abc.ABC):
             other: item to add to `contents` using the `add` method.
 
         """
-        self.add(item = other)
+        self.add(item=other)
         return self
 
     def __iter__(self) -> Iterator[Any]:

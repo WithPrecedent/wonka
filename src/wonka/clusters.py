@@ -5,6 +5,7 @@ Contents:
         `add` method that validates any added values as `wonka` compatible.
 
 """
+
 from __future__ import annotations
 
 import abc
@@ -38,7 +39,7 @@ class Manufacturer(base.Cluster):
 
     """
 
-    contents: base.ConstructorDict = dataclasses.field(default_factory = dict)
+    contents: base.ConstructorDict = dataclasses.field(default_factory=dict)
 
     """ Instance Methods """
 
@@ -59,15 +60,17 @@ class Manufacturer(base.Cluster):
                 self.contents.update(item)
             else:
                 message = (
-                    'All values in item must be wonka-compatible constructors')
+                    "All values in item must be wonka-compatible constructors"
+                )
                 raise TypeError(message)
         elif shared.is_constructor(item):
             key = options._KEY_NAMER(item)
             self.contents.update({key: item})
         else:
             message = (
-                'item must either be a wonka-compatible constructor or a dict-'
-                'like object with values that are constructors')
+                "item must either be a wonka-compatible constructor or a dict-"
+                "like object with values that are constructors"
+            )
             raise TypeError(message)
 
     def delete(self, item: Hashable) -> None:
@@ -87,7 +90,7 @@ class Manufacturer(base.Cluster):
             A `tuple` equivalent to `dict.items()`.
 
         """
-        return tuple(zip(self.keys(), self.values(), strict = True))
+        return tuple(zip(self.keys(), self.values(), strict=True))
 
     def keys(self) -> tuple[Hashable, ...]:
         """Returns `contents` keys as a `tuple`.
@@ -161,8 +164,9 @@ class Hub(base.Cluster):
         dynamically.
 
     """
-    contents: base.ConstructorDict = dataclasses.field(default_factory = dict)
-    defaults: base.GenericDict = dataclasses.field(default_factory = dict)
+
+    contents: base.ConstructorDict = dataclasses.field(default_factory=dict)
+    defaults: base.GenericDict = dataclasses.field(default_factory=dict)
 
     """ Properties """
 
@@ -182,12 +186,12 @@ class Hub(base.Cluster):
                 of a new attribute should be derived.
 
         """
-        name = cls._get_name(item = item)
+        name = cls._get_name(item=item)
         cls.bases[name] = item
         setattr(cls, name, cls.default_factory())
         # Automatically sets cls to the default option if it is concrete.
         if abc.ABC not in item.__bases__:
-            cls.set_default(item = item, base = name)
+            cls.set_default(item=item, base=name)
         # Otherwise the default is set to None (if there is no previously
         # assigned default option).
         elif name not in cls.defaults:
@@ -222,14 +226,15 @@ class Hub(base.Cluster):
             for key, value in cls.bases.items():
                 if issubclass(item, value):
                     return key
-        raise ValueError(f'{item} is not a subclass of any Keystone')
+        raise ValueError(f"{item} is not a subclass of any Keystone")
 
     @classmethod
     def register(
         cls,
         item: type[Keystone],
         name: str | None = None,
-        base: str | None = None) -> None:
+        base: str | None = None,
+    ) -> None:
         """Registers `item` in the appropriate class attribute registry.
 
         Args:
@@ -238,11 +243,11 @@ class Hub(base.Cluster):
             base: class to use for the newly created insance. Defaults to None.
 
         """
-        name = name or cls._get_name(item = item, name = name)
+        name = name or cls._get_name(item=item, name=name)
         keystone = cls.classify(item)
         getattr(cls, keystone)[name] = item
         if cls.defaults[keystone] is None and abc.ABC not in item.__bases__:
-            cls.set_default(item = item, base = keystone)
+            cls.set_default(item=item, base=keystone)
         return
 
     @classmethod
@@ -250,7 +255,8 @@ class Hub(base.Cluster):
         cls,
         item: type[Keystone],
         name: str | None = None,
-        base: str | None = None) -> None:
+        base: str | None = None,
+    ) -> None:
         """Registers `item` as the default subclass of 'base'.
 
         If 'base' is not passed, the 'classify' method will be used to determine
@@ -265,7 +271,7 @@ class Hub(base.Cluster):
 
         """
         key = base or cls.classify(item)
-        name = cls._get_name(item = item, name = name)
+        name = cls._get_name(item=item, name=name)
         cls.defaults[key] = name
         return
 
@@ -274,7 +280,8 @@ class Hub(base.Cluster):
         cls,
         item: object,
         attribute: str,
-        parameters: base.GenericDict | None = None) -> object:
+        parameters: base.GenericDict | None = None,
+    ) -> object:
         """Creates or validates 'attribute' in `item`.
 
         Args:
@@ -317,8 +324,9 @@ class Hub(base.Cluster):
                 value = registry[name]
             else:
                 raise ValueError(
-                    f'Neither a value for {attribute} nor a default class '
-                    f'exists')
+                    f"Neither a value for {attribute} nor a default class "
+                    f"exists"
+                )
         # Uses str value to select appropriate subclass.
         elif isinstance(value, str):
             name = getattr(item, attribute)
@@ -327,20 +335,17 @@ class Hub(base.Cluster):
         elif inspect.issubclass(value, base):
             name = utilities._namify(value)
         else:
-            raise ValueError(f'{value} is not a recognized keystone')
+            raise ValueError(f"{value} is not a recognized keystone")
         # Creates a subclass instance.
         if instance is None:
-            instance = value.create(name = name, **parameters)
+            instance = value.create(name=name, **parameters)
         setattr(item, attribute, instance)
         return item
 
     """ Private Methods """
 
     @classmethod
-    def _get_name(
-        cls,
-        item: type[Keystone],
-        name: str | None = None) -> None:
+    def _get_name(cls, item: type[Keystone], name: str | None = None) -> None:
         """Returns 'name' or str name of item.
 
         By default, the method uses utilities._namify to create a snakecase
@@ -360,7 +365,7 @@ class Hub(base.Cluster):
 
         """
         name = name or utilities._namify(item)
-        if name.startswith('project_'):
+        if name.startswith("project_"):
             name = name[8:]
         return name
 

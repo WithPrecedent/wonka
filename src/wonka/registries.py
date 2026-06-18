@@ -8,6 +8,7 @@ Contents:
         it.
 
 """
+
 from __future__ import annotations
 
 import abc
@@ -35,9 +36,8 @@ class Registrar(base.Factory):
 
     @classmethod
     def create(
-        cls,
-        item: str,
-        parameters: base.GenericDict | None = None) -> Any:
+        cls, item: str, parameters: base.GenericDict | None = None
+    ) -> Any:
         """Creates an item based on `item` and possibly `parameters`.
 
         Args:
@@ -52,8 +52,8 @@ class Registrar(base.Factory):
             Any: created item.
 
         """
-        item = _get_from_registry(item = item, registry = cls.registry)
-        return shared.finalize(item = item, parameters = parameters)
+        item = _get_from_registry(item=item, registry=cls.registry)
+        return shared.finalize(item=item, parameters=parameters)
 
 
 @dataclasses.dataclass
@@ -103,7 +103,8 @@ class Subclasser(base.Factory, abc.ABC):
         cls,
         item: Any,
         parameters: base.GenericDict | None = None,
-        **kwargs: base.Kwargs) -> Any:
+        **kwargs: base.Kwargs,
+    ) -> Any:
         """Creates an item based on `item` and possibly `parameters`.
 
         A subclass in the `__subclasses__` class method is selected based on the
@@ -124,8 +125,8 @@ class Subclasser(base.Factory, abc.ABC):
         keyer = options._KEY_NAMER
         all_subclasses = _get_all_subclasses(cls)
         registry = {keyer(s): s for s in all_subclasses}
-        item = _get_from_registry(item = item, registry = registry)
-        return shared.finalize(item = item, parameters = parameters)
+        item = _get_from_registry(item=item, registry=registry)
+        return shared.finalize(item=item, parameters=parameters)
 
 
 def _get_from_registry(item: str, registry: base.GenericDict) -> Any:
@@ -145,7 +146,8 @@ def _get_from_registry(item: str, registry: base.GenericDict) -> Any:
     try:
         return copy.deepcopy(registry[item])
     except KeyError as e:
-        raise KeyError(f'{item} was not found in the registry') from e
+        raise KeyError(f"{item} was not found in the registry") from e
+
 
 def _get_all_subclasses(item: type[Any]) -> list[type[Any]]:
     """Returns a list of all subclasses of `items`, including indirect ones.
@@ -157,5 +159,8 @@ def _get_all_subclasses(item: type[Any]) -> list[type[Any]]:
         List of all subclasses of `item`.
 
     """
-    return list(set(item.__subclasses__()).union(
-        [s for c in item.__subclasses__() for s in _get_all_subclasses(c)]))
+    return list(
+        set(item.__subclasses__()).union(
+            [s for c in item.__subclasses__() for s in _get_all_subclasses(c)]
+        )
+    )

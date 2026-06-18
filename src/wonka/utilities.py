@@ -7,6 +7,7 @@ To Do:
 
 
 """
+
 from __future__ import annotations
 
 import inspect
@@ -40,6 +41,7 @@ def _iterify(item: Any) -> Iterable:
         except TypeError:
             return iter((item,))
 
+
 def _namify(item: Any, /, default: str | None = None) -> str | None:
     """Returns `str` name representation of `item`.
 
@@ -54,9 +56,10 @@ def _namify(item: Any, /, default: str | None = None) -> str | None:
     if isinstance(item, str):
         return item
     elif (
-        hasattr(item, 'name')
+        hasattr(item, "name")
         and not inspect.isclass(item)
-        and isinstance(item.name, str)):
+        and isinstance(item.name, str)
+    ):
         return item.name
     else:
         try:
@@ -86,8 +89,9 @@ def _pathlibify(item: str | pathlib.Path) -> str:
     elif isinstance(item, str):
         return pathlib.Path(item)
     else:
-        message = 'item must be a str or pathlib.Path type'
+        message = "item must be a str or pathlib.Path type"
         raise TypeError(message)
+
 
 def _snakify(item: str) -> str:
     """Converts a capitalized `str` to snake case.
@@ -99,12 +103,11 @@ def _snakify(item: str) -> str:
         `item` converted to snake case.
 
     """
-    item = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', item)
-    return re.sub('([a-z0-9])([A-Z])', r'\1_\2', item).lower()
+    item = re.sub("(.)([A-Z][a-z]+)", r"\1_\2", item)
+    return re.sub("([a-z0-9])([A-Z])", r"\1_\2", item).lower()
 
-def _is_sequence(
-    item: Any, *,
-    include_str: bool = False) -> bool:
+
+def _is_sequence(item: Any, *, include_str: bool = False) -> bool:
     """Returns if `item` is a sequence.
 
     If `exclude_str` is True (the default) and `item` is a str, False will be
@@ -120,6 +123,6 @@ def _is_sequence(
     """
     if not inspect.isclass(item):
         item = item.__class__
-    return (
-        issubclass(item, Sequence)
-        and (not issubclass(item, str) or include_str))
+    return issubclass(item, Sequence) and (
+        not issubclass(item, str) or include_str
+    )

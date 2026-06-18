@@ -9,6 +9,7 @@ Contents:
         that always returns an instance.
 
 """
+
 from __future__ import annotations
 
 import abc
@@ -30,7 +31,8 @@ class Classer(base.Producer, abc.ABC):
         cls,
         item: Any,
         parameters: base.GenericDict | None = None,
-        **kwargs: base.Kwargs) -> Any:
+        **kwargs: base.Kwargs,
+    ) -> Any:
         """Modifies `item` and possibly incorporates `parameters`.
 
         Args:
@@ -66,7 +68,8 @@ class Flexer(base.Producer, abc.ABC):
         cls,
         item: Any,
         parameters: base.GenericDict | None = None,
-        **kwargs: base.Kwargs) -> Any:
+        **kwargs: base.Kwargs,
+    ) -> Any:
         """Modifies `item` and possibly incorporates `parameters`.
 
         Args:
@@ -99,7 +102,8 @@ class Instancer(base.Producer, abc.ABC):
         cls,
         item: Any,
         parameters: base.GenericDict | None = None,
-        **kwargs: base.Kwargs) -> Any:
+        **kwargs: base.Kwargs,
+    ) -> Any:
         """Modifies `item` and incorporates `parameters`.
 
         Args:
