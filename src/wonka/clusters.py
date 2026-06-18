@@ -12,9 +12,9 @@ import abc
 import contextlib
 import dataclasses
 import inspect
-from collections.abc import ClassVar, Hashable, MutableMapping
+from collections.abc import Hashable, MutableMapping
 from types import SimpleNamespace
-from typing import Any
+from typing import Any, ClassVar
 
 from . import base, options, registries, shared, utilities
 
