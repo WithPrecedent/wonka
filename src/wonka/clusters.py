@@ -380,7 +380,7 @@ class Keystone(registries.AutoRegistrar):
 
     """
 
-    registry: ClassVar[base.GenericDict] = {}  # noqa: RUF008
+    registry: ClassVar[base.GenericDict] = {}
     hub: ClassVar[Hub] = Hub
 
     """ Initialization Methods """
