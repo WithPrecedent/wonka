@@ -35,7 +35,7 @@ jobs:
         python-version: ${{ matrix.python-version }}
 
     - name: install uv
-      uses: astral-sh/setup-uv@v8.1.0
+      uses: astral-sh/setup-uv@v8.2.0
       with:
         python-version: ${{ matrix.python-version }}
 
@@ -65,7 +65,7 @@ jobs:
       uses: actions/setup-python@v5
 
     - name: install uv
-      uses: astral-sh/setup-uv@v8.1.0
+      uses: astral-sh/setup-uv@v8.2.0
 
     - name: create uv environment
       run: uv venv
@@ -87,7 +87,7 @@ jobs:
       uses: actions/setup-python@v5
 
     - name: install uv
-      uses: astral-sh/setup-uv@v8.1.0
+      uses: astral-sh/setup-uv@v8.2.0
 
     - name: create uv environment
       run: uv venv
