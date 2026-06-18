@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 <!-- insertion marker -->
 
-## 0.2.0 (forthcoming)
+## 0.2.0
 
 * Added example to README.md
 * Added more recipes to recipes.md
@@ -12,6 +12,7 @@ All notable changes to this project will be documented in this file.
 * Added documentation to advanced.md
 * Added support for Python 3.13
 * Changed 'Manager' 'create' property to a proper alias method for 'manage' to preserve its signature when introspected
+* Switched dependency manager to uv
 
 ## 0.1.5
 
