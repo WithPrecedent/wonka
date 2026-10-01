@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 <!-- insertion marker -->
 
-## Unreleased
+## 0.2.1
 
 * Added 'AutoRegistrar' and 'Cluster' to the package namespace and '__all__'
 * Added tests for 'AutoRegistrar', edge cases, options, utilities, 'Assembler', 'Manufacturer', and producers

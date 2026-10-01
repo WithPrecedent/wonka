@@ -1455,7 +1455,7 @@ wheels = [
 
 [[package]]
 name = "wonka"
-version = "0.2"
+version = "0.2.1"
 source = { editable = "." }
 
 [package.dev-dependencies]
