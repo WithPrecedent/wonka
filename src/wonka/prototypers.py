@@ -41,6 +41,6 @@ class Scribe(base.Factory):
             Cloned item.
 
         """
-        item = item or cls
+        item = cls if item is None else item
         item = copy.deepcopy(item)
         return shared.finalize(item=item, parameters=parameters)

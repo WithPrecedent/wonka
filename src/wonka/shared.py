@@ -43,7 +43,11 @@ def finalize(
     if hasattr(factory, "produce") and inspect.ismethod(factory.produce):
         return factory.produce(item, parameters)
     else:
-        return item if parameters is None else item(**parameters)
+        if parameters is None:
+            return item
+        if inspect.isclass(item):
+            return item(**parameters)
+        return inject_attributes(item, parameters)
 
 
 def inject_attributes(

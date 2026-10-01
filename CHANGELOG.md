@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
 
 <!-- insertion marker -->
 
+## Unreleased
+
+* Added 'AutoRegistrar' and 'Cluster' to the package namespace and '__all__'
+* Added tests for 'AutoRegistrar', edge cases, options, utilities, 'Assembler', 'Manufacturer', and producers
+* Changed 'AutoRegistrar' so that each direct subclass gets its own registry instead of all families sharing one
+* Changed 'Assembler' 'manage' to accept keyword arguments and pass them to each constructor
+* Changed 'finalize' to inject parameters as attributes when the item is an instance, instead of calling it
+* Changed 'Kwargs' type alias to 'Any' and applied it consistently to '**kwargs' annotations
+* Changed '__delitem__' on 'Cluster' and 'Assembler' to return 'None'
+* Fixed 'Sourcerer' raising 'TypeError' when an item did not match an earlier key in 'sources'
+* Fixed dispatchers masking 'AttributeError' raised inside a builder method as a missing method
+* Fixed 'Scribe' cloning itself instead of the item when the item was falsy
+
 ## 0.2.0
 
 * Added example to README.md

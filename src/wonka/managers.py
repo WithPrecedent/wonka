@@ -80,18 +80,19 @@ class Assembler(MutableSequence, base.Manager):
         self.contents.insert(index, item)
         return
 
-    def manage(self, item: Any) -> Any:
+    def manage(self, item: Any, **kwargs: base.Kwargs) -> Any:
         """Manages construction and/or modification based on `item`.
 
         Args:
             item: item to be passed to constructors in `contents`.
+            kwargs: keyword arguments passed to each constructor.
 
         Returns:
             Constructed item.
 
         """
         for constructor in self.contents:
-            item = constructor.create(item)
+            item = constructor.create(item, **kwargs)
         return item
 
     def prepend(self, item: Any | Sequence[Any]) -> None:
@@ -184,7 +185,7 @@ class Assembler(MutableSequence, base.Manager):
         self.add(item=other)
         return self
 
-    def __delitem__(self, item: int) -> Assembler:
+    def __delitem__(self, item: int) -> None:
         """Deletes `item` from `contents`.
 
         Args:
@@ -195,7 +196,6 @@ class Assembler(MutableSequence, base.Manager):
 
         """
         self.delete(item=item)
-        return self
 
     def __iter__(self) -> Iterator[base.Constructor]:
         """Returns iterator of `contents`.

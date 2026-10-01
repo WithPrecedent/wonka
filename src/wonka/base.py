@@ -21,10 +21,10 @@ from __future__ import annotations
 import abc
 import dataclasses
 from collections.abc import Hashable, Iterable, Iterator, MutableMapping
-from typing import Any, TypeAlias, Unpack
+from typing import Any, TypeAlias
 
 GenericDict: TypeAlias = MutableMapping[Hashable, Any]
-Kwargs: TypeAlias = Unpack[GenericDict]
+Kwargs: TypeAlias = Any
 
 
 @dataclasses.dataclass
@@ -231,7 +231,7 @@ class Cluster(abc.ABC):
         self.contents[key] = value
         return
 
-    def __delitem__(self, item: str) -> Cluster:
+    def __delitem__(self, item: str) -> None:
         """Deletes `item` from `contents`.
 
         Args:
@@ -242,7 +242,6 @@ class Cluster(abc.ABC):
 
         """
         self.delete(item=item)
-        return self
 
     def __add__(self, other: Any) -> Cluster:
         """Combines argument with `contents` using the `add` method.

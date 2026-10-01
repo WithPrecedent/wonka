@@ -10,6 +10,7 @@ To Do:
 
 from __future__ import annotations
 
+import copy
 import inspect
 import pathlib
 import re
@@ -17,7 +18,9 @@ from collections.abc import Sequence
 from typing import TYPE_CHECKING, Any
 
 if TYPE_CHECKING:
-    from collections.abc import Iterable
+    from collections.abc import Collection, Iterable, Iterator
+
+    from .registries import SubsetReturns
 
 
 def _iterify(item: Any) -> Iterable:
@@ -71,7 +74,7 @@ def _namify(item: Any, /, default: str | None = None) -> str | None:
                 return default
 
 
-def _pathlibify(item: str | pathlib.Path) -> str:
+def _pathlibify(item: str | pathlib.Path) -> pathlib.Path:
     """Converts a `str` path to a `pathlib.Path` type.
 
     Args:
@@ -126,3 +129,56 @@ def _is_sequence(item: Any, *, include_str: bool = False) -> bool:
     return issubclass(item, Sequence) and (
         not issubclass(item, str) or include_str
     )
+
+
+def _iterify(item: Any) -> Iterator[Any]:
+    """Returns `item` as an iterator, but does not iterate `str` types.
+
+    Args:
+        item: item to turn into an iterator.
+
+    Returns:
+        Iterator of `item`. `None` becomes an empty iterator. A `str` or `bytes`
+            type (or any non-iterable) is wrapped so that it is returned as a
+            single item.
+
+    """
+    if item is None:
+        return iter(())
+    if isinstance(item, str | bytes):
+        return iter([item])
+    try:
+        return iter(item)
+    except TypeError:
+        return iter((item,))
+
+
+def _return_subset(
+    subset: Collection, existing: Collection, returns: SubsetReturns
+) -> Collection:
+    """Returns a subset of an item.
+
+    Args:
+        subset: native Python subset of data from a `Collection`.
+        existing: a subclass instance of `Collection`.
+        returns: whether to return a new instance of the class of 'existing'
+            ('class'), a deep copy of 'existing' with 'subset' as its
+            `contents` ('copy'), or 'subset' itself ('simple').
+
+    Raises:
+        ValueError: if 'returns' is not 'class', 'copy', or 'simple'.
+
+    Returns:
+        A `Collection` with a `subset` of data.
+
+    """
+    if returns == "class":
+        return existing.__class__(subset)  # type: ignore[call-arg]
+    if returns == "copy":
+        new_collection = copy.deepcopy(existing)
+        new_collection.contents = subset  # type: ignore[attr-defined]
+        return new_collection
+    if returns == "simple":
+        return subset
+    message = 'returns argument must be "class", "copy", or "simple"'
+    raise ValueError(message)

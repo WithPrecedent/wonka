@@ -160,7 +160,7 @@ def _is_kind(item: Any, kind: type[Any]) -> bool:
 
     """
     return isinstance(item, kind) or (
-        inspect.isclass(item and issubclass(item, kind))
+        inspect.isclass(item) and issubclass(item, kind)
     )
 
 
@@ -185,6 +185,6 @@ def _get_from_builder_method(
     """
     try:
         builder = getattr(factory, method)
-        return builder(source, **kwargs)
     except AttributeError as e:
         raise AttributeError(f"{method} does not exist in {factory}") from e
+    return builder(source, **kwargs)

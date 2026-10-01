@@ -8,7 +8,9 @@ __author__: str = "Corey Rayburn Yung"
 
 __all__: list[str] = [
     "Assembler",
+    "AutoRegistrar",
     "Classer",
+    "Cluster",
     "Delegate",
     "Factory",
     "Flexer",
@@ -31,7 +33,7 @@ __all__: list[str] = [
 ]
 
 
-from .base import Factory, Manager, Producer
+from .base import Cluster, Factory, Manager, Producer
 from .clusters import Manufacturer
 from .dispatchers import Delegate, Sourcerer
 from .managers import Assembler
@@ -44,5 +46,5 @@ from .options import (
 )
 from .producers import Classer, Flexer, Instancer
 from .prototypers import Scribe
-from .registries import Registrar, Subclasser
+from .registries import AutoRegistrar, Registrar, Subclasser
 from .shared import finalize, inject_attributes, is_constructor
