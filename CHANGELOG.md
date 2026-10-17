@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 <!-- insertion marker -->
 
+## 0.2.2
+
+* Updated to the `snickerdoodle` 0.4.0 template
+* Removed `ruff format` from the `pre-commit` hooks because it removes the spaces around "=" in keyword arguments
+* Made `ruff` prefer single quotes and converted the strings in the code to single quotes
+* Made `ruff` ignore boolean default positional arguments (`FBT002`)
+* Excluded `uv.lock` from the large file check
+* Fixed typos in the contributing guide and noted that the project does not use a code formatter
+* Fixed the LICENSE link in the README
+
 ## 0.2.1
 
 * Added 'AutoRegistrar' and 'Cluster' to the package namespace and '__all__'
