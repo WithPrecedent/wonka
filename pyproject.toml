@@ -106,6 +106,7 @@ lint.ignore = [
     "ERA001",  # Commented out code
     "EXE002",  # No shebang is present in an executable file
     "FBT001",  # Boolean positional arg in function definition
+    "FBT002",  # Boolean default positional arg in function definition
     "G004",  # Logging statement uses f-string
     "PLC0415", # Lazy imports (which are intentionally used in this repo)
     "PGH003",  # Use specific rule codes when ignoring type issues
@@ -177,7 +178,7 @@ suppress-none-returning = true
 
 [tool.ruff.lint.flake8-quotes]
 docstring-quotes = "double"
-inline-quotes = "double"
+inline-quotes = "single"
 multiline-quotes = "double"
 
 [tool.ruff.lint.flake8-type-checking]
