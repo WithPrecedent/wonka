@@ -2,34 +2,34 @@
 
 from __future__ import annotations
 
-__version__ = "0.2.1"
+__version__ = '0.2.1'
 
-__author__: str = "Corey Rayburn Yung"
+__author__: str = 'Corey Rayburn Yung'
 
 __all__: list[str] = [
-    "Assembler",
-    "AutoRegistrar",
-    "Classer",
-    "Cluster",
-    "Delegate",
-    "Factory",
-    "Flexer",
-    "Instancer",
-    "Manager",
-    "Manufacturer",
-    "Producer",
-    "Registrar",
-    "Scribe",
-    "Sourcerer",
-    "Subclasser",
-    "finalize",
-    "inject_attributes",
-    "is_constructor",
-    "set_compatibility_rule",
-    "set_keyer",
-    "set_method_namer",
-    "set_overwrite_rule",
-    "set_verbose_rule",
+    'Assembler',
+    'AutoRegistrar',
+    'Classer',
+    'Cluster',
+    'Delegate',
+    'Factory',
+    'Flexer',
+    'Instancer',
+    'Manager',
+    'Manufacturer',
+    'Producer',
+    'Registrar',
+    'Scribe',
+    'Sourcerer',
+    'Subclasser',
+    'finalize',
+    'inject_attributes',
+    'is_constructor',
+    'set_compatibility_rule',
+    'set_keyer',
+    'set_method_namer',
+    'set_overwrite_rule',
+    'set_verbose_rule',
 ]
 
 

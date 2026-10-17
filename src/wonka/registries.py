@@ -25,7 +25,7 @@ from . import base, options, shared
 GenericDict: TypeAlias = MutableMapping[Hashable, Any]
 GenericList: TypeAlias = MutableSequence[Any]
 GenericSet: TypeAlias = AbstractSet[Any]
-SubsetReturns: TypeAlias = Literal["class", "copy", "simple"]
+SubsetReturns: TypeAlias = Literal['class', 'copy', 'simple']
 
 
 @dataclasses.dataclass
@@ -160,7 +160,7 @@ def _get_from_registry(item: str, registry: base.GenericDict) -> Any:
     try:
         return copy.deepcopy(registry[item])
     except KeyError as e:
-        raise KeyError(f"{item} was not found in the registry") from e
+        raise KeyError(f'{item} was not found in the registry') from e
 
 
 def _get_all_subclasses(item: type[Any]) -> list[type[Any]]:

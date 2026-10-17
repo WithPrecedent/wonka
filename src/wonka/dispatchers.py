@@ -124,7 +124,7 @@ class Sourcerer(base.Factory, abc.ABC):
                     factory=cls, method=builder, source=item, **kwargs
                 )
                 return shared.finalize(item=item, parameters=parameters)
-        raise KeyError(f"{item} does not match any recognized types")
+        raise KeyError(f'{item} does not match any recognized types')
 
 
 def _get_creation_method_name(
@@ -186,5 +186,5 @@ def _get_from_builder_method(
     try:
         builder = getattr(factory, method)
     except AttributeError as e:
-        raise AttributeError(f"{method} does not exist in {factory}") from e
+        raise AttributeError(f'{method} does not exist in {factory}') from e
     return builder(source, **kwargs)

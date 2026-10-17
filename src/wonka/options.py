@@ -20,7 +20,7 @@ from . import utilities
 # Default naming function for non-str objects.
 _KEY_NAMER: Callable[[object | type[Any]], str] = utilities._namify
 # Default naming convention for dispatcher registry creation methods.
-_METHOD_NAMER: Callable[[object | type[Any]], str] = lambda x: f"from_{x}"
+_METHOD_NAMER: Callable[[object | type[Any]], str] = lambda x: f'from_{x}'
 # Whether to overwrite existing attributes when arguments are passed to create
 # an item that is already an instance or has class attributes of the same name
 # as in the passed arguments.
@@ -44,9 +44,9 @@ def set_compatibility_rule(compatibility: bool) -> None:
 
     """
     if isinstance(compatibility, bool):
-        globals()["_STRICT_COMPATIBILITY"] = compatibility
+        globals()['_STRICT_COMPATIBILITY'] = compatibility
     else:
-        raise TypeError("compatibility argument must be boolean")
+        raise TypeError('compatibility argument must be boolean')
 
 
 def set_keyer(keyer: Callable[[object | type[Any]], str]) -> None:
@@ -60,9 +60,9 @@ def set_keyer(keyer: Callable[[object | type[Any]], str]) -> None:
 
     """
     if isinstance(keyer, Callable):
-        globals()["_KEY_NAMER"] = keyer
+        globals()['_KEY_NAMER'] = keyer
     else:
-        raise TypeError("keyer argument must be a callable")
+        raise TypeError('keyer argument must be a callable')
 
 
 def set_method_namer(namer: Callable[[object | type[Any]], str]) -> None:
@@ -76,9 +76,9 @@ def set_method_namer(namer: Callable[[object | type[Any]], str]) -> None:
 
     """
     if isinstance(namer, Callable):
-        globals()["_METHOD_NAMER"] = namer
+        globals()['_METHOD_NAMER'] = namer
     else:
-        raise TypeError("namer argument must be a callable")
+        raise TypeError('namer argument must be a callable')
 
 
 def set_overwrite_rule(overwrite: bool) -> None:
@@ -93,9 +93,9 @@ def set_overwrite_rule(overwrite: bool) -> None:
 
     """
     if isinstance(overwrite, bool):
-        globals()["_OVERWRITE"] = overwrite
+        globals()['_OVERWRITE'] = overwrite
     else:
-        raise TypeError("overwrite argument must be boolean")
+        raise TypeError('overwrite argument must be boolean')
 
 
 def set_verbose_rule(verbose: bool) -> None:
@@ -110,9 +110,9 @@ def set_verbose_rule(verbose: bool) -> None:
 
     """
     if isinstance(verbose, bool):
-        globals()["_VERBOSE"] = verbose
+        globals()['_VERBOSE'] = verbose
     else:
-        raise TypeError("verbose argument must be boolean")
+        raise TypeError('verbose argument must be boolean')
 
 
 # @dataclasses.dataclass

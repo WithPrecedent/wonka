@@ -40,7 +40,7 @@ def finalize(
 
     """
     factory = factory or item
-    if hasattr(factory, "produce") and inspect.ismethod(factory.produce):
+    if hasattr(factory, 'produce') and inspect.ismethod(factory.produce):
         return factory.produce(item, parameters)
     else:
         if parameters is None:
@@ -98,4 +98,4 @@ def is_constructor(item: Any) -> bool:
             inspect.isclass(item) and issubclass(item, base.Factory)
         ) or isinstance(item, base.Manager | base.Factory)
     else:
-        return hasattr(item, "create") and inspect.ismethod(item.create)
+        return hasattr(item, 'create') and inspect.ismethod(item.create)

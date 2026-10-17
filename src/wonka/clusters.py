@@ -60,7 +60,7 @@ class Manufacturer(base.Cluster):
                 self.contents.update(item)
             else:
                 message = (
-                    "All values in item must be wonka-compatible constructors"
+                    'All values in item must be wonka-compatible constructors'
                 )
                 raise TypeError(message)
         elif shared.is_constructor(item):
@@ -68,8 +68,8 @@ class Manufacturer(base.Cluster):
             self.contents.update({key: item})
         else:
             message = (
-                "item must either be a wonka-compatible constructor or a dict-"
-                "like object with values that are constructors"
+                'item must either be a wonka-compatible constructor or a dict-'
+                'like object with values that are constructors'
             )
             raise TypeError(message)
 
@@ -226,7 +226,7 @@ class Hub(base.Cluster):
             for key, value in cls.bases.items():
                 if issubclass(item, value):
                     return key
-        raise ValueError(f"{item} is not a subclass of any Keystone")
+        raise ValueError(f'{item} is not a subclass of any Keystone')
 
     @classmethod
     def register(
@@ -324,8 +324,8 @@ class Hub(base.Cluster):
                 value = registry[name]
             else:
                 raise ValueError(
-                    f"Neither a value for {attribute} nor a default class "
-                    f"exists"
+                    f'Neither a value for {attribute} nor a default class '
+                    f'exists'
                 )
         # Uses str value to select appropriate subclass.
         elif isinstance(value, str):
@@ -335,7 +335,7 @@ class Hub(base.Cluster):
         elif inspect.issubclass(value, base):
             name = utilities._namify(value)
         else:
-            raise ValueError(f"{value} is not a recognized keystone")
+            raise ValueError(f'{value} is not a recognized keystone')
         # Creates a subclass instance.
         if instance is None:
             instance = value.create(name=name, **parameters)
@@ -365,7 +365,7 @@ class Hub(base.Cluster):
 
         """
         name = name or utilities._namify(item)
-        if name.startswith("project_"):
+        if name.startswith('project_'):
             name = name[8:]
         return name
 

@@ -59,7 +59,7 @@ def _namify(item: Any, /, default: str | None = None) -> str | None:
     if isinstance(item, str):
         return item
     elif (
-        hasattr(item, "name")
+        hasattr(item, 'name')
         and not inspect.isclass(item)
         and isinstance(item.name, str)
     ):
@@ -92,7 +92,7 @@ def _pathlibify(item: str | pathlib.Path) -> pathlib.Path:
     elif isinstance(item, str):
         return pathlib.Path(item)
     else:
-        message = "item must be a str or pathlib.Path type"
+        message = 'item must be a str or pathlib.Path type'
         raise TypeError(message)
 
 
@@ -106,8 +106,8 @@ def _snakify(item: str) -> str:
         `item` converted to snake case.
 
     """
-    item = re.sub("(.)([A-Z][a-z]+)", r"\1_\2", item)
-    return re.sub("([a-z0-9])([A-Z])", r"\1_\2", item).lower()
+    item = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', item)
+    return re.sub('([a-z0-9])([A-Z])', r'\1_\2', item).lower()
 
 
 def _is_sequence(item: Any, *, include_str: bool = False) -> bool:
@@ -172,13 +172,13 @@ def _return_subset(
         A `Collection` with a `subset` of data.
 
     """
-    if returns == "class":
+    if returns == 'class':
         return existing.__class__(subset)  # type: ignore[call-arg]
-    if returns == "copy":
+    if returns == 'copy':
         new_collection = copy.deepcopy(existing)
         new_collection.contents = subset  # type: ignore[attr-defined]
         return new_collection
-    if returns == "simple":
+    if returns == 'simple':
         return subset
     message = 'returns argument must be "class", "copy", or "simple"'
     raise ValueError(message)

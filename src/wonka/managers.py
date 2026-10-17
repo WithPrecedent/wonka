@@ -56,7 +56,7 @@ class Assembler(MutableSequence, base.Manager):
             self.contents.extend(item)
         else:
             raise TypeError(
-                "All values in item must be wonka-compatible constructors"
+                'All values in item must be wonka-compatible constructors'
             )
 
     def delete(self, item: int) -> None:
@@ -135,7 +135,7 @@ class Assembler(MutableSequence, base.Manager):
 
         """
         if include is None and exclude is None:
-            raise ValueError("include or exclude must not be None")
+            raise ValueError('include or exclude must not be None')
         if include is None:
             contents = copy.deepcopy(self.contents)
         else:
