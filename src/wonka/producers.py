@@ -1,11 +1,11 @@
 """Mixins for created object modification.
 
 Contents:
-    Classer (`base.Producer`, `abc.ABC`): Producer with an `produce` method that
+    Classer (`base.Producer`, `abc.ABC`): Producer with a `produce` method that
         always returns a class.
     Flexer (`base.Producer`, `abc.ABC`): Producer that conditions return value
         of the `produce` method based on whether `parameters` are passed.
-    Instancer (`base.Producer`, `abc.ABC`): Producer with an `produce` method
+    Instancer (`base.Producer`, `abc.ABC`): Producer with a `produce` method
         that always returns an instance.
 
 """
@@ -22,18 +22,17 @@ from . import base, shared
 
 @dataclasses.dataclass
 class Classer(base.Producer, abc.ABC):
-    """Producer with an `produce` method always return a class."""
+    """Producer with a `produce` method that always returns a class."""
 
     """ Class Methods """
 
     @classmethod
     def produce(
-        cls,
-        item: Any,
-        parameters: base.GenericDict | None = None,
-        **kwargs: base.Kwargs,
-    ) -> Any:
-        """Modifies `item` and possibly incorporates `parameters`.
+            cls,
+            item: Any,
+            parameters: base.Parameters | None = None,
+            **kwargs: base.Kwargs) -> Any:
+        """Returns `item` if it is a class or the class of `item`.
 
         Args:
             item: item created by a constructor that may need to be altered
@@ -42,7 +41,7 @@ class Classer(base.Producer, abc.ABC):
                 Defaults to `None`. The argument for `parameters` is ignored by
                 `Classer` - it is only included to provide a consistent
                 interface across all `Producer` subclasses.
-            kwargs: allows subclass to take kwargs.
+            **kwargs: allows subclass to take kwargs.
 
         Returns:
             Modified item.
@@ -65,11 +64,10 @@ class Flexer(base.Producer, abc.ABC):
 
     @classmethod
     def produce(
-        cls,
-        item: Any,
-        parameters: base.GenericDict | None = None,
-        **kwargs: base.Kwargs,
-    ) -> Any:
+            cls,
+            item: Any,
+            parameters: base.Parameters | None = None,
+            **kwargs: base.Kwargs) -> Any:
         """Modifies `item` and possibly incorporates `parameters`.
 
         Args:
@@ -77,7 +75,7 @@ class Flexer(base.Producer, abc.ABC):
                 before being returned by the constructor `create` method.
             parameters: keyword arguments to pass or add to a created instance.
                 Defaults to `None`.
-            kwargs: allows subclass to take kwargs.
+            **kwargs: allows subclass to take kwargs.
 
         Returns:
             Modified item.
@@ -85,43 +83,38 @@ class Flexer(base.Producer, abc.ABC):
         """
         if parameters is None:
             return item
-        elif inspect.isclass(item):
+        if inspect.isclass(item):
             return item(**parameters)
-        else:
-            return shared.inject_attributes(item, parameters)
+        return shared.inject_attributes(item, parameters)
 
 
 @dataclasses.dataclass
 class Instancer(base.Producer, abc.ABC):
-    """Producer with an `produce` method always return an instance."""
+    """Producer with a `produce` method that always returns an instance."""
 
     """ Class Methods """
 
     @classmethod
     def produce(
-        cls,
-        item: Any,
-        parameters: base.GenericDict | None = None,
-        **kwargs: base.Kwargs,
-    ) -> Any:
-        """Modifies `item` and incorporates `parameters`.
+            cls,
+            item: Any,
+            parameters: base.Parameters | None = None,
+            **kwargs: base.Kwargs) -> Any:
+        """Returns an instance of `item` that incorporates `parameters`.
 
         Args:
             item: item created by a constructor that may need to be altered
                 before being returned by the constructor `create` method.
             parameters: keyword arguments to pass or add to a created instance.
                 Defaults to `None`.
-            kwargs: allows subclass to take kwargs.
+            **kwargs: allows subclass to take kwargs.
 
         Returns:
             Modified item.
 
         """
-        if inspect.isclass(item) and parameters is None:
-            return item()
-        elif parameters is None:
+        if inspect.isclass(item):
+            return item() if parameters is None else item(**parameters)
+        if parameters is None:
             return item
-        elif inspect.isclass(item):
-            return item(**parameters)
-        else:
-            return shared.inject_attributes(item, parameters)
+        return shared.inject_attributes(item, parameters)

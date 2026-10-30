@@ -4,10 +4,12 @@
 name = "wonka"
 description = "Flexible, accessible, extensible Python factories"
 authors = [{name = "Corey Rayburn Yung", email = "coreyrayburnyung@gmail.com"}]
-license = {text = "Apache Software License 2.0"}
+license = "Apache-2.0"
+license-files = ["LICENSE"]
 readme = "README.md"
 requires-python = ">=3.11"
-version = "0.2.2"
+# The version is set by `__version__` in "src/wonka/__init__.py".
+dynamic = ["version"]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
@@ -18,6 +20,7 @@ classifiers = [
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
     "Programming Language :: Python :: 3.14",
+    "Programming Language :: Python :: 3.15",
     "Topic :: Software Development",
     "Topic :: Utilities"]
 keywords = [
@@ -30,6 +33,7 @@ dependencies = []
 [project.urls]
 Documentation = "https://WithPrecedent.github.io/wonka"
 Repository = "https://github.com/WithPrecedent/wonka"
+Homepage = "https://github.com/WithPrecedent/wonka"
 Issues = "https://github.com/WithPrecedent/wonka/issues"
 Changelog = "https://WithPrecedent.github.io/wonka/changelog"
 
@@ -54,17 +58,37 @@ dev = [
 tests = [
     "coverage",
     "pytest",
-    "pytest-cookies",
     "pytest-cov",
     "pytest-randomly",
     "pytest-xdist"]
 
 [build-system]
-requires = ["hatchling"]
+# Version 1.27 is the first to support SPDX license expressions (PEP 639).
+requires = ["hatchling>=1.27"]
 build-backend = "hatchling.build"
+
+[tool.hatch.version]
+path = "src/wonka/__init__.py"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/wonka"]
+
+[tool.coverage.report]
+skip_empty = true
+show_missing = true
+# Adds to (instead of replacing) the default exclusions, such as
+# "pragma: no cover".
+exclude_also = [
+  "if TYPE_CHECKING:",
+  "if __name__ == .__main__.:"]
+
+[tool.coverage.paths]
+source = ["src", "*/site-packages"]
+tests = ["tests", "*/tests"]
+
+[tool.coverage.run]
+branch = true
+source = ["wonka", "tests"]
 
 [tool.mypy]
 files = ['src']
@@ -85,6 +109,8 @@ pythonpath = ["src"]
 [tool.ruff]
 extend-exclude = ["docs", "scripts", "site", "tests", ".*.*"]
 fix = true
+# Keeps `extend-exclude` when pre-commit passes file paths to ruff.
+force-exclude = true
 line-length = 80
 lint.dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
 lint.fixable = ["ALL"]
@@ -101,22 +127,18 @@ lint.ignore = [
     "D406",  # Section name should end with a newline - bugged for 'Attributes:'
     "D407",  # Missing dashed underline after section ("Args")
     "D415",  # First line must end in a period, question mark, or exclamation point
-    "E501",  # Line too long
     "E731",  # Do not assign a `lambda` expression, use a `def`
     "ERA001",  # Commented out code
     "EXE002",  # No shebang is present in an executable file
     "FBT001",  # Boolean positional arg in function definition
     "FBT002",  # Boolean default positional arg in function definition
     "G004",  # Logging statement uses f-string
-    "PLC0415", # Lazy imports (which are intentionally used in this repo)
-    "PGH003",  # Use specific rule codes when ignoring type issues
     "PTH123",  # `open()` should be replaced by `Path.open()`
     "PLR0911",  # Too many return statements
     "PLR0912",  # Too many branches
     "PLR0913",  # Too many arguments to function call
     "PLR0915",  # Too many statements
     "PLR1711", # Useless 'return' at the end of function
-    "Q000",  # Single quotes found but double quotes preferred
     "RET505",  # Unnecessary `else` after `return` statement
     # "S0001",  # Use of assert detected
     "SLF001", # Private member accessed
@@ -198,3 +220,8 @@ ignore-decorators = ["typing.overload"]
 
 [tool.uv]
 package = true
+
+[tool.cruft]
+# Paths that `cruft update` leaves alone because they belong to this project
+# instead of the `snickerdoodle` template.
+skip = ["CHANGELOG.md", "src", "tests", "uv.lock"]

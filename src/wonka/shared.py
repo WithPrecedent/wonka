@@ -13,16 +13,17 @@ Contents:
 from __future__ import annotations
 
 import inspect
-from typing import Any
+from typing import Any, TypeGuard
 
 from . import base, options
 
+""" Public Functions """
+
 
 def finalize(
-    item: Any,
-    parameters: base.GenericDict | None = None,
-    factory: type[base.Factory] | None = None,
-) -> Any:
+        item: Any,
+        parameters: base.Parameters | None = None,
+        factory: Any | None = None) -> Any:
     """Modifies `item` and possibly incorporates `parameters`.
 
     Args:
@@ -32,37 +33,35 @@ def finalize(
             Defaults to `None`.
         factory: the constructor used to create `item`. This need not be passed
             if `item` is also the factory for its creation. Defaults to `None`.
-            If `factory` is None, this function will look for an `produce`
-            method on item.
+            If `factory` is `None`, this function will look for a `produce`
+            method on `item`.
 
     Returns:
         Modified item.
 
     """
-    factory = factory or item
+    factory = item if factory is None else factory
     if hasattr(factory, 'produce') and inspect.ismethod(factory.produce):
         return factory.produce(item, parameters)
-    else:
-        if parameters is None:
-            return item
-        if inspect.isclass(item):
-            return item(**parameters)
-        return inject_attributes(item, parameters)
+    if parameters is None:
+        return item
+    if inspect.isclass(item):
+        return item(**parameters)
+    return inject_attributes(item, parameters)
 
 
 def inject_attributes(
-    item: Any,
-    parameters: base.GenericDict | None = None,
-    overwrite: bool | None = None,
-) -> Any:
-    """Manages `item` and possibly incorporates `parameters`.
+        item: Any,
+        parameters: base.Parameters | None = None,
+        overwrite: bool | None = None) -> Any:
+    """Adds `parameters` to `item` as attributes.
 
     Args:
         item: item to have `parameters` injected.
         parameters: keyword arguments to add to `item`. Defaults to `None`.
-        overwrite (Optional[bool]): whether to overwrite existing attributes,
-            if they exist. Defaults to `None`. If the value is `None`, the
-            global `_OVERWRITE` setting will be used.
+        overwrite: whether to overwrite existing attributes, if they exist.
+            Defaults to `None`. If the value is `None`, the global `_OVERWRITE`
+            setting in `options` will be used.
 
     Returns:
         Modified item.
@@ -76,13 +75,13 @@ def inject_attributes(
     return item
 
 
-def is_constructor(item: Any) -> bool:
+def is_constructor(item: Any) -> TypeGuard[base.Constructor]:
     """Returns if `item` is a wonka-compatible constructor.
 
     If the global `_STRICT_COMPATIBILITY` setting is `True`, this function uses
-    narrow definition of `constructor` to only include:
+    a narrow definition of constructor that only includes:
         1) subclasses or instances of `Factory`; or
-        2) subclasss instances of `Manager`.
+        2) subclass instances of `Manager`.
     If `_STRICT_COMPATIBILITY` is `False`, the function merely tests whether
     `item` has a `create` method.
 
@@ -90,12 +89,11 @@ def is_constructor(item: Any) -> bool:
         item: item to test.
 
     Returns:
-        Whether `item` is a wonka-compatible constructor
+        Whether `item` is a wonka-compatible constructor.
 
     """
     if options._STRICT_COMPATIBILITY:
         return (
-            inspect.isclass(item) and issubclass(item, base.Factory)
-        ) or isinstance(item, base.Manager | base.Factory)
-    else:
-        return hasattr(item, 'create') and inspect.ismethod(item.create)
+            (inspect.isclass(item) and issubclass(item, base.Factory))
+            or isinstance(item, base.Manager | base.Factory))
+    return hasattr(item, 'create') and inspect.ismethod(item.create)

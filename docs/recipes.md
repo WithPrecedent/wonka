@@ -41,7 +41,7 @@ class Settings(wonka.Sourcerer):
     @classmethod
     def from_file(cls, source: str | pathlib.Path) -> Settings:
         if isinstance(source, str):
-            source = pathlib.Path(item)
+            source = pathlib.Path(source)
         if source.is_file():
             # Gets file extension and looks up the appropriate function to call.
             extension = source.suffix[1:]
@@ -59,7 +59,7 @@ class Settings(wonka.Sourcerer):
     @classmethod
     def from_ini(cls, source: str | pathlib.Path) -> Settings:
         if isinstance(source, str):
-            source = pathlib.Path(item)
+            source = pathlib.Path(source)
         try:
             contents = configparser.ConfigParser()
             contents.optionxform = lambda option: option
@@ -72,12 +72,12 @@ class Settings(wonka.Sourcerer):
     @classmethod
     def from_yaml(cls, source: str | pathlib.Path) -> Settings:
         if isinstance(source, str):
-            source = pathlib.Path(item)
+            source = pathlib.Path(source)
         try:
             with open(source) as config:
                 contents = yaml.safe_load(config)
         except FileNotFoundError as error:
-            message = f'settings file {path} not found'
+            message = f'settings file {source} not found'
             raise FileNotFoundError(message) from error
         return cls(contents)
 

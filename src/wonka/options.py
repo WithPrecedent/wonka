@@ -7,6 +7,13 @@ Contents:
         creation methods.
     set_overwrite_rule: sets the global attribute overwrite rule.
     set_verbose_rule: sets the global attribute message verbosity rule.
+    _KEY_NAMER: default function that names non-`str` objects.
+    _METHOD_NAMER: default naming convention for dispatcher creation methods.
+    _OVERWRITE: whether to overwrite existing attributes when parameters are
+        injected into an item.
+    _STRICT_COMPATIBILITY: whether `is_constructor` requires a `wonka` class or
+        accepts any object with a `create` method.
+    _VERBOSE: whether to return more elaborate error messages and feedback.
 
 """
 
@@ -18,9 +25,9 @@ from typing import Any
 from . import utilities
 
 # Default naming function for non-str objects.
-_KEY_NAMER: Callable[[object | type[Any]], str] = utilities._namify
+_KEY_NAMER: Callable[[Any], str] = utilities._namify
 # Default naming convention for dispatcher registry creation methods.
-_METHOD_NAMER: Callable[[object | type[Any]], str] = lambda x: f'from_{x}'
+_METHOD_NAMER: Callable[[Any], str] = lambda x: f'from_{x}'
 # Whether to overwrite existing attributes when arguments are passed to create
 # an item that is already an instance or has class attributes of the same name
 # as in the passed arguments.
@@ -30,6 +37,8 @@ _OVERWRITE: bool = True
 _STRICT_COMPATIBILITY: bool = True
 # Whether to return more elaborate error messages and feedback.
 _VERBOSE: bool = False
+
+""" Public Functions """
 
 
 def set_compatibility_rule(compatibility: bool) -> None:
@@ -43,13 +52,13 @@ def set_compatibility_rule(compatibility: bool) -> None:
         TypeError: if `compatibility` is not `bool`.
 
     """
-    if isinstance(compatibility, bool):
-        globals()['_STRICT_COMPATIBILITY'] = compatibility
-    else:
-        raise TypeError('compatibility argument must be boolean')
+    if not isinstance(compatibility, bool):
+        message = 'compatibility argument must be boolean'
+        raise TypeError(message)
+    globals()['_STRICT_COMPATIBILITY'] = compatibility
 
 
-def set_keyer(keyer: Callable[[object | type[Any]], str]) -> None:
+def set_keyer(keyer: Callable[[Any], str]) -> None:
     """Sets the global default function used to name `dict` keys.
 
     Args:
@@ -59,26 +68,26 @@ def set_keyer(keyer: Callable[[object | type[Any]], str]) -> None:
         TypeError: if `keyer` is not callable.
 
     """
-    if isinstance(keyer, Callable):
-        globals()['_KEY_NAMER'] = keyer
-    else:
-        raise TypeError('keyer argument must be a callable')
+    if not callable(keyer):
+        message = 'keyer argument must be a callable'
+        raise TypeError(message)
+    globals()['_KEY_NAMER'] = keyer
 
 
-def set_method_namer(namer: Callable[[object | type[Any]], str]) -> None:
+def set_method_namer(namer: Callable[[Any], str]) -> None:
     """Sets the global default function used to name factory creation methods.
 
     Args:
         namer: function that returns a `str` name of any item passed.
 
     Raises:
-        TypeError: if 'keyer' is not callable.
+        TypeError: if `namer` is not callable.
 
     """
-    if isinstance(namer, Callable):
-        globals()['_METHOD_NAMER'] = namer
-    else:
-        raise TypeError('namer argument must be a callable')
+    if not callable(namer):
+        message = 'namer argument must be a callable'
+        raise TypeError(message)
+    globals()['_METHOD_NAMER'] = namer
 
 
 def set_overwrite_rule(overwrite: bool) -> None:
@@ -89,13 +98,13 @@ def set_overwrite_rule(overwrite: bool) -> None:
             attributes.
 
     Raises:
-        TypeError: if `overwrite` is not bool.
+        TypeError: if `overwrite` is not `bool`.
 
     """
-    if isinstance(overwrite, bool):
-        globals()['_OVERWRITE'] = overwrite
-    else:
-        raise TypeError('overwrite argument must be boolean')
+    if not isinstance(overwrite, bool):
+        message = 'overwrite argument must be boolean'
+        raise TypeError(message)
+    globals()['_OVERWRITE'] = overwrite
 
 
 def set_verbose_rule(verbose: bool) -> None:
@@ -106,32 +115,10 @@ def set_verbose_rule(verbose: bool) -> None:
             messaging.
 
     Raises:
-        TypeError: if `verbose` is not bool.
+        TypeError: if `verbose` is not `bool`.
 
     """
-    if isinstance(verbose, bool):
-        globals()['_VERBOSE'] = verbose
-    else:
-        raise TypeError('verbose argument must be boolean')
-
-
-# @dataclasses.dataclass
-# class _MISSING_VALUE(object):
-#     """Sentinel object for a missing data or parameter.
-
-#     This follows the same pattern as the '__MISSING_TYPE` class in the builtin
-#     dataclasses library.
-#     https://github.com/python/cpython/blob/3.10/Lib/dataclasses.py#L182-L186
-
-#     Because None is sometimes a valid argument or data option, this class
-#     provides an alternative that does not create the confusion that a default of
-#     None can sometimes lead to.
-
-#     """
-#     pass
-
-
-# # _MISSING, instance of _MISSING_VALUE, should be used for missing values as an
-# # alternative to None when None is a valid value for an argument. This provides
-# # a fuller repr and traceback.
-# _MISSING = _MISSING_VALUE()
+    if not isinstance(verbose, bool):
+        message = 'verbose argument must be boolean'
+        raise TypeError(message)
+    globals()['_VERBOSE'] = verbose

@@ -4,6 +4,26 @@ All notable changes to this project will be documented in this file.
 
 <!-- insertion marker -->
 
+## 0.3.0
+
+* **Breaking:** `cluster + other` and `assembler + other` now return a new instance and leave both operands unchanged. Use `+=` to add `other` in place (the old behavior of "+").
+* **Breaking:** `Assembler` now validates every constructor added with `insert`, `append`, `extend`, `prepend`, or item assignment, and raises a `TypeError` for anything that is not a wonka-compatible constructor. Before, only `add` validated.
+* Added the `py.typed` marker so that type checkers use the type hints in `wonka`.
+* Added a `subset` method to `Manufacturer`.
+* Added slice support to `Assembler` indexing, assignment, and deletion.
+* Added the `Parameters` type alias for the `parameters` argument (a mapping with `str` keys).
+* Fixed `Assembler.prepend`, which added the contents of an `Assembler` instead of the `Assembler` itself.
+* Fixed `Registrar.create`, which did not accept the keyword arguments that every `Factory.create` accepts.
+* Fixed `Subclasser` choosing between subclasses with the same name in a random order. Subclasses are now found in a fixed, depth-first order without duplicates.
+* Fixed the undefined names in the `Sourcerer` recipe.
+* Removed the unfinished and broken `Hub` and `Keystone` classes, which were not exported or documented.
+* Removed the unused `_is_sequence` and `_return_subset` utilities, the duplicate `_iterify`, the unused `GenericList`, `GenericSet`, and `SubsetReturns` aliases, and the commented-out code.
+* Updated to the `snickerdoodle` 0.5.0 template (Codecov coverage, a coverage page in the docs, `pydoclint`, Python 3.15, SPDX license metadata, a version read from `__version__`, GitHub CLI releases, and `uv` updates from Dependabot). Added `.cruft.json` so that `cruft update` can apply future template changes.
+* Removed the leftovers from `pdm` (the credits page and the script that read `pdm.lock`) and moved the issue templates out of a nested `ISSUE_TEMPLATE` folder.
+* Restyled the package (spaces around keyword argument `=`, closing brackets on the last line, section markers, and complete docstrings). Ruff now enforces single quotes and the 80 character line limit, and ignores the `tests` folder when run by pre-commit.
+* `mypy` now passes (there were 39 errors) and runs in CI.
+* Reorganized the tests by module, added a fixture that restores the global options after each test, and added tests for the operators, slices, validation, `subset`, the dispatchers, the options, and the package metadata (100 tests in total, with 99% coverage).
+
 ## 0.2.2
 
 * Updated to the `snickerdoodle` 0.4.0 template

@@ -23,19 +23,18 @@ class Scribe(base.Factory):
 
     @classmethod
     def create(
-        cls,
-        item: Any | None = None,
-        parameters: base.GenericDict | None = None,
-        **kwargs: base.Kwargs,
-    ) -> Any:
+            cls,
+            item: Any | None = None,
+            parameters: base.Parameters | None = None,
+            **kwargs: base.Kwargs) -> Any:
         """Clones `item` and possibly incorporates `parameters`.
 
         Args:
-            item: item to clone. If it is None, the `create` method assumes that
-                it should clone itself. Defaults to None.
+            item: item to clone. If it is `None`, the `create` method assumes
+                that it should clone itself. Defaults to `None`.
             parameters: keyword arguments to pass or add to a created instance.
                 Defaults to `None`.
-            kwargs: allows subclass to take kwargs.
+            **kwargs: allows subclass to take kwargs.
 
         Returns:
             Cloned item.
@@ -43,4 +42,4 @@ class Scribe(base.Factory):
         """
         item = cls if item is None else item
         item = copy.deepcopy(item)
-        return shared.finalize(item=item, parameters=parameters)
+        return shared.finalize(item = item, parameters = parameters)
