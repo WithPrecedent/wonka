@@ -115,11 +115,7 @@ If `wonka` does not fit your needs, you might find one of these other packages h
 
 ## Acknowledgments
 
-I would like to thank the University of Kansas School of Law for tolerating and
-supporting this law professor's coding efforts, an endeavor which is well
-outside the typical scholarly activities in the discipline.
-
-Lastly, I want to extend a special thanks to the late, great Gene Wilder, whose
+I want to extend a special thanks to the late, great Gene Wilder, whose
 work inspired the name of this project and made my childhood better.
 
 <p align="center">
